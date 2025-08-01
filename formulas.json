@@ -310,7 +310,7 @@
   ,
   "5-07:個々のデータ範囲(存在区間)の推定": {
     "id": "5-07",
-    "formula": "bar x = t(\\phi_e,\\alpha)\\sqrt{(1 + \\frac{1}{n})V_e}\\sim t(自由度\\phi:n - 1)",
+    "formula": "\\bar x \\pm t(\\phi_e,\\alpha)\\sqrt{(1 + \\frac{1}{n})V_e}\\sim t(自由度\\phi:n - 1)",
     "comment": "個々のデータ範囲(存在区間)の推定。t分布のt値を用いて、個々のデータの推定区間を求める。Veは誤差分散でs²を用いる"
   }
   ,
