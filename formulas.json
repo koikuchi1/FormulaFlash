@@ -280,7 +280,7 @@
   ,
   "5-02:t推定：２水準の平均の差の推定[一元配置つまりn数が同じ場合]": {
     "id": "5-02",
-    "formula": "(\\bar x_i -  \\bar x_{i+1}\\pm t(\\phi_e,\\alpha)\\sqrt{\\frac{2V_e}{n}},\\;(一元配置)の場合",
+    "formula": "(\\bar x_i -  \\bar x_{i+1})\\pm t(\\phi_e,\\alpha)\\sqrt{\\frac{2V_e}{n}},\\;(一元配置)の場合",
     "comment": "平均の推定の式からVeの部分が2倍になっただけ"
   }
   ,
