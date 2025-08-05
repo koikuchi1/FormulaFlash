@@ -11,14 +11,14 @@
 0-02:用語解説：自由度[Degrees of Freedom] Φ(またはdf):
   id: 0-02
   formula: |
-    例えば5つの因子があって他の４つが決まったとき、残りの１つは自ずと決まる値になるので１を引く。\newline 
+    例えば5つの因子があって他の４つが決まったとき、残りの１つは自ずと決まる値になるので１を引く。\newline
     自由になるのは４つだけ。
   comment: ''
 0-03:用語解説：平方和[Sum of Squares] S(大文字:標準偏差の小文字のsと間違いやすいので注意Sumと書く方がいい):
   id: 0-03
   formula: |
-    ある値の平均からのずれ量を２乗したものを合計したもの。\newline 
-    例：\; 
+    ある値の平均からのずれ量を２乗したものを合計したもの。\newline
+    例：\;
     S = \sum(x_i - \bar x)^2,\;\;\;\;\;\;
     S = \sum(x_i^2) - n\bar x^2
   comment: |
@@ -28,9 +28,9 @@
   id: 0-04
   formula: |
     \displaystyle
-    平方和を自由度で割ったもの。単位は元のデータの２乗になる。\newline 
-    例：\; 
-    V = \frac{S}{\phi} = \frac{1}{n-1}\sum(x_i - \bar x)^2,\;\;\;\;\;\; 
+    平方和を自由度で割ったもの。単位は元のデータの２乗になる。\newline
+    例：\;
+    V = \frac{S}{\phi} = \frac{1}{n-1}\sum(x_i - \bar x)^2,\;\;\;\;\;\;
     V = \frac{1}{n}\sum(x_i^2) - \bar x^2
   comment: |
     データ数が増えた分を平均化するために合計値を単にnで割ると母分散よりも期待値が小さくなる。<br>
@@ -39,9 +39,9 @@
   id: 0-05
   formula: |
     \displaystyle
-    分散を平方根したもの。単位は元のデータと同じになる。\newline 
-    例：\; 
-    σ = \sqrt{V} = \sqrt{\frac{S}{\phi}} = \sqrt{\frac{1}{n-1}\sum(x_i - \bar x)^2},\;\;\;\;\;\; 
+    分散を平方根したもの。単位は元のデータと同じになる。\newline
+    例：\;
+    σ = \sqrt{V} = \sqrt{\frac{S}{\phi}} = \sqrt{\frac{1}{n-1}\sum(x_i - \bar x)^2},\;\;\;\;\;\;
     σ = \sqrt{\frac{1}{n}\sum(x_i^2) - \bar x^2}
   comment: |
     単位を元のデータと合わせるために平方根をとっている。またデータがマイナスの値もとることができ直感的理解がしやすい。<br>
@@ -50,9 +50,9 @@
   id: 0-06
   formula: |
     \displaystyle
-    標準偏差を\sqrt n で割ったもの。単位は元のデータと同じになる。\newline 
-    例：\; 
-    SE = \frac{σ}{\sqrt n} = \frac{s}{\sqrt n} = \sqrt{\frac{V}{n}} = \sqrt{\frac{S}{n\phi}} = \sqrt{\frac{1}{n(n-1)}\sum(x_i - \bar x)^2},\;\;\;\;\;\; 
+    標準偏差を\sqrt n で割ったもの。単位は元のデータと同じになる。\newline
+    例：\;
+    SE = \frac{σ}{\sqrt n} = \frac{s}{\sqrt n} = \sqrt{\frac{V}{n}} = \sqrt{\frac{S}{n\phi}} = \sqrt{\frac{1}{n(n-1)}\sum(x_i - \bar x)^2},\;\;\;\;\;\;
     SE = \sqrt{\frac{1}{n^2}\sum(x_i^2) - \bar x^2}
   comment: |
     推定値（たとえば標本平均）が母集団の真の値からどれだけブレるかを表す指標。<br>
@@ -61,8 +61,8 @@
   id: 0-07
   formula: |
     \displaystyle
-    寄与率 = \frac{ある要素の平方和}{全体の平方和}\times 100 \%,\;\;\; 
-    p = \frac{S_A}{S_T} = \frac{V_A}{V_T},\;\;\;\;\;\; 
+    寄与率 = \frac{ある要素の平方和}{全体の平方和}\times 100 \%,\;\;\;
+    p = \frac{S_A}{S_T} = \frac{V_A}{V_T},\;\;\;\;\;\;
     p = \frac{S_{AB}}{S_T} = \frac{V_{AB}}{V_T}'
   comment: |
     寄与率は、ある要素が全体の分散にどれだけ寄与(関係)しているかを示す指標。<br>
@@ -71,7 +71,7 @@
   id: 0-08
   formula: |
     \displaystyle
-    r^2 = \frac{S_{回帰}}{S_{全体}} = \frac{V_{回帰}}{V_{全体}} = 1 - \frac{S_{残差}}{S_{全体}} = 1 - \frac{V_{残差}}{V_{全体}},\;\;\;\;\;\; 
+    r^2 = \frac{S_{回帰}}{S_{全体}} = \frac{V_{回帰}}{V_{全体}} = 1 - \frac{S_{残差}}{S_{全体}} = 1 - \frac{V_{残差}}{V_{全体}},\;\;\;\;\;\;
     r^2 = 1 - \frac{S_e}{S_T} = 1 - \frac{V_e}{V_T}
   comment: |
     決定係数は、回帰分析において、モデルがデータのばらつきをどれだけ説明できるかを示す指標。<br>
@@ -94,12 +94,12 @@
     点推定 = 母集団のパラメータを1つの値で推定すること。\newline
     →\;\;\;母平均\mu = 標本平均 \bar x,\;\;\;
     母分散\sigma^2 = 標本分散s^2,\newline
-    例：\; 
-    \hat{\mu} = \bar{x},\;\;\;\;\;\; 
-    \hat{p} = \frac{S_A}{S_T},\;\;\;\;\;\; 
-    \hat{V} = \frac{S}{n-1},\;\;\;\;\;\; 
-    \hat{V_p} = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}, \newline 
-    \hat{r^2} = 1 - \frac{S_e}{S_T},\;\;\;\;\;\; \hat{F} = \frac{V_A}{V_e} = \frac{S_A/\phi_A}{S_e/\phi_e},\;\;\;\;\;\; 
+    例：\;
+    \hat{\mu} = \bar{x},\;\;\;\;\;\;
+    \hat{p} = \frac{S_A}{S_T},\;\;\;\;\;\;
+    \hat{V} = \frac{S}{n-1},\;\;\;\;\;\;
+    \hat{V_p} = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}, \newline
+    \hat{r^2} = 1 - \frac{S_e}{S_T},\;\;\;\;\;\; \hat{F} = \frac{V_A}{V_e} = \frac{S_A/\phi_A}{S_e/\phi_e},\;\;\;\;\;\;
     \hat{F_{AB}} = \frac{V_{AB}}{V_e} = \frac{S_{AB}/\phi_{AB}}{S_e/\phi_e}
   comment: |
     ほとんどの場合、全数（母集団）を調査するのは不可能(母数は未知)なので、標本から得られたデータを用いて母集団のパラメータを推定する。<br>
@@ -109,8 +109,8 @@
   id: 0-11
   formula: |
     \displaystyle
-    区間推定 = 母集団のパラメータが含まれると考えられる区間を推定する方法。\newline 
-    \mu \in [\bar{x} - z_{\alpha/2} \cdot \frac{s}{\sqrt{n}},\;\; 
+    区間推定 = 母集団のパラメータが含まれると考えられる区間を推定する方法。\newline
+    \mu \in [\bar{x} - z_{\alpha/2} \cdot \frac{s}{\sqrt{n}},\;\;
     \bar{x} + z_{\alpha/2} \cdot \frac{s}{\sqrt{n}}]\;\;\;\;
     (信頼係数\;1 - \alpha)
   comment: |
@@ -120,8 +120,8 @@
 0-12:用語解説：点推定と区間推定(ざっくりと):
   id: 0-12
   formula: |
-    点推定：一番ありそうな値を一つ出す。\newline 
-    区間推定：その値が含まれる範囲を出す。\newline 
+    点推定：一番ありそうな値を一つ出す。\newline
+    区間推定：その値が含まれる範囲を出す。\newline
     例：点推定は「平均は50」、区間推定は「平均は45から55の間」といった感じ
   comment: ''
 1-01:分散分析法(ANOVA法)：各記号:
@@ -254,7 +254,7 @@
 4-03:標準化変数：t分布[n個の平均(母分散未知)]:
   id: 4-03
   formula: |
-    t = \frac{\bar x - \mu}{\sqrt{s^2/n}}\sim t(自由度\phi:n - 1),\; 
+    t = \frac{\bar x - \mu}{\sqrt{s^2/n}}\sim t(自由度\phi:n - 1),\;
     但し\; s^2 = \frac{1}{n-1}\sum(x_i - \bar x)^2 = \frac{Sum}{n - 1}
   comment: 母分散σ²が未知なので代わりに標本分散s²を用いる。tは自由度n-1のt分布に従う→標本分散s²はn-1で割る
 5-01:t推定：平均の推定[t分布の式の変換]:
@@ -285,7 +285,7 @@
   id: 5-06
   formula: |
     \displaystyle
-    V_p = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2} 
+    V_p = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}
   comment: |
     分母は２因子の平方和を足したもの。<br>
     分子は自由度n<sub>1</sub>-1とn<sub>2</sub>-1を足したもの(それぞれの因子は独立で交互作用なしが前提)
@@ -299,8 +299,8 @@
   id: 5-08
   formula: |
     \displaystyle
-    x_{new}のばらつき\sigma^2,\; \bar xのばらつき\frac{s^2}{n} \newline 
-    →\; Var(x_{new} - \bar x) = Var(x_{new}) + Var(\bar x) = s^2 + \frac{s^2}{n} = s^2(1 + \frac{1}{n}) \newline 
+    x_{new}のばらつき\sigma^2,\; \bar xのばらつき\frac{s^2}{n} \newline
+    →\; Var(x_{new} - \bar x) = Var(x_{new}) + Var(\bar x) = s^2 + \frac{s^2}{n} = s^2(1 + \frac{1}{n}) \newline
     →\; SE = s\sqrt{1 + \frac{1}{n}}
   comment: |
     新しい個々のデータ:x<sub>new</sub> 1+1/nになる理由は、個々のデータのばらつきと平均のばらつきを足し合わせるから。<br>
@@ -358,7 +358,14 @@
   comment: |
     r: 行数、c: 列数。<br>
     クロス集計表で、行列合計の制約を除いた自由なセルの数。
-7-01:分布図の確率密度関数：正規分布:
+7-00:分布図の確率密度(又は質量)関数：用語:
+  id: 7-00
+  formula: |
+    \displaystyle
+    確率密度関数(PDF: Probability Density Function）･･･連続型の分布につかう用語 \\
+    確率質量関数(PMF: Probability Mass Functio）･･･連続型の分布につかう用語
+  comment: '以降の項目では、確率密度関数と簡易的に読んでいる'
+7-01:分布図の確率密度(又は質量)関数：正規分布:
   id: 7-01
   formula: |
     \displaystyle
@@ -367,7 +374,7 @@
     μ:平均、σ:標準偏差。x:変数、e:自然対数の底。<br>
     正規分布の確率密度関数。<br>
     正規分布は連続型の確率分布で、平均を中心に左右対称な形を持つ。
-7-02:分布図の確率密度関数：二項分布:
+7-02:分布図の確率密度(又は質量)関数：二項分布:
   id: 7-02
   formula: |
     \begin{array}{rl}
@@ -379,7 +386,7 @@
   comment: |
     n:サンプル数、x:不適合品数、p:不適合品率。<br>
     二項分布の確率密度関数。離散型の確率分布
-7-03:分布図の確率密度関数：ポアソン分布:
+7-03:分布図の確率密度(又は質量)関数：ポアソン分布:
   id: 7-03
   formula: |
     \displaystyle
@@ -389,10 +396,29 @@
     ポアソン分布の確率密度関数。<br>
     離散型の確率分布で、特定の時間内に発生する事象の数をモデル化する。<br>
     λは平均発生率
+7-04:分布図の確率密度(又は質量)関数：一様分布(Uniform Distribution）[連続型]:
+  id: 7-04
+  formula: |
+    \displaystyle
+    f(x) = \frac{1}{(b - a)},\;\;\;\;(a \leq x \leq b)[連続型] \\
+    期待値(平均)：E[X] = \frac{(a + b)}{2} \\
+    分散：Var(X) = \frac{(b - a)^2}{12}
+  comment: ''
+7-05:分布図の確率密度(又は質量)関数：一様分布(Uniform Distribution）[離散型]:
+  id: 7-05
+  formula: |
+    \displaystyle
+    定義域：x \in \{a,a + 1,a + 2,\dots,b \},\;\;\; 個数：n = b - a + 1 \\
+    P(X = x) = f(x) = \frac{1}{n} = \frac{1}{b - a + 1},\;\;\;\;[離散型] \\
+    期待値(平均)：E[X] = \frac{(a + b)}{2} \\
+    分散：Var(X) = \frac{(b - a + 1)^2 - 1}{12} \\
+    範囲が1 ～ nのとき(a = 1, b = n) \\
+    Var(X) = \frac{n^2 - 1}{12} \\
+  comment: 'サイコロの確率がよく例に出題される'
 8-01:工程能力：CpkとPpkの違い:
   id: 8-01
   formula: |
-    \displaystyle 
+    \displaystyle
     Cpk = \min\left(\frac{USL - \mu}{3\sigma}, \frac{\mu - LSL}{3\sigma}\right),\;
     Ppk = \min\left(\frac{USL - \bar x}{3s}, \frac{\bar x - LSL}{3s}\right)
   comment: |
@@ -403,7 +429,7 @@
 8-02:工程能力：偏りを用いたCpkの算出:
   id: 8-02
   formula: |
-    \displaystyle 
+    \displaystyle
     k = \frac{2\lvert \mu - 規格中心\rvert}{USL - LSL},\; Cp = \frac{USL - LSL}{6\sigma},\;\;\;\;
     →\;\;\;Cpk = (1 - k)Cp,\; (0 \leq k \leq 1)
   comment: |
@@ -421,13 +447,13 @@
 9-01:管理図：x<sup>-</sup> - R管理図:
   id: 9-01
   formula: |
-    \displaystyle \bar X = \frac{1}{n}  \sum_{i=1}^{n}x_i , \; \\ 
-    \hspace{1em} 
-    UCL_{\bar X} = \overline{\overline{X}} + A_2R,\; 
+    \displaystyle \bar X = \frac{1}{n}  \sum_{i=1}^{n}x_i , \; \\
+    \hspace{1em}
+    UCL_{\bar X} = \overline{\overline{X}} + A_2R,\;
     LCL_{\bar X} = \overline{\overline{X}} - A_2R,\\
     R = \max(x_i) - \min(x_i),\; \\
-    \hspace{1em} 
-    UCL_R = D_4\bar R,\; 
+    \hspace{1em}
+    UCL_R = D_4\bar R,\;
     LCL_R = D_3\bar R
   comment: |
     用途:連続したデータ(計量値)の管理。<br>
@@ -437,10 +463,10 @@
 9-02:管理図：p管理図:
   id: 9-02
   formula: |
-    \displaystyle 
+    \displaystyle
     不良率p_i = \frac{d_i}{n_i},\;\;\; 全体の平均不良率\bar p = \frac{\sum d_i}{\sum n_i},\;\;\; \\
     \hspace{1em}
-    UCL_p = \bar p + 3\sqrt{\frac{\bar p(1 - \bar p)}{n}},\; 
+    UCL_p = \bar p + 3\sqrt{\frac{\bar p(1 - \bar p)}{n}},\;
     LCL_p = \bar p - 3\sqrt{\frac{\bar p(1 - \bar p)}{n}}
   comment: |
     用途:不良率（比率）の管理。各サブグループの サイズが一定でなくてもOK。<br>
@@ -504,7 +530,7 @@
     b:回帰係数(傾き)、SE<sub>b</sub>:回帰係数の標準誤差、s：残差の標準偏差。<br>
     t値を計算し、p値をt分布表から求めることで回帰係数が統計的に有意かどうかを判断する。<br>
     p値は通常0.05以下であれば有意とされる。
-10-06:回帰分析：重回帰分析(複数の要素):
+10-06:回帰分析：重回帰分析(複数の要素)QC検定1級範囲:
   id: 10-06
   formula: 'y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \ldots + \beta_i x_i  + \epsilon'
   comment: |
@@ -512,12 +538,12 @@
     β<sub>1</sub>~β<sub>i</sub>:偏回帰係数、ε:誤差項。<br>
     重回帰分析は複数の説明変数を持つ式で表される。<br>
     複数の説明変数が目的変数に与える影響を同時に評価するための手法。
-10-07:回帰分析：重回帰分析の多重共線性とVIF(分散拡大係数):
+10-07:回帰分析：重回帰分析の多重共線性とVIF(分散拡大係数)QC検定1級範囲:
   id: 10-07
   formula: |
     \displaystyle
-    VIF_j = \frac{1}{1 - R^2_j},\;\;\;\\
-    R^2_j = 1 - \frac{S_e}{S_T},\;\;\;\;\;\; 
+    VIF_j = \frac{1}{1 - R^2_j},\;\;\;(VIF:分散拡大係数、多重共線性の強さを測る指標。10以上なら注意が必要),\\
+    R^2_j = 1 - \frac{S_e}{S_T},\;\;\;\;\;\;
     (R_j^2:説明変数x_jを目的変数に置き、他の説明変数だけで重回帰した時の決定係数),\\
     S_e = \sum (y_i - \hat y_i)^2,\;\;\;
     S_T = \sum (y_i - \bar y)^2
@@ -528,7 +554,7 @@
   id: 11-01
   formula: |
     \displaystyle
-    r = \frac{\sum (x_i - \bar x)(y_i - \bar y)}{\sqrt{\sum (x_i - \bar x)^2}\sqrt{\sum (y_i - \bar y)^2}},\\ 
+    r = \frac{\sum (x_i - \bar x)(y_i - \bar y)}{\sqrt{\sum (x_i - \bar x)^2}\sqrt{\sum (y_i - \bar y)^2}},\\
     値の範囲: -1 \leq r \leq 1,\;\;\;\\
     r = + 1:完全な正の相関,\; r = -1:完全な負の相関,\; r = 0:相関なし
   comment: |
@@ -539,7 +565,7 @@
   id: 11-02
   formula: |
     \displaystyle
-    t = \frac{r\sqrt{n - 2}}{\sqrt{1 - r^2}},\;\;\;\;\;\;\;\;\;\;\;\;\; 
+    t = \frac{r\sqrt{n - 2}}{\sqrt{1 - r^2}},\;\;\;\;\;\;\;\;\;\;\;\;\;
     p = 2(1 - t(\phi_e, |t|)),\;\;\;(自由度: n - 2)
   comment: |
     r:相関係数、n:サンプルサイズ、t:t値。<br>
@@ -552,10 +578,10 @@
     \displaystyle
     大波はx,yそれぞれの中央値(median)と比較して符号の大小を付ける(一致は除外)。\\
     小波はその値と一つ前の値の比較で符号の大小を付ける(一致は除外)。\\
-    Z = \frac{X - n/2}{\sqrt{n/4}}\;\;\;\;\;\;\;\;\;\;\;\;\; 
+    Z = \frac{X - n/2}{\sqrt{n/4}}\;\;\;\;\;\;\;\;\;\;\;\;\;
     p = 2(1 - Z(0,1)) \\
-    x,yの符号が一致 = +,\;\;\;符号が異なる = - とカウント\\ 
-    n: 有効な符号ペアの数(±のついたデータ),\;\;\; 
+    x,yの符号が一致 = +,\;\;\;符号が異なる = - とカウント\\
+    n: 有効な符号ペアの数(±のついたデータ),\;\;\;
     X: 符号の一致数 \\
     参考:有効データ数 6 ≦ n ≦ 10のとき1以上(n -1)以下で5\%の有意水準で有意と判断できる
   comment: |
@@ -566,13 +592,13 @@
   id: 12-01
   formula: |
     \displaystyle
-    密度関数: f(t) = \frac{dF(t)}{dt} = -\frac{dR(t)}{dt} = \frac{\beta}{\eta}\left(\frac{t}{\eta}\right)^{\beta - 1}e^{-\left(\frac{t}{\eta}\right)^{\beta}}(ワイブル密度関数),\;\\ 
-    信頼度: R(t) = e^{-\left(\frac{t}{\eta}\right)^{\beta}},\; 
-    不信頼度: F(t) = 1 - R(t),\;\\ 
-    ハザード関数:\lambda(t): 故障率:h(t) = \frac{f(t)}{R(t)} = \frac{\beta}{\eta}\left(\frac{t}{\eta}\right)^{\beta - 1}\\ 
-    ↓ \\  
+    密度関数: f(t) = \frac{dF(t)}{dt} = -\frac{dR(t)}{dt} = \frac{\beta}{\eta}\left(\frac{t}{\eta}\right)^{\beta - 1}e^{-\left(\frac{t}{\eta}\right)^{\beta}}(ワイブル密度関数),\;\\
+    信頼度: R(t) = e^{-\left(\frac{t}{\eta}\right)^{\beta}},\;
+    不信頼度: F(t) = 1 - R(t),\;\\
+    ハザード関数:\lambda(t): 故障率:h(t) = \frac{f(t)}{R(t)} = \frac{\beta}{\eta}\left(\frac{t}{\eta}\right)^{\beta - 1}\\
+    ↓ \\ 
     \beta = 1のとき,\\
-    f(t) = \frac{1}{\eta} \left(\frac{t}{\eta}\right)^{1 - 1} e^{-\left(\frac{t}{\eta}\right)^1} = \frac{1}{\eta} e^{-\frac{t}{\eta}},\;\;\; \left(\left(\frac{t}{\eta}\right)^0 = 1\right)\\ 
+    f(t) = \frac{1}{\eta} \left(\frac{t}{\eta}\right)^{1 - 1} e^{-\left(\frac{t}{\eta}\right)^1} = \frac{1}{\eta} e^{-\frac{t}{\eta}},\;\;\; \left(\left(\frac{t}{\eta}\right)^0 = 1\right)\\
     R(t) = e^{-\left(\frac{t}{\eta}\right)^1} = e^{-\frac{t}{\eta}}\newline F(t) = 1 - R(t) = 1 - e^{-\frac{t}{\eta}}\\
     h(t) = \frac{f(t)}{R(t)} = \frac{\frac{1}{\eta} e^{-\frac{t}{\eta}}}{e^{-\frac{t}{\eta}}}
     = \frac{1}{\eta}\newline \lambda(t) = \frac{1}{\eta} \left(\frac{t}{\eta}\right)^{1 - 1} = \frac{1}{\eta} = \lambda(一定の故障率)
@@ -585,7 +611,7 @@
   formula: |
     \displaystyle
     ワイブルの確率密度関数:f(t) = \frac{\beta}{\eta}\left(\frac{t}{\eta}\right)^{\beta - 1}e^{-\left(\frac{t}{\eta}\right)^{\beta}},\;\;\;\;\; \\
-    時間:t \geq 0,\; 形状パラメータ\beta > 0,\; 尺度パラメータ\eta > 0 \\ 
+    時間:t \geq 0,\; 形状パラメータ\beta > 0,\; 尺度パラメータ\eta > 0 \\
     \beta < 1 : 初期故障期(バスタブ曲線の左側)で故障率は減少(DFR型),\; \\
     \beta = 1 : 定常故障期で故障率は一定(CFR型),\; \\
     \beta > 1 : 摩耗故障期(バスタブ曲線の右側)で故障率は増加(IFR型)
@@ -594,9 +620,9 @@
   id: 12-03
   formula: |
     \displaystyle
-    \beta = 1(故障率一定のとき),\\ 
-    密度関数: f(t) = \lambda e^{-\lambda t},\; (t \geq 0,\; \lambda > 0),\; \\ 
-    信頼度: R(t) = e^{-\lambda t},\; 不信頼度:F(t) = 1 - R(t),\; \\  
+    \beta = 1(故障率一定のとき),\\
+    密度関数: f(t) = \lambda e^{-\lambda t},\; (t \geq 0,\; \lambda > 0),\; \\
+    信頼度: R(t) = e^{-\lambda t},\; 不信頼度:F(t) = 1 - R(t),\; \\ 
     ハザード関数: \lambda(t) = \lambda
   comment: |
     指数分布は、故障が時間に依存せず一定の確率で発生する場合に用いられる。<br>
@@ -607,10 +633,10 @@
   id: 12-04
   formula: |
     \displaystyle
-    故障率\lambda が一定の時(\beta = 1のとき)\\ 
+    故障率\lambda が一定の時(\beta = 1のとき)\\
     R(t) = e^{-\lambda t} \\
-    f(t) = \lambda e^{-\lambda t} \\ 
-    MTTF = \frac{\int_0^{\infty} t f(t) dt}{\int_0^{\infty} f(t) dt} = \frac{1}{\lambda} \\ 
+    f(t) = \lambda e^{-\lambda t} \\
+    MTTF = \frac{\int_0^{\infty} t f(t) dt}{\int_0^{\infty} f(t) dt} = \frac{1}{\lambda} \\
     MTBF = MTTF + 修理時間\\
     B_{10}ライフ:アイテムの10\%が故障するまでの時間
   comment: |
@@ -619,8 +645,8 @@
 13-01:ロバスト設計：タグチメソッドの手順:
   id: 13-01
   formula: |
-    手順 \\ 
-    パラメータ設計：制御因子を最適化してロバスト性を高める \\ 
+    手順 \\
+    パラメータ設計：制御因子を最適化してロバスト性を高める \\
     公差設計：許容範囲（公差）を最適化 \\
     システム設計：目的に合った構造・方式の選定
   comment: 目的：製品や工程の性能が、外乱やばらつき（ノイズ）に影響されにくくするように設計（設計段階で品質を作りこむ）
@@ -628,7 +654,7 @@
   id: 13-02
   formula: |
     \displaystyle
-    基本式:L(y) = k(y - T )^2 \\ 
+    基本式:L(y) = k(y - T )^2 \\
     平均損失(複数データ): \bar L = k(S^2 + (\bar y - T)^2)
   comment: |
     L(y):損失、y:出力、T:目標値､k:比例係数(損失係数)。<br>
@@ -638,8 +664,8 @@
   id: 13-03
   formula: |
     \displaystyle
-    大きい方がよい: SN比 = -10\log_{10}\left(\frac{1}{n} \sum_{i=1}^n \frac{1}{y_i^2}\right) \\ 
-    小さい方がよい: SN比 = -10\log_{10}\left(\frac{1}{n} \sum_{i=1}^n y_i^2\right) \\ 
+    大きい方がよい: SN比 = -10\log_{10}\left(\frac{1}{n} \sum_{i=1}^n \frac{1}{y_i^2}\right) \\
+    小さい方がよい: SN比 = -10\log_{10}\left(\frac{1}{n} \sum_{i=1}^n y_i^2\right) \\
     目標値に近い方がよい: SN比 = -10\log_{10}\left(\frac{1}{n} \sum_{i=1}^n (y_i - T)^2\right)
   comment: |
     SN比はSignal-to-Noise比の略で、信号（目的の値）とノイズ（ばらつき）の比率を表す指標。<br>
@@ -649,12 +675,12 @@
   id: 14-01
   formula: |
     \displaystyle
-    チェックシート･･･【用途】データの収集,\\ 
-    グラフ･･･折れ線グラフ(時系列変化など)､円グラフ(割ありなど),\\ 
+    チェックシート･･･【用途】データの収集,\\
+    グラフ･･･折れ線グラフ(時系列変化など)､円グラフ(割ありなど),\\
     パレート図･･･大きい順に棒グラフを並べ折れ線グラフで100\%を表す形式，【用途】要因分析や現状把握など,\\
-    ヒストグラム･･･度数毎の棒グラフ【用途】ばらつきの分布、全体の中心の把握など,\\ 
+    ヒストグラム･･･度数毎の棒グラフ【用途】ばらつきの分布、全体の中心の把握など,\\
     散布図･･･xyの交差する点を散布する構図、【用途】2つの相関関係をつかむなど,\\
-    管理図･･･時系列の折れ線グラフ【用途】時系列の変化で正常か異常かの判断をするなど,\\ 
+    管理図･･･時系列の折れ線グラフ【用途】時系列の変化で正常か異常かの判断をするなど,\\
     特性要因図(フィッシュボーンダイアグラム)･･･→の末尾に結果を書き、矢印に対してさらに要因の矢印が向かう構図【用途】要因と結果の因果関係を追及するなど,\\
   comment: 主に計量値、計数値に対して用いる図(特性要因図以外)。チェグパドヒ管特
 14-02:新ＱＣ７つ道具:
@@ -662,15 +688,15 @@
   formula: |
     \displaystyle
     親和図法(affinity diagram:KJ法)･･･類似した項目を群に分ける\\ \hspace{1em}
-    【用途】言語データの分類など,\\ 
+    【用途】言語データの分類など,\\
     関連図法･･･各項目を矢印でつないでいく\\ \hspace{1em}
     【用途】原因と結果が複雑に絡みあった問題を整理するなど,\\
     系統図法･･･言語をトーナメント表のような形に何段階かにつないでいく形式，\\ \hspace{1em}
-    【用途】目標などを達成するための手段などを何段階かに展開するなど,\\ 
+    【用途】目標などを達成するための手段などを何段階かに展開するなど,\\
     マトリックス図法･･･行と列で区切ったセル状の表\\ \hspace{1em}
     【用途】二元的な要素の関連の度数やレベル(数値や◎△などの記号)などで把握するなど,\\
     アローダイヤグラム法･･･系統図法と似ているが時系列を矢印で表す、\\ \hspace{1em}
-    【用途】日程計画の推進、作業順序の明確化など,\\ 
+    【用途】日程計画の推進、作業順序の明確化など,\\
     ＰＤＰＣ法(Process Decision Program Chart)･･･枠の形で「対策、状態、分岐」などを明確化し、矢印でつなぐ\\ \hspace{1em}
     【用途】プログラムの構築などでエラーやバグなどを想定した分岐を構築するなど,\\
     マトリックス・データ解析法･･･マトリックス図で得られたデータが数値化できるものであればそれを統計解析したもの。\\
@@ -682,11 +708,11 @@
   id: 15-01
   formula: |
     \displaystyle
-    QC:Quality Control(品質管理),\\ 
+    QC:Quality Control(品質管理),\\
     SQC:Statistical Quality Control(統計的品質管理),\\
-    TQC:Total Quality Control(総合的品質管理: ※全部門・全員参加型),\\ 
-    TQM:Total Quality Management(総合的品質管理: ※全部門・全員参加型),\\ 
-    QA:Quality Assurance(品質保証),\\ 
+    TQC:Total Quality Control(総合的品質管理: ※全部門・全員参加型),\\
+    TQM:Total Quality Management(総合的品質管理: ※全部門・全員参加型),\\
+    QA:Quality Assurance(品質保証),\\
     QMS:Quality Management System(品質マネジメントシステム),
   comment: |
     QA:品質マネジメント･･･組織を指揮し管理するために調整された活動(方針、目標、計画、品質保証、品質管理、品質改善など)の体系的な枠組み。<br>
@@ -695,10 +721,10 @@
 15-02:広義の品質:
   id: 15-02
   formula: |
-    従来(狭義)の品質(Quality)、コスト(Cost)、納期または時間(Delivery or Time)、\\ 
+    従来(狭義)の品質(Quality)、コスト(Cost)、納期または時間(Delivery or Time)、\\
     生産性(Productivity)、安全性(Safety)、モラル(Morale)、環境(Environment)、\\
     そのほか、機能(Function)、信頼性(Reliability)\\
-    QCD + PSME\\ 
+    QCD + PSME\\
     顧客満足度(Customer Satisfaction:CS)
   comment: |
     広義の品質は、製品やサービスが顧客の期待をどれだけ満たすかを示す指標であり、<br>
@@ -707,7 +733,7 @@
 15-03:製造物責任と品質コストの用語:
   id: 15-03
   formula: |
-    製造物責任(Product Liability:PL)、\\ 
+    製造物責任(Product Liability:PL)、\\
     【顧客側】\\
     \hspace{1em} ・ライフサイクルコスト(Life Cycle Cost)･･･購入価格 ＋ 使用上の維持費・保守費用 + 廃棄費用などのトータルコスト\\
     【生産者側】\\
@@ -723,42 +749,42 @@
 16-01:品質の維持と継続的改善:
   id: 16-01
   formula: |
-    PDCAサイクル(Plan-Do-Check-Act)\\ 
-    \hspace{2em}1. 計画(Plan): 目標設定と計画策定\\ 
+    PDCAサイクル(Plan-Do-Check-Act)\\
+    \hspace{2em}1. 計画(Plan): 目標設定と計画策定\\
     \hspace{2em}2. 実行(Do): 計画に基づいて実行\\
-    \hspace{2em}3. 確認(Check): 結果を評価し、目標とのギャップを確認\\ 
+    \hspace{2em}3. 確認(Check): 結果を評価し、目標とのギャップを確認\\
     \hspace{2em}4. 改善(Act): 改善策を実施し、次のサイクルへ\\
     【維持管理におけるPDCA】SDCAサイクル(Standarize-Do-Check-Act)\\
-    \hspace{2em}1. 標準化(Standardize): 最適な方法を標準化し、文書化\\ 
-    \hspace{2em}2. 実行(Do): 標準化された方法に従って実行\\ 
-    \hspace{2em}3. 確認(Check): 実行結果を評価し、標準とのギャップを確認\\ 
+    \hspace{2em}1. 標準化(Standardize): 最適な方法を標準化し、文書化\\
+    \hspace{2em}2. 実行(Do): 標準化された方法に従って実行\\
+    \hspace{2em}3. 確認(Check): 実行結果を評価し、標準とのギャップを確認\\
     \hspace{2em}4. 改善(Act): 必要に応じて標準を見直し、次のサイクルへ
   comment: あるべき姿と現状のギャップを埋める活動=問題解決型、ありたい姿と現状のギャップを埋める活動=課題達成型、
 16-02:QCストーリー[問題解決型(あるべき姿とのギャップを埋める)]:
   id: 16-02
   formula: |
     【工程の解析】\\
-    \hspace{2em}1. テーマの選定､問題の明確化: 問題の洗い出し。会社の方針の確認し目標の設定\\ 
+    \hspace{2em}1. テーマの選定､問題の明確化: 問題の洗い出し。会社の方針の確認し目標の設定\\
     \hspace{2em}2. 現状の把握: データ収集と分析を行い、現状を理解し目標「値」を設定\\
-    \hspace{2em}3. 要因の分析: 要因の洗い出しと仮説の設定、検証\\ 
-    \hspace{2em}4. 対策の立案: 要因に基づいて、科学的根拠やリスク評価などから対策を立案\\ 
+    \hspace{2em}3. 要因の分析: 要因の洗い出しと仮説の設定、検証\\
+    \hspace{2em}4. 対策の立案: 要因に基づいて、科学的根拠やリスク評価などから対策を立案\\
     【工程の改善】\\
-    \hspace{2em}5. 対策の実施: 対策を実行し、データ収集などで効果を確認\\ 
-    \hspace{2em}6. 効果の確認: 対策の効果を評価し、達成度の見極めから必要に応じて改善\\ 
-    \hspace{2em}7. 標準化と管理の定着(歯止め): 維持のための標準化や教育の実施。\\ 
+    \hspace{2em}5. 対策の実施: 対策を実行し、データ収集などで効果を確認\\
+    \hspace{2em}6. 効果の確認: 対策の効果を評価し、達成度の見極めから必要に応じて改善\\
+    \hspace{2em}7. 標準化と管理の定着(歯止め): 維持のための標準化や教育の実施。\\
     \hspace{2em}8. フィードバック(反省と今後の対応): 活動の進め方の反省(振り返り)。残された問題への対処
   comment: あるべき姿と現状のギャップを埋める活動=問題解決型
 16-03:QCストーリー[課題達成型(ありたい姿とのギャップを埋める)]:
   id: 16-03
   formula: |
     【工程の解析】\\
-    \hspace{2em}1. テーマの選定: ありたい姿の確認し適用する「型」の決定\\ 
+    \hspace{2em}1. テーマの選定: ありたい姿の確認し適用する「型」の決定\\
     \hspace{2em}2. 課題の明確化と目標の設定: 現状レベルと要望レベルの調査、目標の決定\\
-    \hspace{2em}3. 方策の立案: 方策(アイデア)の検討、期待効果の評価、有効な方策の選定(複数候補)\\ 
+    \hspace{2em}3. 方策の立案: 方策(アイデア)の検討、期待効果の評価、有効な方策の選定(複数候補)\\
     \hspace{2em}4. シナリオ(最適策)の追及: 方策の期待効果の予測と最適策の選定\\
     【工程の改善】\\
-    \hspace{2em}5. 最適策の実施: 実行計画作成と実施\\ 
-    \hspace{2em}6. 効果の確認: 狙った目標との比較\\ 
+    \hspace{2em}5. 最適策の実施: 実行計画作成と実施\\
+    \hspace{2em}6. 効果の確認: 狙った目標との比較\\
     \hspace{2em}7. 標準化と管理の定着(歯止め): 維持のための標準化や教育の実施。\\
     \hspace{2em}8. フィードバック(反省と今後の対応): 活動の進め方の反省(振り返り)。残された問題への対処
   comment: ありたい姿と現状のギャップを埋める活動=課題達成型
@@ -767,28 +793,28 @@
   formula: |
     プロセス重視：安定した良いプロセス(工程)から安定した良い製品を生み出すことができるという考え方\\
     \hspace{2em}(結果を管理するので はなく結果でプロセスを管理する：QC工程図など)\\
-    品質保証活動の意義･･･製品やサービスが顧客の期待を満たすことを保証(信頼感を積極的に自信をもって提供)すること。\\ 
+    品質保証活動の意義･･･製品やサービスが顧客の期待を満たすことを保証(信頼感を積極的に自信をもって提供)すること。\\
     品質保証体系･･･それらを体系的に管理するための枠組み。体系的活動
   comment: ''
 17-02:品質保証：品質保証体系図:
   id: 17-02
   formula: |
-    系統図法を用いて、横軸に「部門」、縦軸に「企画～アフターサービスまでの活動のステップ」を配置し、各部門の活動を示す。\\ 
+    系統図法を用いて、横軸に「部門」、縦軸に「企画～アフターサービスまでの活動のステップ」を配置し、各部門の活動を示す。\\
     例: 開発部門、製造部門、品質管理部門、販売部門など。\\
     各部門の活動は、活動のステップにおける具体的活動項目を配置する。それらを矢印でつなぎ、部門間の連携や情報の流れを示す。
   comment: '目的: 品質保証活動の全体像を把握し、各部門の役割と責任を明確にすること'
 17-03:品質保証：品質機能展開:
   id: 17-02
   formula: |
-    品質機能展開QFD(Quality Function Deployment)･･･親和図法→二元表で分類する\\ 
-    \hspace{2em}1. 顧客の要求(Voice of Customer: VOC)を収集し、重要度を評価。\\ 
+    品質機能展開QFD(Quality Function Deployment)･･･親和図法→二元表で分類する\\
+    \hspace{2em}1. 顧客の要求(Voice of Customer: VOC)を収集し、重要度を評価。\\
     \hspace{2em}2. 顧客要求を「何を実現するか」に変換し、技術的要件(Technical Requirements)を定義。\\
-    \hspace{2em}3. 技術的要件を「どのように実現するか」に変換し、具体的な設計仕様を策定。\\ 
+    \hspace{2em}3. 技術的要件を「どのように実現するか」に変換し、具体的な設計仕様を策定。\\
     \hspace{2em}4. 各技術的要件の重要度と実現可能性を評価し、優先順位を付ける。\\
     【要求別】\\
-    \hspace{2em}品質展開(Quality Deployment)\\ 
-    \hspace{2em}技術展開(Technical Deployment)\\ 
-    \hspace{2em}コスト展開(Cost Deployment)\\ 
+    \hspace{2em}品質展開(Quality Deployment)\\
+    \hspace{2em}技術展開(Technical Deployment)\\
+    \hspace{2em}コスト展開(Cost Deployment)\\
     \hspace{2em}信頼性展開(Reliability Deployment)\\
     \hspace{2em}業務機能展開(Job Function Deployment)\\
   comment: |
@@ -816,7 +842,7 @@
   id: 18-01
   formula: |
     規準型抜取検査･･･統計的に設計された検査方式で、合否判定のための基準（合格点）に基づいてロット全体の良否を判定\\ \hspace{2em}
-    ・「計数 」基準型抜取検査･･･不良個数をカウントし合否を判定。データは離散的。\\ \hspace{2em} 
+    ・「計数 」基準型抜取検査･･･不良個数をカウントし合否を判定。データは離散的。\\ \hspace{2em}
     ・「 計量 」基準型抜取検査･･･連続的な測定値を使って合否を判定。平均値や標準偏差で品質を評価。データは連続的。\\
     選別型抜取検査･･･不良品を取り除くことを目的とした抜取検査。抜き取ったサンプルで不良が見つかった場合、\\
     \hspace{2em}そのロット全体を全数検査や再選別をする判断材料とする。\\
@@ -828,7 +854,7 @@
   formula: |
     AQL[Acceptable Quality Level](合格品質限界)･･･ロットを合格としてよい不良率の限界値(生産者側)\\
     LTPD[Lot Tolerance Percent Defective]（ロット不受入限界）\\
-    \hspace{2em}･･･この不良率以上のロットは受け入れたくないとする限界値(消費者側)\\ 
+    \hspace{2em}･･･この不良率以上のロットは受け入れたくないとする限界値(消費者側)\\
     \alpha(生産者危険)･･･良品ロットを誤って不合格とするリスク\\
     \beta(消費者危険)･･･不良ロットを誤って合格とするリスク\\
     OC曲線[Operating Characteristic Curve]･･･不良率（p）に対するロット合格確率のグラフ\\
@@ -849,3 +875,87 @@
     二項分布の累積分布関数[CDF](sumしたもの)\\
     nが大きくpが小さいときはポアソン分布で近似:P\approx \sum_{i=0}^{c} \frac{(np)^ie^{-np}}{i!}
   comment: ''
+19-01:多変量解析法：分類 QC検定1級範囲:
+  id: 19-01
+  formula: |
+    \displaystyle
+    多変量解析法･･･工程や製品特性などの複数の変数（品質特性）に対して相関性や分類、パターン認識を行うための統計手法\\
+    \hspace{2em}・判別分析（Discriminant Analysis）･･･ある対象がどのグループ（カテゴリ）に属するかを判別する\\
+    \hspace{2em}・主成分分析（PCA：Principal Component Analysis）･･･ 多数の相関ある変数を、少数の「主成分」に圧縮（次元削減）\\
+    \hspace{2em}・クラスター分析（Cluster Analysis）･･･データを似たもの同士のグループに自動的に分類（教師なし分類）\\
+    \hspace{2em}・数量化理論（Quantification Theory）･･･質的データ（カテゴリ）を数値化し、回帰や判別分析を可能にする
+  comment: ''
+19-02:多変量解析法：判別分析:
+  id: 19-02
+  formula: |
+    \displaystyle
+    判別係数：D = a_1x_1 + a_2x_2 + \ldots + a_nx_n\\
+    Mahalanobis距離（マハラノビス距離)：{D^2 = (x - \mu)^T S^{-1}(x - \mu)}(ベクトル、行列計算),\;\;\;\;\\
+    \hspace{2em}(x：観測値ベクトル,\mu：平均ベクトル,S^{-1}：共分散行列の逆行列,()^T：行列の転置(縦横を入れ替える))\\
+    \hspace{2em}xや\muの例：x = \binom{10}{5},\;\mu = \binom{8}{4}\;\;\; →\;\;\; x - \mu = \binom{2}{1}(列ベクトル)\;\;\;→\;\;\; (x - \mu)^T = (2, 1)(行ベクトル)\\
+    \hspace{2em}行列Sとその逆行列S = \begin{pmatrix}a & b \\ c & d \end{pmatrix} \;\;\; →\;\;\; S^{-1} = \frac{1}{ad - bc}\begin{pmatrix}d & -b \\ -c & d \end{pmatrix}
+  comment: |
+    利用例： 不良品・良品の分類、顧客の属性分類など。<br>
+    距離は「分散が大きい方向ほど短く評価」される（例：縦長の楕円クラスタ）。つまり、ばらつきが大きいとそれぞれの特徴の差が小さくなる<br>
+    ここでいう距離とは「 変数間の距離 」変数間の距離とは、変数=特徴量の類似性や相関の強さ
+19-03:多変量解析法：主成分分析の用語:
+  id: 19-03
+  formula: |
+    \displaystyle
+    目的･･･多変量データの次元削減。相関のある複数の変数を、無相関な主成分（軸）に変換する\\
+    主成分の固有値\lambda： 元の変数の線形結合。第1主成分は分散最大\\
+    寄与率： 各主成分がデータ全体のどの程度の情報を説明しているか\\
+    累積寄与率： 第1主成分〜第n主成分までの合計寄与率\\
+    固有値： 各主成分が持つ分散（＝情報量）
+  comment: ''
+19-04:多変量解析法：主成分分析の公式:
+  id: 19-04
+  formula: |
+    \displaystyle
+    主なものに限定\\
+    寄与率 = \frac{\lambda_i}{\sum\lambda},\;\;\;\;\;\;(\lambda_i：第i主成分の固有値、\sum\lambda：全主成分の固有値の合計=合計分散)\\
+    累積寄与率 = \frac{\lambda_1 + \lambda_2 + \ldots + \lambda_k}{\sum\lambda},\;\;\;\;\;\;(上位k個の主成分の合計寄与率)
+  comment: ''
+19-05:多変量解析法：クラスター分析:
+  id: 19-05
+  formula: |
+    \displaystyle
+    クラスター分析は似ているものをまとめる（グループ化する）手法の総称であり、距離の種類にはいろいろな求め方がある。\\
+    \hspace{2em}・ユークリッド距離：点と点の直線距離, {d = \sqrt{(x_i - x_j)^2 + (y_i - y_j)^2}}(二次元の場合) \\
+    \hspace{2em}・マンハッタン距離：x,yの差の絶対値の和(斜めの距離をとらないということ), {d = \left|x_i - x_j\right| + \left|y_i - y_j\right|}(二次元の場合)\\
+    \hspace{2em}・マハラノビス距離：分散・共分散を考慮した距離\\
+    \hspace{2em}・コサイン類似度：ベクトルのなす角度で類似度を測る・・・など
+  comment: ''
+19-06:多変量解析法：クラスターリングの種類:
+  id: 19-06
+  formula: |
+    \displaystyle
+    階層型クラスタリング･･･最初は1つ1つのクラスタとして、距離の近いもの同士を順に結合していく方法 \\
+    \hspace{2em}・ウォード法･･･クラスタ間の分散の増加が最小になるように結合 \\
+    \hspace{2em}・最短距離法（Single Linkage）･･･2クラスタ間の最も近い2点の距離でクラスタ間距離を定義 \\
+    \hspace{2em}・群平均法（Group Average）･･･2クラスタ間の全ての距離の平均で距離を定義 \\
+    非階層型クラスタリング･･･最初にクラスタ数を決めて各データをどのクラスタに属させるかを繰り返し最適化していく方法\\
+    \hspace{2em}・k-means法（k平均法）･･･クラスタの中心（重心）を求め、それに最も近いデータをクラスタに割り当て､繰り返し重心を再計算して安定するまでクラスタを再編成 \\
+    ※階層型の視覚的な表示はデンドログラムという樹形図を使う
+  comment: ''
+19-07多変量解析法：ウォード法:
+  id: 19-07
+  formula: |
+    \displaystyle
+    クラスタを結合しても分散ができるだけ増えないように計算していく。\\
+    D_{(A \cup B),C} = \frac{n_A + n_C}{n_A + n_B + n_C}D_{A,C} + \frac{n_B + n_C}{n_A + n_B + n_C}D_{B,C} + \frac{n_C}{n_A + n_B + n_C}D_{A,B} \\
+    \hspace{2em}(n_X：クラスタxに含まれる点数、D_{X,Y}：クラスタXとYの距離)\\
+    上記公式の意味：A と B をくっつけた後、その新しいクラスタと C の距離をどうするか？\\
+    ※各クラスタ内の点同士の距離はユークリッド距離の二乗で求める,\\
+    \;\;\;→\;\;\;誤差平方和(分散 \times データ数) = \sum{(各点 - クラスタ平均)^2}･･･距離の二乗の合計
+  comment: ''
+19-08多変量解析法：数値化理論の分類:
+  id: 19-08
+  formula: |
+    \displaystyle
+    数値化理論･･･質的データ（カテゴリ）を数値化し、回帰や判別分析を可能にする \\
+    主な分類 \\
+    \hspace{2em}・数量化\mathrm{I}類： 多変量回帰分析（目的変数が量的）\\
+    \hspace{2em}・数量化\mathrm{II}類： 判別分析（目的変数が質的、説明変数が量的）\\
+    \hspace{2em}・数量化\mathrm{III}類： クラスター分析のための質的データ処理
+  comment: '数値化I類 例：カテゴリごとにスコア（例：満足＝2、普通＝1、不満＝0など）を付けて数値データに変換し、回帰分析を行う。など'
