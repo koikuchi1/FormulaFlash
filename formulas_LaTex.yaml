@@ -76,6 +76,7 @@
 0-08:用語解説：決定係数[Coefficient of Determination]r<sup>2</sup>[回帰分析]:
   id: 0-08
   formula: |
+    \displaystyle
     \begin{array}{rl} 
     r^2 &= \frac{S_{回帰}}{S_{全体}} \\
     &= \frac{V_{回帰}}{V_{全体}} \\
@@ -970,6 +971,7 @@
     \hspace{2em}・数量化\mathrm{II}類： 判別分析（目的変数が質的、説明変数が量的）\\
     \hspace{2em}・数量化\mathrm{III}類： クラスター分析のための質的データ処理
   comment: '数値化I類 例：カテゴリごとにスコア（例：満足＝2、普通＝1、不満＝0など）を付けて数値データに変換し、回帰分析を行う。など'
+
 
 
 
