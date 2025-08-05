@@ -49,9 +49,10 @@
 0-06:用語解説：標準誤差[standard Error] σ(母集団)､s(小文字)(標本)(またはSE):
   id: 0-06
   formula: |
-    \begin{array}{rl}
+    \displaystyle
     標準偏差を\sqrt n で割ったもの。単位は元のデータと同じになる。\\
     例：\\
+    \begin{array}{rl}
     SE &= \frac{σ}{\sqrt n}  \\
     &= \frac{s}{\sqrt n} \\
     &= \sqrt{\frac{V}{n}} \\
@@ -964,6 +965,7 @@
     \hspace{2em}・数量化\mathrm{II}類： 判別分析（目的変数が質的、説明変数が量的）\\
     \hspace{2em}・数量化\mathrm{III}類： クラスター分析のための質的データ処理
   comment: '数値化I類 例：カテゴリごとにスコア（例：満足＝2、普通＝1、不満＝0など）を付けて数値データに変換し、回帰分析を行う。など'
+
 
 
 
