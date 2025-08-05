@@ -50,10 +50,16 @@
   id: 0-06
   formula: |
     \displaystyle
-    標準偏差を\sqrt n で割ったもの。単位は元のデータと同じになる。\newline
+    標準偏差を\sqrt n で割ったもの。単位は元のデータと同じになる。\\
     例：\;
-    SE = \frac{σ}{\sqrt n} = \frac{s}{\sqrt n} = \sqrt{\frac{V}{n}} = \sqrt{\frac{S}{n\phi}} = \sqrt{\frac{1}{n(n-1)}\sum(x_i - \bar x)^2},\;\;\;\;\;\;
-    SE = \sqrt{\frac{1}{n^2}\sum(x_i^2) - \bar x^2}
+    \begin{array}{rl}
+    SE &= \frac{σ}{\sqrt n}  \\
+    &= \frac{s}{\sqrt n} \\
+    &= \sqrt{\frac{V}{n}} \\
+    &= \sqrt{\frac{S}{n\phi}} \\
+    &= \sqrt{\frac{1}{n(n-1)}\sum(x_i - \bar x)^2} \\
+    &= \sqrt{\frac{1}{n^2}\sum(x_i^2) - \bar x^2}
+   \end{array}
   comment: |
     推定値（たとえば標本平均）が母集団の真の値からどれだけブレるかを表す指標。<br>
     標準偏差が「個々のデータのばらつき（データの広がり）」を示すのとは異なり、推定の精度や信頼区間の作成に使われる。
@@ -959,3 +965,4 @@
     \hspace{2em}・数量化\mathrm{II}類： 判別分析（目的変数が質的、説明変数が量的）\\
     \hspace{2em}・数量化\mathrm{III}類： クラスター分析のための質的データ処理
   comment: '数値化I類 例：カテゴリごとにスコア（例：満足＝2、普通＝1、不満＝0など）を付けて数値データに変換し、回帰分析を行う。など'
+
