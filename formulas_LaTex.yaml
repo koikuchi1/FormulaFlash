@@ -34,7 +34,7 @@
     例：\\
     \begin{array}{rl}
     V &=   \displaystyle \frac{S}{ \phi }  \\  
-    & =   \displaystyle  \frac{1}{n - 1} \displaystyle \sum_{}^{}  \left( x_{i} - \bar{x}  \right) ^{2}   \\  
+    & =    \frac{ \displaystyle \sum_{}^{}  \left( x_{i}- \bar{x}   \right)^{2}  }{n-1}    \\  
     &=  \displaystyle  \frac{1}{n} \displaystyle \sum_{}^{}  \left( x_{i} ^{2}  \right)  -  \bar{x} ^{2}
     \end{array}  
   comment: |
@@ -1038,6 +1038,7 @@
     \hspace{2em}・数量化\mathrm{II}類： 判別分析（目的変数が質的、説明変数が量的）\\
     \hspace{2em}・数量化\mathrm{III}類： クラスター分析のための質的データ処理
   comment: '数値化I類 例：カテゴリごとにスコア（例：満足＝2、普通＝1、不満＝0など）を付けて数値データに変換し、回帰分析を行う。など'
+
 
 
 
