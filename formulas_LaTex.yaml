@@ -423,6 +423,72 @@
     範囲が1 ～ nのとき(a = 1, b = n) \\
     Var(X) = \frac{n^2 - 1}{12} \\
   comment: 'サイコロの確率がよく例に出題される'
+7-06:分布図の確率密度(又は質量)関数：指数分布(Exponential Distribution）:
+  id: 7-06
+  formula: |
+    \displaystyle
+    定義：次の故障までの時間などの分布、ワイブル分布の特殊形 \beta = 1 故障率一定(CFR型)のときに該当 \\
+    定義域：x \geq 0 \\
+    f(x) = \lambda e^{-\lambda x} \\
+    期待値(平均)：E[X] = \frac{1}{\lambda} \\
+    分散：Var(X) = \frac{1}{\lambda^2} \\
+  comment: ''
+7-07:分布図の確率密度(又は質量)関数：二次元分布（Joint Distribution）[離散型]:
+  id: 7-07
+  formula: |
+    \displaystyle
+    定義：2つの変数 XとYの同時確率 の分布 \\
+    定義域：x \in \{x_1,x_2,\ldots ,x_m \},\;\;\; y \in \{y_1,y_2, \ldots ,y_n \} \\
+    確率密度関数：P(X = x_i,Y = y_j) = p_{ij} \\
+    条件： \sum_i{\sum_j{p_{ij}}} = 1, p_{ij} \geq 0 \\
+    \begin{array}{rl}
+    期待値(平均)：E[X] &= \sum_i{\sum_j{x_i \cdot p_{ij}}} \\
+    E[Y]& = \sum_i{\sum_j{y_j \cdot p_{ij}}} \\
+    E[XY] &= \sum_i{\sum_j{x_i y_j \cdot p_{ij}}} \\
+    分散：Var(X) &= E[X^2] - (E[X])^2 \\
+    Var(Y) &= E[Y^2] - (E[Y])^2 \\
+    共分散Cov(X,Y) &= E[XY] - E[X]E[Y] \\
+    \end{array}
+  comment: |
+    連続型はQC検定１級で出題はほとんどないので割愛<br>
+    問題を解くには共分散の理解も必須
+7-08:分布図の確率密度(又は質量)関数：共分散（Covariance）:
+  id: 7-08
+  formula: |
+    \displaystyle
+    定義：2つの変数 X, Y が 同時に増減する傾向 を示す指標 \\
+    定義式： \\
+    \hspace{2em}Cov(X,Y) = E[(X - \mu_X)(Y - \mu_Y)] \\
+    計算式：\\
+    \hspace{2em}Cov(X,Y) = \frac{\sum [(x_i - \bar x)(y_i - \bar y)]}{n},\;\;\; (母分散) \\
+    \hspace{2em}Cov(X,Y) = \frac{\sum [(x_i - \bar x)(y_i - \bar y)]}{n - 1},\;\;\; (標本共分散) \\
+    特徴： \\
+    \hspace{2em}正なら「Xが増えるとYも増える」傾向 \\
+    \hspace{2em}負なら「Xが増えるとYは減る」傾向 \\
+    \hspace{2em}ゼロなら無相関(ただし独立とは限らない) \\
+  comment: |
+7-09:分布図の確率密度(又は質量)関数：大数の法則(Law of Large Numbers）と中心極限定理（Central Limit Theorem）:
+  id: 7-09
+  formula: |
+    \displaystyle
+    大数の法則(LLN) \\
+    内容：試行回数を増やせば 標本平均は 母平均に近づく(焦点を収束先にあてている) \\
+    標本平均：\bar X_n = \frac{1}{n}\sum_{i=1}^n X_i \\
+    \hspace{2em}上式はnを大きくすればするほど真の母平均\mu =E[X]に収束する \\
+    弱法則：標本平均が母平均に確率的に収束する \\
+    強法則：標本平均が母平均にほぼ確実に収束する（確率1で）
+  comment: |
+7-10:分布図の確率密度(又は質量)関数：大数の法則(Law of Large Numbers）と中心極限定理（Central Limit Theorem）:
+  id: 7-10
+  formula: |
+    \displaystyle
+    中心極限定理(CLT) \\
+    内容：標本平均の分布は、元の分布に関わらず正規分布に近づく（nが大きければ）(焦点を分布形状にあてている) \\
+    公式的表現：\bar X \approx N\left(\mu,\frac{\sigma^2}{n} \right) \\
+    平均：\mu,\;\;\;分散：\frac{\sigma^2}{n},\;\;\;標準偏差：\frac{\sigma}{\sqrt n}
+  comment: |  
+    標準化なしに正規分布に従うということ。<br>
+    ただし、標本平均が95%を下回る確率は？などの問題では標準化uを求める必要がある
 8-01:工程能力：CpkとPpkの違い:
   id: 8-01
   formula: |
@@ -967,19 +1033,3 @@
     \hspace{2em}・数量化\mathrm{II}類： 判別分析（目的変数が質的、説明変数が量的）\\
     \hspace{2em}・数量化\mathrm{III}類： クラスター分析のための質的データ処理
   comment: '数値化I類 例：カテゴリごとにスコア（例：満足＝2、普通＝1、不満＝0など）を付けて数値データに変換し、回帰分析を行う。など'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
