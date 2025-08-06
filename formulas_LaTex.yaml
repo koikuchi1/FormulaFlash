@@ -75,8 +75,10 @@
   formula: |
     \displaystyle
     寄与率 = \frac{ある要素の平方和}{全体の平方和}\times 100 \%,\;\;\;
-    p = \frac{S_A}{S_T} = \frac{V_A}{V_T},\;\;\;\;\;\;
-    p = \frac{S_{AB}}{S_T} = \frac{V_{AB}}{V_T}'
+    \begin{array}{rl}
+    p  & =   \displaystyle \frac{S_{A} }{S_{T} } = \displaystyle \frac{V_{A} }{V_{T} }  \\ 
+    & =  \displaystyle \frac{S_{AB} }{S_{T} }  = \displaystyle \frac{V_{AB} }{V_{T} }  \\ 
+    \end{array} 
   comment: |
     寄与率は、ある要素が全体の分散にどれだけ寄与(関係)しているかを示す指標。<br>
     分散分析(ANOVA)では、要因の寄与率を計算することで、各要因が全体のばらつきにどれだけ影響を与えているかを評価する。
@@ -1040,6 +1042,7 @@
     \hspace{2em}・数量化\mathrm{II}類： 判別分析（目的変数が質的、説明変数が量的）\\
     \hspace{2em}・数量化\mathrm{III}類： クラスター分析のための質的データ処理
   comment: '数値化I類 例：カテゴリごとにスコア（例：満足＝2、普通＝1、不満＝0など）を付けて数値データに変換し、回帰分析を行う。など'
+
 
 
 
