@@ -74,7 +74,7 @@
   id: 0-07
   formula: |
     \displaystyle
-    寄与率 = \frac{ある要素の平方和}{全体の平方和}\times 100 \%,\;\;\;
+    寄与率 = \frac{ある要素の平方和}{全体の平方和}\times 100 \% \\
     \begin{array}{rl}
     p  & =   \displaystyle \frac{S_{A} }{S_{T} } = \displaystyle \frac{V_{A} }{V_{T} }  \\ 
     & =  \displaystyle \frac{S_{AB} }{S_{T} }  = \displaystyle \frac{V_{AB} }{V_{T} }  \\ 
@@ -1042,6 +1042,7 @@
     \hspace{2em}・数量化\mathrm{II}類： 判別分析（目的変数が質的、説明変数が量的）\\
     \hspace{2em}・数量化\mathrm{III}類： クラスター分析のための質的データ処理
   comment: '数値化I類 例：カテゴリごとにスコア（例：満足＝2、普通＝1、不満＝0など）を付けて数値データに変換し、回帰分析を行う。など'
+
 
 
 
