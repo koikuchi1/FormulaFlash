@@ -1087,7 +1087,7 @@
     C列目は01010101とまたその半分ずつに振り分ける \\
     4～6列目は、A,B,C列の\mathrm{XOR}で振り分ける(00又は11) \rightarrow 0、(01又は10) \rightarrow 1 \\ 
     7列目は((A\mathrm{xor}B)\mathrm{xor}C)で振り分ける。C列目と4列目(A\mathrm{xor}B)で判定する \\
-    \begin{array}{llllllll}
+    \begin{array}{cccccccc}
     &1&2&3&4&5&6&7 \\
     回数&A&B&C&A\mathrm{xor}B&A\mathrm{xor}C&B\mathrm{xor}C&(A\mathrm{xor}B)\mathrm{xor}C \\
     \hline
@@ -1101,3 +1101,4 @@
     8&1&1&1&0&0&0&1 \\
     \end{array}
   comment: ''
+
