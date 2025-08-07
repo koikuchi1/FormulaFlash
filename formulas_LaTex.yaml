@@ -1047,8 +1047,10 @@
   formula: |
     \begin{array}{l}
     目的：少ない実験回数で、複数の因子の効果や交互作用を推定するための手法 \\
-    直交表の記号： \:  L_n(k^m), \hspace{1em} (n：実験回数, \: k：各因子の水準数,\\
-    m：割り当て可能な列数(因子数2ならm\fallingdotseq n-1[因子数]、因子数3なら  \displaystyle \frac{m}{2}\fallingdotseq n-1[最大因子数]) \\ 
+    直交表の記号： \:  L_n(k^m), \hspace{1em} \\
+    n：実験回数,\\  
+    k：各因子の水準数,\\
+    m：割り当て可能な列数(因子数2ならm\fallingdotseq n-1[因子数]、因子数3なら  \displaystyle \frac{m}{2}\fallingdotseq n-1[最大因子数] \\ 
     ※QC検定ではL16などの表現が使われるがその際の16は実験回数
     \end{array} 
   comment: ''
@@ -1067,6 +1069,7 @@
     L27    &27            &13          &3         \\
     \end{array} 
   comment: ''
+
 
 
 
