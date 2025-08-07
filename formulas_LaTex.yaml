@@ -20,8 +20,9 @@
     ある値の平均からのずれ量を２乗したものを合計したもの。\\
     例：\;\\
     \begin{array}{rl}
-    S &= \displaystyle \sum(x_i - \bar x)^2,\\
-    &= \displaystyle \sum(x_i^2) - n\bar x^2
+    S &= \displaystyle \sum_{}^{}  \left( x_{i} - \bar{x}  \right) ^{2}  \\ 
+    & =  \displaystyle \sum_{}^{}  \left( x_{i} ^{2}  \right) -  n\bar{x} ^{2}  \\ 
+    & =  \phi s^{2} = \phi V
     \end{array} 
   comment: |
     二乗にするのはマイナス値とプラス値を打ち消さないようにするための数学的処置。<br>
@@ -1041,6 +1042,7 @@
     \hspace{2em}・数量化\mathrm{II}類： 判別分析（目的変数が質的、説明変数が量的）\\
     \hspace{2em}・数量化\mathrm{III}類： クラスター分析のための質的データ処理
   comment: '数値化I類 例：カテゴリごとにスコア（例：満足＝2、普通＝1、不満＝0など）を付けて数値データに変換し、回帰分析を行う。など'
+
 
 
 
