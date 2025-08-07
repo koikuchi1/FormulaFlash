@@ -1052,7 +1052,7 @@
     k：各因子の水準数（例：2水準、3水準）\\
     m：割り当て可能な列数（≠因子数。因子や交互作用を割り付けるための枠）\\[0.5em]
     \quad ・2水準のみの場合：おおよそ m \fallingdotseq n - 1 \quad （自由度の上限）\\
-    \quad ・3水準のみの場合：因子1つにつき自由度2を使うため、\displaystyle \left\lfloor \frac{n - 1}{2} \right\rfloor \fallingdotseq \text{因子の最大数} \\[0.5em]
+    \quad ・3水準のみの場合：因子1つにつき自由度2を使うため、\displaystyle \left[ \frac{n - 1}{2} \right] \fallingdotseq \text{因子の最大数} \\[0.5em]
     \textbf{※注意}：mは「列の数」であり、「因子の数」ではない。\\
     \quad 直交表に実際にいくつの因子を割り付けるかは、自由度の合計が n - 1 以下になるように設計する。\\[0.5em]
     \textbf{例}：L16(2^{15}) → 実験回数16回、最大15列まで使用可能。\\
@@ -1075,6 +1075,7 @@
     L27    &27            &13          &3         \\
     \end{array} 
   comment: ''
+
 
 
 
