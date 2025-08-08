@@ -130,9 +130,9 @@
   id: 0-11
   formula: |
     \displaystyle
-    区間推定 = 母集団のパラメータが含まれると考えられる区間を推定する方法。\newline
-    \mu \in [\bar{x} - z_{\alpha/2} \cdot \frac{s}{\sqrt{n}},\;\;
-    \bar{x} + z_{\alpha/2} \cdot \frac{s}{\sqrt{n}}]\;\;\;\;
+    区間推定 = 母集団のパラメータが含まれると考えられる区間を推定する方法。\\
+    \mu \in  \left[ \bar{x} - z_{\alpha/2} \cdot \frac{s}{\sqrt{n}}, \hspace{1em} 
+    \bar{x} + z_{\alpha/2} \cdot \frac{s}{\sqrt{n}} \right]  \hspace{1em} 
     (信頼係数\;1 - \alpha)
   comment: |
     区間推定は、点推定による推定値（例：x<sup>-</sup>）だけでは不確かさがあるため、その推定値が含まれると期待される範囲（信頼区間）を設定する手法。<br>
@@ -1135,6 +1135,7 @@
     9&2&2&1&0&0&2 \\
     \end{array}
   comment: ''
+
 
 
 
