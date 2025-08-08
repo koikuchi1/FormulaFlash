@@ -288,6 +288,18 @@
     t = \frac{\bar x - \mu}{\sqrt{s^2/n}}\sim t(自由度\phi:n - 1),\;
     但し\; s^2 = \frac{1}{n-1}\sum(x_i - \bar x)^2 = \frac{Sum}{n - 1}
   comment: 母分散σ²が未知なので代わりに標本分散s²を用いる。tは自由度n-1のt分布に従う→標本分散s²はn-1で割る
+4.5-00:検定：用語:
+  id: 4.5-00
+  formula: |
+    \begin{array}{l}
+    ・帰無仮説H_0･･･成り立つと仮説を立てる \hspace{1em}  例：\rightarrow \mu=\mu_0 \\
+    ・対立仮説H_1･･･H_0に対立する仮説(H_0と相反するもの) \hspace{1em}  例：\rightarrow \mu \neq \mu_0や\mu>\mu_0など \\
+    \hspace{2em}  \rightarrow H_0が不成立=「棄却する」または「有意である」と言う \\
+    \hspace{2em}  \rightarrow H_0が成立=「採択する」または「有意差なし」と言う \\
+    ※品質管理における検定ではある母集団の棄却域(有意水準)\alphaを決めて、\\
+    \hspace{1em} その範囲に入る場合に棄却するように判定する場合に用いる \\
+    \end{array} 
+  comment: |
 5-01:t推定：平均の推定[t分布の式の変換]:
   id: 5-01
   formula: |
@@ -1163,6 +1175,7 @@
     9&2&2&1&0&0&2 \\
     \end{array}
   comment: ''
+
 
 
 
