@@ -316,7 +316,7 @@
     \hspace{2em}・サンプル数が少ない(検出力が小さい)･･･1-\beta \\
     \hspace{2em}・効果の差(平均の差)などが少ない \\
     \hspace{2em}・有意水準が小さい \\
-    \begin{array}{cccl}
+    \begin{array}{c|cc}
     &H_0 &H_1 \\
     \hline
     H_0を採択 &正しい(1-\alpha) &第2種の誤り(\beta) \\
@@ -1198,6 +1198,7 @@
     9&2&2&1&0&0&2 \\
     \end{array}
   comment: ''
+
 
 
 
