@@ -147,7 +147,7 @@
   comment: ''
 1-01:分散分析法(ANOVA法)：各記号:
   id: 1-01
-  formula: 'T, \; A, \; e, \; S, \; \phi, \; V = \frac{S}{\phi}, \; F = \frac{V_A}{V_e},\; F(\phi_A,\phi_e,\alpha), \; p = \frac{S_A - \phi_A V_e}{S_T}'
+  formula: ' \displaystyle T, \; A, \; e, \; S, \; \phi, \; V = \frac{S}{\phi}, \; F = \frac{V_A}{V_e},\; F(\phi_A,\phi_e,\alpha), \; p = \frac{S_A - \phi_A V_e}{S_T}'
   comment: 順に、総数、要因、誤差(残差)、平方和、自由度、分散、F値、F分布のパラメータ、寄与率
 1-02:一元配置分散分析：平方和の関係式:
   id: 1-02
@@ -1135,6 +1135,7 @@
     9&2&2&1&0&0&2 \\
     \end{array}
   comment: ''
+
 
 
 
