@@ -111,13 +111,17 @@
     点推定 = 母集団のパラメータを1つの値で推定すること。\newline
     →\;\;\;母平均\mu = 標本平均 \bar x,\;\;\;
     母分散\sigma^2 = 標本分散s^2,\newline
-    例：\;
-    \hat{\mu} = \bar{x},\;\;\;\;\;\;
-    \hat{p} = \frac{S_A}{S_T},\;\;\;\;\;\;
-    \hat{V} = \frac{S}{n-1},\;\;\;\;\;\;
-    \hat{V_p} = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}, \newline
-    \hat{r^2} = 1 - \frac{S_e}{S_T},\;\;\;\;\;\; \hat{F} = \frac{V_A}{V_e} = \frac{S_A/\phi_A}{S_e/\phi_e},\;\;\;\;\;\;
-    \hat{F_{AB}} = \frac{V_{AB}}{V_e} = \frac{S_{AB}/\phi_{AB}}{S_e/\phi_e}
+    例：\\
+    \begin{array}{l}
+    \hat{\mu} = \bar{x}:推定平均 \\
+    \hat{p} =  \displaystyle \frac{S_A}{S_T}, \\
+    \hat{V} =  \displaystyle \frac{S}{n-1}:推定分散 \\
+    \hat{V_p} =  \displaystyle \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}:プールされた推定分散 \\
+    \hspace{2em} ※プールについては5‐05項で後述 \\
+    \hat{r^2} =  \displaystyle 1 - \frac{S_e}{S_T}, \\
+    \hat{F} = \displaystyle \frac{V_A}{V_e} = \frac{S_A/\phi_A}{S_e/\phi_e}, \\
+    \hat{F}_{AB} =  \displaystyle \frac{V_{AB}}{V_e} =  \displaystyle \frac{S_{AB}/\phi_{AB}}{S_e/\phi_e}
+    \end{array} 
   comment: |
     ほとんどの場合、全数（母集団）を調査するのは不可能(母数は未知)なので、標本から得られたデータを用いて母集団のパラメータを推定する。<br>
     分散分析や回帰式の係数推定も、基本的に標本から母数を1点で推定している。<br>
@@ -1131,6 +1135,7 @@
     9&2&2&1&0&0&2 \\
     \end{array}
   comment: ''
+
 
 
 
