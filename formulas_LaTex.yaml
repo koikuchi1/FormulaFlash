@@ -280,7 +280,7 @@
   comment: 母分散σ²が未知なので代わりに標本分散s²を用いる。tは自由度n-1のt分布に従う→標本分散s²はn-1で割る
 5-01:t推定：平均の推定[t分布の式の変換]:
   id: 5-01
-    formula: |
+  formula: |
     \displaystyle t = \frac{\bar x - \mu}{\sqrt{s^2/n}}\sim t(自由度\phi:n - 1),\;→\; \bar x \pm t(\phi_e,\alpha)\sqrt{\frac{V_e}{n}},\; V_e = s^2 \\
     \begin{array}{l}
     \displaystyle t=\frac{\bar{x}-\mu}{\sqrt{ \displaystyle \frac{s^2}{n}}} \\
@@ -1153,6 +1153,7 @@
     9&2&2&1&0&0&2 \\
     \end{array}
   comment: ''
+
 
 
 
