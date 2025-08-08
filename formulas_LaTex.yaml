@@ -58,16 +58,16 @@
 0-06:用語解説：標準誤差[standard Error] σ(母集団)､s(小文字)(標本)(またはSE):
   id: 0-06
   formula: |
-    \displaystyle
     標準偏差を\sqrt n で割ったもの。単位は元のデータと同じになる。\\
     例：\\
     \begin{array}{rl}
-    SE  & =   \displaystyle \frac{ \sigma }{ \sqrt{n} }  \\ 
-     & =  \displaystyle  \sqrt{  \frac{V}{n} } \\ 
-     & = \displaystyle  \sqrt{ \frac{S}{n \phi }  }  \\ 
-     & = \displaystyle  \sqrt{ \frac{1}{n \left( n-1 \right) }  \displaystyle \sum_{}^{}  \left( x_{i}- \bar{x}  \right)^{2}} \\ 
-     & = \displaystyle  \sqrt{ \frac{1}{n^{2} }  \displaystyle \sum_{}^{}  \left( x_{i} ^{2}  \right) - \bar{x} ^{2}} 
-    \end{array} 
+    SE &= \displaystyle \frac{σ}{\sqrt n}  \\
+    &= \displaystyle \frac{s}{\sqrt n} \\
+    &= \displaystyle \sqrt{\frac{V}{n}} \\
+    &= \displaystyle \sqrt{\frac{S}{n\phi}} \\
+    &= \displaystyle \sqrt{\frac{1}{n(n-1)}\sum(x_i - \bar x)^2} \\
+    &= \displaystyle \sqrt{\frac{1}{n^2}\sum(x_i^2) - \bar x^2} \\
+    \end{array}
   comment: |
     推定値（たとえば標本平均）が母集団の真の値からどれだけブレるかを表す指標。<br>
     標準偏差が「個々のデータのばらつき（データの広がり）」を示すのとは異なり、推定の精度や信頼区間の作成に使われる。
@@ -1131,6 +1131,7 @@
     9&2&2&1&0&0&2 \\
     \end{array}
   comment: ''
+
 
 
 
