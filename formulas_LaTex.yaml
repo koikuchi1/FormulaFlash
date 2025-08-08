@@ -145,6 +145,16 @@
     区間推定：その値が含まれる範囲を出す。\newline
     例：点推定は「平均は50」、区間推定は「平均は45から55の間」といった感じ
   comment: ''
+0-13:用語解説：推定と検定:
+  id: 0-13
+  formula: |
+    \begin{array}{l}
+    ・推定･･･母平均、母分散、母不適合率など値を具体的に見積もる \\
+    \hspace{2em} 母集団の特性値を評価･･･定量的 \\
+    ・検定･･･母数が意味ある基準かどうかの判定 \\
+    \hspace{2em} 母集団の分布をある仮定に置き、成立するかを判定･･･定性的 \\
+    \end{array} 
+  comment: ''
 1-01:分散分析法(ANOVA法)：各記号:
   id: 1-01
   formula: ' \displaystyle T, \; A, \; e, \; S, \; \phi, \; V = \frac{S}{\phi}, \; F = \frac{V_A}{V_e},\; F(\phi_A,\phi_e,\alpha), \; p = \frac{S_A - \phi_A V_e}{S_T}'
@@ -1153,6 +1163,7 @@
     9&2&2&1&0&0&2 \\
     \end{array}
   comment: ''
+
 
 
 
