@@ -282,22 +282,6 @@
   id: 5-01
   formula: |
     \displaystyle t = \frac{\bar x - \mu}{\sqrt{s^2/n}}\sim t(自由度\phi:n - 1),\;→\; \bar x \pm t(\phi_e,\alpha)\sqrt{\frac{V_e}{n}},\; V_e = s^2 \\
-    \begin{array}{l}
-    \displaystyle t=\frac{\bar{x}-\mu}{\sqrt{ \displaystyle \frac{s^2}{n}}} \\
-    仮に有意水準\alpha=0.05とすると \\
-    両側信頼区間は、以下とおける \\
-    \displaystyle P \left( -t_{\alpha/2} \leq \frac{\bar{x}-\mu}{\sqrt{\frac{s^2}{n}}} \leq t_{\alpha/2} \right) =1-\alpha  \\
-    両辺に\displaystyle \sqrt{\frac{s^2}{n}}をかけると、 \\
-    P \left( -t_{\alpha/2} \cdot \sqrt{\frac{s^2}{n}} \leq {\bar{x}-\mu} \leq t_{\alpha/2} \cdot \sqrt{\frac{s^2}{n}} \right) =1-\alpha  \\
-    次に、両辺にマイナスをかけ、\bar{x}を足すと、 \\
-    P \left(\bar{x}+t_{\alpha/2} \cdot \sqrt{\frac{s^2}{n}} \leq \mu \leq \bar{x}-t_{\alpha/2} \cdot \sqrt{\frac{s^2}{n}} \right) =1-\alpha  \\
-    \muについてまとめると、 \\
-    \mu \in  \left[ \bar{x}\pm t_{\alpha/2} \cdot \displaystyle  \sqrt{\frac{s^2}{n}} \right] \\
-    V_e=s^2なので \\
-    \mu \in  \left[ \bar{x}\pm t_{\alpha/2} \cdot \displaystyle  \sqrt{\frac{s^2}{n}} \right] \\
-    表記方法を変えて \\
-    \displaystyle \bar{x}\pm t(\phi_{e},\alpha)\sqrt{\frac{V_e}{n}}
-    \end{array} 
   comment: t分布の式の変換。t分布のt値を用いて、平均の推定区間を求める。Veは誤差分散でs²を用いる
 5-02:t推定：２水準の平均の差の推定[一元配置つまりn数が同じ場合]:
   id: 5-02
@@ -1152,6 +1136,7 @@
     9&2&2&1&0&0&2 \\
     \end{array}
   comment: ''
+
 
 
 
