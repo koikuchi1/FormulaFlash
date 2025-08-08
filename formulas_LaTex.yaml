@@ -318,6 +318,7 @@
     \hspace{2em}・効果の差(平均の差)などが少ない \\
     \hspace{2em}・有意水準が小さい \\
     \end{array} 
+  comment: |
 5-01:t推定：平均の推定[t分布の式の変換]:
   id: 5-01
   formula: |
@@ -1193,6 +1194,7 @@
     9&2&2&1&0&0&2 \\
     \end{array}
   comment: ''
+
 
 
 
