@@ -17,13 +17,10 @@
 0-03:用語解説：平方和[Sum of Squares] S(大文字:標準偏差の小文字のsと間違いやすいので注意Sumと書く方がいい):
   id: 0-03
   formula: |
-    ある値の平均からのずれ量を２乗したものを合計したもの。\\
-    例：\;\\
-    \begin{array}{rl}
-    S &= \displaystyle \sum_{}^{}  \left( x_{i} - \bar{x}  \right) ^{2}  \\ 
-    & =  \displaystyle \sum_{}^{}  \left( x_{i} ^{2}  \right) -  n\bar{x} ^{2}  \\ 
-    & =  \phi s^{2} = \phi V
-    \end{array} 
+    ある値の平均からのずれ量を２乗したものを合計したもの。\newline
+    例：\;
+    S = \sum(x_i - \bar x)^2,\;\;\;\;\;\;
+    S = \sum(x_i^2) - n\bar x^2
   comment: |
     二乗にするのはマイナス値とプラス値を打ち消さないようにするための数学的処置。<br>
     二乗すれば大きいズレほど重く評価される。絶対値では微分できないが微分しやすい。
@@ -32,12 +29,9 @@
   formula: |
     \displaystyle
     平方和を自由度で割ったもの。単位は元のデータの２乗になる。\newline
-    例：\\
-    \begin{array}{rl}
-    V &=   \displaystyle \frac{S}{ \phi }  \\  
-    & =   \displaystyle \frac{  \sum_{}^{}  \left( x_{i}- \bar{x}   \right)^{2}  }{n-1}    \\  
-    &=  \displaystyle  \frac{1}{n} \displaystyle \sum_{}^{}  \left( x_{i} ^{2}  \right)  -  \bar{x} ^{2}
-    \end{array}  
+    例：\;
+    V = \frac{S}{\phi} = \frac{1}{n-1}\sum(x_i - \bar x)^2,\;\;\;\;\;\;
+    V = \frac{1}{n}\sum(x_i^2) - \bar x^2
   comment: |
     データ数が増えた分を平均化するために合計値を単にnで割ると母分散よりも期待値が小さくなる。<br>
     期待値が小さくなる=偏り(バイアス)を補正するために自由度で割る
@@ -46,12 +40,9 @@
   formula: |
     \displaystyle
     分散を平方根したもの。単位は元のデータと同じになる。\newline
-    例：\\
-    \begin{array}{rl}
-    \sigma  & =   \displaystyle \sqrt{ \frac{S}{ \phi } }  \\ 
-    & =   \displaystyle \sqrt{  \frac{1}{n-1}  \displaystyle \sum_{}^{}  \left( x_{i}- \bar{x}   \right) ^{2} } \\ 
-    & =   \displaystyle \sqrt{\frac{1}{n}  \displaystyle \sum_{}^{}  \left( x_{i} ^{2} \right)  - \bar{x} ^{2} }
-    \end{array} 
+    例：\;
+    σ = \sqrt{V} = \sqrt{\frac{S}{\phi}} = \sqrt{\frac{1}{n-1}\sum(x_i - \bar x)^2},\;\;\;\;\;\;
+    σ = \sqrt{\frac{1}{n}\sum(x_i^2) - \bar x^2}
   comment: |
     単位を元のデータと合わせるために平方根をとっている。またデータがマイナスの値もとることができ直感的理解がしやすい。<br>
     ばらつきという言葉は分散か標準偏差かあいまいになるので注意が必要。
@@ -74,22 +65,21 @@
 0-07:用語解説：寄与率[contribution ratio又はproportion]p[分散分析(ANOVA)]:
   id: 0-07
   formula: |
-    \displaystyle 寄与率 = \frac{ある要素の平方和}{全体の平方和}\times 100 \% \\
-    \begin{array}{rl}
-    p  & =   \displaystyle \frac{S_{A} }{S_{T} } = \displaystyle \frac{V_{A} }{V_{T} }  \\ 
-    & =  \displaystyle \frac{S_{AB} }{S_{T} }  = \displaystyle \frac{V_{AB} }{V_{T} }  \\ 
-    \end{array} 
+    \displaystyle
+    寄与率 = \frac{ある要素の平方和}{全体の平方和}\times 100 \%,\;\;\;
+    p = \frac{S_A}{S_T} = \frac{V_A}{V_T},\;\;\;\;\;\;
+    p = \frac{S_{AB}}{S_T} = \frac{V_{AB}}{V_T}'
   comment: |
     寄与率は、ある要素が全体の分散にどれだけ寄与(関係)しているかを示す指標。<br>
     分散分析(ANOVA)では、要因の寄与率を計算することで、各要因が全体のばらつきにどれだけ影響を与えているかを評価する。
 0-08:用語解説：決定係数[Coefficient of Determination]r<sup>2</sup>[回帰分析]:
   id: 0-08
   formula: |
-    \begin{array}{rl}
-    r^2 &=   \displaystyle \frac{S_{回帰} }{S_{全体} } = \frac{V_{回帰} }{V_{全体} } \\ 
-    &=  \displaystyle 1- \frac{S_{残差}}{S_{全体}} = 1- \frac{V_{残差}}{V_{全体}} \\ 
-    &=  \displaystyle  1- \frac{S_{e}}{S_{T}} = 1- \frac{V_{e}}{V_{T}}
-    \end{array} 
+    \begin{array}{rl} 
+    r^2 &= \displaystyle \frac{S_{回帰}}{S_{全体}} = \frac{V_{回帰}}{V_{全体}} \\
+    &= \displaystyle 1 - \frac{S_{残差}}{S_{全体}} = 1 - \frac{V_{残差}}{V_{全体}}\\
+    &= \displaystyle 1 - \frac{S_e}{S_T} = 1 - \frac{V_e}{V_T} \\
+    \end{array}
   comment: |
     決定係数は、回帰分析において、モデルがデータのばらつきをどれだけ説明できるかを示す指標。<br>
     0から1の範囲で、1に近いほどモデルがデータをよく説明していることを意味する。<br>
@@ -169,7 +159,7 @@
   comment: 全データを2乗して合計したものからCTを引いたもの
 1-04:一元配置分散分析：要因平方和(群間平方和):
   id: 1-04
-  formula: 'S_A = n\sum(\bar{A}_i - \bar{T})^2  = \frac{1}{n}\sum(T_{Ai})^2 - CT'
+  formula: 'S_A = n\sum(\bar{A}_i - \bar{T})^2  = \displaystyle \frac{1}{n}\sum(T_{Ai})^2 - CT'
   comment: i群(水準i)の全データを2乗して合計しnで割ったものからCTを引いたもの
 1-05:一元配置分散分析：誤差平方和:
   id: 1-05
@@ -201,7 +191,7 @@
   comment: 全データを2乗して合計したものからCTを引いたもの[一元平方和と同じ]
 2-03:二元配置分散分析(交互､繰り返しなし)：要因平方和(群間平方和):
   id: 2-03
-  formula: 'S_A = b\sum(\bar{A}_i - \bar{T})^2  = \frac{1}{b}\sum(T_{Ai})^2 - CT'
+  formula: '\displaystyle S_A = b\sum(\bar{A}_i - \bar{T})^2  = \frac{1}{b}\sum(T_{Ai})^2 - CT'
   comment: i群(水準i)の全データを2乗して合計しBの水準数bで割ったものからCTを引いたもの[因子Bも同様]
 2-04:二元配置分散分析(交互､繰り返しなし)：誤差平方和:
   id: 2-04
@@ -209,7 +199,7 @@
   comment: 誤差平方和は総平方和から要因平方和(の合計)を引いたもの[一元平方和と同じ]
 2-05:二元配置分散分析(交互､繰り返しなし)：修正項:
   id: 2-05
-  formula: 'CT = \frac{T^2}{ab}'
+  formula: '\displaystyle CT = \frac{T^2}{ab}'
   comment: 総データの2乗和を全データ数(a:因子A水準数、b:因子B水準数)で割ったもの
 2-06:二元配置分散分析(交互､繰り返しなし)：総平方和の自由度:
   id: 2-06
@@ -234,11 +224,11 @@
   comment: 全データを2乗して合計したものからCTを引いたもの[一元平方和と同じ]
 3-03:二元配置分散分析(交互､繰り返しあり)：要因平方和(群間平方和):
   id: 3-03
-  formula: 'S_A = bn\sum(\bar{A}_i - \bar{T})^2  = \frac{1}{bn}\sum(T_{Ai})^2 - CT'
+  formula: '\displaystyle S_A = bn\sum(\bar{A}_i - \bar{T})^2  = \frac{1}{bn}\sum(T_{Ai})^2 - CT'
   comment: i群(水準i)の全データを2乗して合計しBの水準数bと繰り返し数nを掛けた値で割ったものからCTを引いたもの[因子Bも同様]
 3-04:二元配置分散分析(交互､繰り返しあり)：AB間平方和:
   id: 3-04
-  formula: 'S_{AB} = S_A + S_B + S_{A \times B} = \frac{1}{n}\sum T_{AiBj}^2 - CT'
+  formula: '\displaystyle S_{AB} = S_A + S_B + S_{A \times B} = \frac{1}{n}\sum T_{AiBj}^2 - CT'
   comment: 因子A、因子B、因子AとBの交互作用の平方和の合計、i番目×j番目の繰り返しデータを合計した値を合計した値からCTを引いたもの
 3-05:二元配置分散分析(交互､繰り返しあり)：交互作用平方和:
   id: 3-05
@@ -250,7 +240,7 @@
   comment: 誤差平方和は総平方和から要因平方和(の合計)を引いたもの[一元平方和と同じ]
 3-07:二元配置分散分析(交互､繰り返しあり)：修正項:
   id: 3-07
-  formula: 'CT = \frac{T^2}{abn}'
+  formula: '\displaystyle CT = \frac{T^2}{abn}'
   comment: 総データの2乗和を全データ数(a:因子A水準数、b:因子B水準数、n:繰り返し数)で割ったもの
 3-08:二元配置分散分析(交互､繰り返しあり)：総平方和の自由度:
   id: 3-08
@@ -272,23 +262,34 @@
   id: 3-12
   formula: '\phi_e = ab(n - 1) = \phi_T - \phi_{AB}'
   comment: 総平方和の自由度からAB間平方和の自由度を引いたもの
+3.5-01:積和・平方和の展開式：:
+  id: 3.5-01
+  formula: |
+    \begin{array}{rl}
+    偏差積和S_{xy}&= \displaystyle \sum_{}^{}(x_i-\bar{x})(y_i-\bar{y}) \\
+                 &= \displaystyle \sum_{}^{}x_iy_i-\frac{(\sum x_i)(\sum y_i)}{n} \\
+    平方和S_{xx} &= \displaystyle \sum_{}^{}(x_i-\bar{x})^2 \\
+                 &= \displaystyle \sum_{}^{}x_i^2-\frac{(\sum x_i)^2}{n} \\
+    \end{array} 
+  comment: |
+    相関係数を求める際などに使われるので覚えておく
 4-01:標準化変数：母集団の個々のデータ:
   id: 4-01
-  formula: 'u = \frac{x - \mu}{\sigma}\sim N(0,1),\; x \sim N(\mu, \sigma^2)のとき'
+  formula: '\displaystyle u = \frac{x - \mu}{\sigma}\sim N(0,1),\; x \sim N(\mu, \sigma^2)のとき'
   comment: |
     個々のデータxを母平均μと母標準偏差σで標準化したもの。<br>
     この時のσは標準「誤差」であり標準「偏差」とは異なる。uはZなどでも表される
 4-02:標準化変数：n個の平均(母分散既知):
   id: 4-02
-  formula: 'u = \frac{\bar x - \mu}{\sqrt{\sigma^2/n}}\sim N(0,1) = N(\mu, \frac{\sigma^2}{n})'
+  formula: '\displaystyle u = \frac{\bar x - \mu}{\sqrt{\sigma^2/n}}\sim N(0,1) = N(\mu, \frac{\sigma^2}{n})'
   comment: n個の平均なので、個々のデータxに対しn倍となっている分散σ²をnで割る
 4-03:標準化変数：t分布[n個の平均(母分散未知)]:
   id: 4-03
   formula: |
-    t = \frac{\bar x - \mu}{\sqrt{s^2/n}}\sim t(自由度\phi:n - 1),\;
+    \displaystyle t = \frac{\bar x - \mu}{\sqrt{s^2/n}}\sim t(自由度\phi:n - 1),\;
     但し\; s^2 = \frac{1}{n-1}\sum(x_i - \bar x)^2 = \frac{Sum}{n - 1}
   comment: 母分散σ²が未知なので代わりに標本分散s²を用いる。tは自由度n-1のt分布に従う→標本分散s²はn-1で割る
-4.5-01:検定：用語:
+4.5-01:検定：用語1:
   id: 4.5-01
   formula: |
     \begin{array}{l}
@@ -321,6 +322,37 @@
     \hline
     H_0を採択 &正しい(1-\alpha) &第2種の誤り(\beta) \\
     H_0を棄却 &第1種の誤り(\alpha) &正しい(1-\beta：検出力) \\
+    \end{array} 
+  comment: |
+4.5-03:検定：用語2:
+  id: 4.5-03
+  formula: |
+    \begin{array}{l}
+    ・等分散性･･･各母集団の分散(ばらつき)が(有意水準の範囲で)等しいこと(t検定の前提条件) \\
+     \hspace{2em}※データが偏りなく取得できることとは違うので注意 \\
+    ・検定統計量･･･t検定、 \chi^2検定、F検定などのt値、\chi^2値、F値のこと \\
+    \end{array} 
+  comment: |
+4.5-04:検定：検定の種類と用途及び各検定統計量の式:
+  id: 4.5-04
+  formula: |
+    \begin{array}{l}
+    ・t検定(スチューデントのｔ検定)･･･集団ごとの平均の違いを調べたいとき、または誤差を調べたいとき \\
+     \hspace{2em}t= \displaystyle \frac{ \bar{x}_{1}-\bar{x}_{2}  }{ \sqrt{s_p^2 \left(  \displaystyle \frac{1}{n_1}+ \frac{1}{n_2} \right) } }  \\
+     \hspace{2em}※ただし等分散性が必要  \\
+     \hspace{3em}等分散性がないと、第一種の過誤が増える。検出力が落ちる  \\
+    ・\chi ^2検定･･･カテゴリデータの適合度を調べたいとき \\
+     \hspace{2em}\chi ^2= \displaystyle \sum_{}^{} \displaystyle \frac{ (\text{観測値}- \text{期待値})^2  }{期待値}   \\
+    ・F検定･･･分散が等しいかを調べたいとき \\
+     \hspace{2em}F= \displaystyle \frac{s_1^2}{s_2^2} 
+    \end{array} 
+  comment: |
+4.5-05:検定：用語3:
+  id: 4.5-05
+  formula: |
+    \begin{array}{l}
+    ・対応がある･･･同じ対象物の条件を変えて比較したデータ(例:前後比較、ロット比較) \\
+    ・対応がない･･･独立した別の対象の比較(例:男性群対女性群、工場Aと工場B) \\
     \end{array} 
   comment: |
 5-01:t推定：平均の推定[t分布の式の変換]:
@@ -534,17 +566,40 @@
     \displaystyle
     定義：2つの変数 X, Y が 同時に増減する傾向 を示す指標 \\
     定義式： \\
-    \hspace{2em}Cov(X,Y) = E[(X - \mu_X)(Y - \mu_Y)] \\
+    \hspace{2em}Cov(X,Y)=E[XY]-E[X]E[Y],\;\;\; (母共分散) \\
+    \hspace{2em}C_{XY}=\frac{1}{n-1}S_{XY}=\frac{1}{n-1} \displaystyle \sum_{i=1}^{n} (X_i-\bar{X})(Y_i-\bar{Y}),\;\;\; (標本共分散) \\
+    \hspace{3em}※S_{XY}:X,Yの偏差積和 \\
     計算式：\\
-    \hspace{2em}Cov(X,Y) = \frac{\sum [(x_i - \bar x)(y_i - \bar y)]}{n},\;\;\; (母分散) \\
-    \hspace{2em}Cov(X,Y) = \frac{\sum [(x_i - \bar x)(y_i - \bar y)]}{n - 1},\;\;\; (標本共分散) \\
+    \hspace{2em}Cov(X,Y) = \frac{\sum (x_i - \bar x)(y_i - \bar y)}{n},\;\;\; (母共分散) \\
+    \hspace{2em}C_{XY} = \frac{\sum (x_i - \bar x)(y_i - \bar y)}{n - 1},\;\;\; (標本共分散) \\
     特徴： \\
     \hspace{2em}正なら「Xが増えるとYも増える」傾向 \\
     \hspace{2em}負なら「Xが増えるとYは減る」傾向 \\
     \hspace{2em}ゼロなら無相関(ただし独立とは限らない) \\
+    \text{}\\
+    分散の線形変換 \\
+    \hspace{2em}V(aX+bY)=a^2V(X)+b^2V(Y)+2abCov(X,Y) \hspace{1em} (母分散) \\
+    \hspace{2em}s^2_{aX+bY}=a^2s^2_{X}+b^2s^2_{Y}+2abC_{XY} \hspace{1em} (標本分散) \\
+    \hspace{2em}※a,bは定数
+    \text{}\\
+    X,Yがそれぞれ独立な確率変数の場合 \\
+    \hspace{2em}Cov(X,Y) = 0
   comment: |
-7-09:分布図の確率密度(又は質量)関数：大数の法則(Law of Large Numbers）と中心極限定理（Central Limit Theorem）:
+7-09:分布図の確率密度(又は質量)関数：相関係数:
   id: 7-09
+  formula: |
+    \displaystyle
+    相関係数r \\
+    \begin{array}{ll}
+    r&= \displaystyle \frac{Cov(X,Y)}{\sigma_X\sigma_Y} \hspace{1em} (母集団) \\
+    &Cov(X,Y):母共分散、\sigma_x,\sigma_Y:母標準偏差 \\
+    r&= \displaystyle \frac{S_{xy}}{\sqrt{S_{xx}\times S_{yy}}} \hspace{1em} (標本データ) \\
+    & S_{xy}:偏差積和=\sum (x-\bar{x})(y-\bar{y}) \\
+    \end{array} \\
+    ※rは-1～+1の範囲を取る。
+  comment: |
+7-10:分布図の確率密度(又は質量)関数：大数の法則(Law of Large Numbers）と中心極限定理（Central Limit Theorem）:
+  id: 7-10
   formula: |
     \displaystyle
     大数の法則(LLN) \\
@@ -554,8 +609,8 @@
     弱法則：標本平均が母平均に確率的に収束する \\
     強法則：標本平均が母平均にほぼ確実に収束する（確率1で）
   comment: |
-7-10:分布図の確率密度(又は質量)関数：大数の法則(Law of Large Numbers）と中心極限定理（Central Limit Theorem）:
-  id: 7-10
+7-11:分布図の確率密度(又は質量)関数：大数の法則(Law of Large Numbers）と中心極限定理（Central Limit Theorem）:
+  id: 7-11
   formula: |
     \displaystyle
     中心極限定理(CLT) \\
@@ -623,6 +678,21 @@
     元になるデータが2値分類(良品/不良品、合格/不合格)。<br>
     p管理図は不良品の割合を管理するための図で、各サンプルの不良品数を基に計算される。<br>
     pは不良品率、nはサンプルサイズ。UCLとLCLは不良率の上限と下限を示す。
+9-03:管理図：管理図の用途と管理限界線まとめ:
+  id: 9-03
+  formula: |
+    \begin{array}{l|lll}
+    管理図     &管理対象                                            &条件                   &管理限界線の基本形 \\
+    \hline
+    \bar{x}-R   &平均と範囲                                         &n小(2～10程度)         &\overline{\overline{x}}\pm A_2\bar{R},D_3\bar{R},D_4\bar{R} \\
+    \bar{x}-s   &平均と標準偏差                                     &n大(10以上)            &\overline{\overline{x}}\pm A_3 \bar{s},B_3\bar{s},B_4\bar{s} \\
+    p           &不適合率(=\frac{不適合品数}{検査個数})             &n可変                  & \bar{p} \pm 3\sqrt{\frac{\bar{p}(1-\bar{p})}{n}} \\
+    np          &不適合品数                                         &n一定                  & \overline{np} \pm 3\sqrt{n\bar{p}(1-\bar{p})} \\
+    c           &不具合件数                                         &検査単位の大きさ一定   & \bar{c} \pm 3\sqrt{\bar{c}} \\
+    u           &単位当たりの不適合件数                             &検査単位の大きさ可変   & \bar{u} \pm 3\sqrt{\frac{\bar{u}}{n}} \\
+    \end{array} 
+  comment: |
+    その他右記などがある。XmR管理図(X:個々の値､mR:移動範囲[連続する2点の差])･･･1個ずつしか測定できない場合(破壊検査など)に用いる
 10-01:回帰分析：単回帰分析(単一の要素):
   id: 10-01
   formula: 'y = \beta_0 + \beta_1 x + \epsilon'
@@ -633,11 +703,13 @@
 10-02:回帰分析：単回帰分析の最小二乗法:
   id: 10-02
   formula: |
+    \begin{array}{rl}
     \displaystyle
-    \bar x = \frac{1}{n}\sum x_i,\;\;\;
-    \bar y = \frac{1}{n}\sum y_i,\;\;\;
-    傾き:\hat\beta_i = b = \frac{\sum (x_i - \bar x)(y_i - \bar y)}{\sum (x_i - \bar x)^2},\;\;\;
-    切片:\hat\beta_0 = a = \bar y - \beta_1 \bar x
+    \bar x &= \displaystyle \frac{1}{n}\sum x_i \\
+    \bar y &= \displaystyle \frac{1}{n}\sum y_i \\
+    傾き:\hat\beta_i &= b = \displaystyle \frac{\sum (x_i - \bar x)(y_i - \bar y)}{\sum (x_i - \bar x)^2} =  \displaystyle \frac{S_{xy}}{S_{xx}} \\
+    切片:\hat\beta_0 &= a = \bar y - \beta_1 \bar x
+    \end{array} 
   comment: ''
 10-03:回帰分析：単回帰分析の分散分析と決定係数R<sup>2</sup>:
   id: 10-03
@@ -680,6 +752,19 @@
     b:回帰係数(傾き)、SE<sub>b</sub>:回帰係数の標準誤差、s：残差の標準偏差。<br>
     t値を計算し、p値をt分布表から求めることで回帰係数が統計的に有意かどうかを判断する。<br>
     p値は通常0.05以下であれば有意とされる。
+10-05.1回帰分析：単回帰分析の分散分析表:
+  id: 10-05.1
+  formula: |
+    分散分析表の単回帰分析の例： \\
+    \begin{array}{l|llllll}
+    要因    &平方和S    &自由度\phi    &分散(平均平方)V    &分散比F    &検定(F_{\phi_A,\phi_e,\alpha})    &寄与率\rho \\
+    \hline
+    R       &S_R= \displaystyle \frac{S_{xy}^2}{S_{xx}} &\phi_R=1 &V_R= \displaystyle \frac{S_R}{\phi_R} &F_0= \displaystyle \frac{V_R}{V_e} \\
+    e       &S_e=S_T-S_R &\phi_e=n-2 &V_e= \displaystyle \frac{S_e}{\phi_e} \\
+    \hline \\
+    T       &S_T=S_{yy} &\phi_T=n-1 
+    \end{array} 
+  comment: |
 10-06:回帰分析：重回帰分析(複数の要素)QC検定1級範囲:
   id: 10-06
   formula: 'y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \ldots + \beta_i x_i  + \epsilon'
@@ -704,7 +789,11 @@
   id: 11-01
   formula: |
     \displaystyle
-    r = \frac{\sum (x_i - \bar x)(y_i - \bar y)}{\sqrt{\sum (x_i - \bar x)^2}\sqrt{\sum (y_i - \bar y)^2}},\\
+    \begin{array}{ll}
+    r &= \displaystyle \frac{\sum (x_i - \bar x)(y_i - \bar y)}{\sqrt{\sum (x_i - \bar x)^2}\sqrt{\sum (y_i - \bar y)^2}} \\
+      &=  \displaystyle \frac{S_{xy}}{ \sqrt{S_{xx}S_{yy}} } \\
+    \end{array} \\
+     \hspace{2em} ※S_{xy}:偏差積和、S_{xx}:xの偏差平方和、S_{yy}:yの偏差平方和 \\
     値の範囲: -1 \leq r \leq 1,\;\;\;\\
     r = + 1:完全な正の相関,\; r = -1:完全な負の相関,\; r = 0:相関なし
   comment: |
@@ -1119,7 +1208,7 @@
     k：各因子の水準数（例：2水準、3水準）\\
     m：割り当て可能な列数（≠因子数。因子や交互作用を割り付けるための枠）\\[0.5em]
     \quad ・2水準のみの場合：おおよそ m \fallingdotseq n - 1 \quad （自由度の上限）\\
-    \quad ・3水準のみの場合：因子1つにつき自由度2を使うため、\displaystyle \left[ \frac{n - 1}{2} \right] \fallingdotseq \text{因子の最大数} \\[0.5em]
+    \quad ・3水準のみの場合：因子1つにつき自由度2を使うため、\displaystyle \left\lfloor \frac{n - 1}{2} \right\rfloor \fallingdotseq \text{因子の最大数} \\[0.5em]
     \textbf{※注意}：mは「列の数」であり、「因子の数」ではない。\\
     \quad 直交表に実際にいくつの因子を割り付けるかは、自由度の合計が n - 1 以下になるように設計する。\\[0.5em]
     \textbf{例}：L16(2^{15}) → 実験回数16回、最大15列まで使用可能。\\
@@ -1130,8 +1219,8 @@
 20-02実験計画法：サイズの選択:
   id: 20-02
   formula: |
-    頻出の表サイズ一覧\\
     \begin{array}{cccc}
+    頻出の表サイズ一覧\\
     表名称 &実験回数n(行数) &m(列数) &水準数k   \\
     \hline
     L4     &4             &3           &2         \\
@@ -1173,7 +1262,7 @@
   id: 20-04
   formula: |
     全ての水準を均等な数に振り分ける \\
-    L9の場合、3進数で振り分ける(0～2) \\
+    L9の場合、3進数で振り分ける(0～2) \\ｓｓ
     \log_{3}(9)[=3^2]  =2 \rightarrow 列A,Bにする \\
     A列目は000111222と3等分に振り分ける \\
     B列目は012012012とまたその3等分に振り分ける \\
@@ -1198,30 +1287,3 @@
     9&2&2&1&0&0&2 \\
     \end{array}
   comment: ''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
