@@ -28,7 +28,7 @@
   id: 0-04
   formula: |
     \displaystyle
-    平方和を自由度で割ったもの。単位は元のデータの２乗になる。\newline
+    平方和を自由度で割ったもの。平均平方とも言う。単位は元のデータの２乗になる。\newline
     例：\;
     V = \frac{S}{\phi} = \frac{1}{n-1}\sum(x_i - \bar x)^2,\;\;\;\;\;\;
     V = \frac{1}{n}\sum(x_i^2) - \bar x^2
@@ -145,6 +145,17 @@
     \hspace{2em} 母集団の分布をある仮定に置き、成立するかを判定･･･定性的 \\
     \end{array} 
   comment: ''
+0-14:用語解説：期待値:
+  id: 0-14
+  formula: |
+    \begin{array}{l}
+    ・期待値･･･母平均。確率変数Xの「平均的な値」「中心的な値」を表す \\
+    \hspace{1em} 定義式 \\
+    \hspace{1em} E[X]=\mu=  \displaystyle \sum_i x_iP(X=x_i) \hspace{1em} (離散型) \\
+    \hspace{1em} E[X]=\mu= \displaystyle  \int_{ -\infty }^{ \infty }xf(x)dx \hspace{1em} (連続型)   \\
+    ※期待値(母平均)は、標本平均\bar{x}=\displaystyle \frac{1}{n} \displaystyle \sum_{i=1}^{n}x_i とは異なる  \\
+    \end{array} 
+  comment: ''
 1-01:分散分析法(ANOVA法)：各記号:
   id: 1-01
   formula: ' \displaystyle T, \; A, \; e, \; S, \; \phi, \; V = \frac{S}{\phi}, \; F = \frac{V_A}{V_e},\; F(\phi_A,\phi_e,\alpha), \; p = \frac{S_A - \phi_A V_e}{S_T}'
@@ -181,6 +192,15 @@
   id: 1-09
   formula: '\phi_e = a(n - 1)'
   comment: 総データから群(水準数)を引いたもの
+1-10:一元配置分散分析：分散(平均平方)の期待値:
+  id: 1-10
+  formula: |
+    \begin{array}{l}
+    一元配置実験での分散の期待値 \\
+    因子Aの期待値:E[V_A]=n\sigma_A^2+\sigma_e^2 \\
+    誤差eの期待値:E[V_e]=\sigma_e^2 \\
+    \end{array} 
+  comment: |
 2-01:二元配置分散分析(交互､繰り返しなし)：分散の関係式:
   id: 2-01
   formula: 'S_T = S_A + S_B + S_e'
@@ -871,12 +891,15 @@
 12-04:耐久性：MTTF(平均故障時間)とMTBF(平均故障間隔)、B<sub>10</sub>ライフ:
   id: 12-04
   formula: |
-    \displaystyle
     故障率\lambda が一定の時(\beta = 1のとき)\\
-    R(t) = e^{-\lambda t} \\
-    f(t) = \lambda e^{-\lambda t} \\
-    MTTF = \frac{\int_0^{\infty} t f(t) dt}{\int_0^{\infty} f(t) dt} = \frac{1}{\lambda} \\
-    MTBF = MTTF + 修理時間\\
+    信頼度:R(t) = e^{-\lambda t} \\
+    密度関数:(t) = \lambda e^{-\lambda t} \\
+    平均稼働時間\text{MTTF} = \displaystyle \frac{\int_0^{\infty} t f(t) dt}{\int_0^{\infty} f(t) dt} = \frac{1}{\lambda} \\
+    修理系について \\
+    平均稼働時間\text{MTTF}= \displaystyle \frac{総稼働時間-総修理時間}{故障回数} \\
+    平均故障間隔\text{MTBF} = MTTF + MTTR \hspace{1em} ※修理不能系では\text{MTBF} = MTTF \\
+    平均修理時間\text{MTTR} =  \displaystyle \frac{総修理時間}{修理個数} \\
+    稼働率(アベイラビリティ)= \displaystyle \frac{MTBF}{MTBF + MTTR} \\
     B_{10}ライフ:アイテムの10\%が故障するまでの時間
   comment: |
     MTTFは平均故障時間で製品が故障するまでの平均時間を示す(使い捨てや、修理不可能製品に適用)。<br>
@@ -985,6 +1008,14 @@
     \hspace{1em} ・外部失敗コスト[EFコスト](External Failure Cost)\\
     \hspace{2em}･･･不良品が顧客に届いた後のコスト(返品、クレーム対応、賠償など)(当社内では「クレーム費」など)
   comment: tips:日本でよく言われるクレーマーのクレームは英語では「苦情」(complaint)
+15.5-01:方針と機能別管理:
+  id: 15.5-01
+  formula: |
+    機能別管理 \\
+    \hspace{1em} ･･･組織横断的な方向付けや目標がある場合の管理方法 \hspace{1em} (ヨコのつながり) \\
+    部門別管理 \\
+    \hspace{1em} ･･･タテのつながり \\
+  comment: |
 16-01:品質の維持と継続的改善:
   id: 16-01
   formula: |
@@ -1043,7 +1074,7 @@
     各部門の活動は、活動のステップにおける具体的活動項目を配置する。それらを矢印でつなぎ、部門間の連携や情報の流れを示す。
   comment: '目的: 品質保証活動の全体像を把握し、各部門の役割と責任を明確にすること'
 17-03:品質保証：品質機能展開:
-  id: 17-02
+  id: 17-03
   formula: |
     品質機能展開QFD(Quality Function Deployment)･･･親和図法→二元表で分類する\\
     \hspace{2em}1. 顧客の要求(Voice of Customer: VOC)を収集し、重要度を評価。\\
@@ -1073,7 +1104,15 @@
     \hspace{2em}それぞれ数段階に分けて点数化し、掛け合わせたものを「 重要度 」として優先して解決すべき問題を抽出する。\\
     \hspace{2em}ボトムアップ型(原因→結果)、以下2種類がある\\
     \hspace{3em}・機能FMEA(当社では設計FMEA[D-FMEA])･･･ハードウェア、ソフトウェアの機能構成に着目した解析\\
-    \hspace{3em}・工程FMEA･･･作業および管理のプロセス要素に着目した解析
+    \hspace{3em}・工程FMEA･･･作業および管理のプロセス要素に着目した解析 \\
+    コンカレントエンジニアリング \\
+    \hspace{2em}･･･設計と他工程(部門)を同時進行で行うことで開発期間の短縮や不具合の早期発見を目的とする \\
+    リエンジニアリング \\
+    \hspace{2em}･･･既存の製品やプロセスを品質・コスト・納期などの面で根本的に改善するために設計や手順を見直すこと \\
+    妥当性確認 \\
+    \hspace{2em}･･･設計や工程が、最終的に求められる目的・要求仕様に適合しているかを確認すること \\
+    複合監査 \\
+    \hspace{2em}･･･製品開発やプロセスにおいて複数の視点（設計・製造・品質・安全など）を統合して行う監査 \\
   comment: |
     DR:当社では試作図面会議、試作現品会議などの会議体が相当。<br>
     上記は全てクロスファンクショナルチームで行うことが求められる。
@@ -1114,6 +1153,23 @@
     二項分布の累積分布関数[CDF](sumしたもの)\\
     nが大きくpが小さいときはポアソン分布で近似:P\approx \sum_{i=0}^{c} \frac{(np)^ie^{-np}}{i!}
   comment: ''
+18-04:抜取検査：JIS_Z_9015-1_2006関連:
+  id: 18-04
+  formula: |
+    ロットごとの検査に対するＡＱＬ指標型抜取検査方式 \\
+    ・３つの検査の水準 \\
+    \hspace{1em} ・なみ検査・・・標準の検査 \\
+    \hspace{1em} ・きつい検査・・・サンプル数は同じ。合格判定数Acが少なくなる \\
+    \hspace{3em} ※「なみ検査」で連続して一定回数（通常は2〜5回）ロットが不合格になった場合に適用される \\
+    \hspace{1em} ・ゆるい検査・・・判定基準があまくなる。サンプルサイズを減らせる場合もある \\
+    \hspace{3em} ※「なみ検査」で連続して合格が続き、かつ生産や品質に特に問題がないときに適用される \\
+    ・サンプルサイズによる検査水準の区分 \\
+    \hspace{1em} ・通常検査水準\text{I～III}・・・\text{IIが基本、IIIがサンプル数を増やす(厳しく検査)、Iがサンプル数を減らす場合} \\
+    \hspace{1em} ・特別検査水準\text{S-1～S-4}・・・通常よりも少ないサンプル数でよい場合に使う。\text{S-1が最も少ないサンプル。S-4が最も多い} \\
+    \hspace{3em} ※これらの水準を元にサンプルサイズ文字を一覧表から読み取り \\
+    \hspace{4em}   主抜取表から別途、\text{n,Ac,Re}を読み取る \\
+    ・\text{n:抜取数,} \hspace{1em} \text{Ac:合格判定個数,} \hspace{1em} \text{Re:不合格判定個数}   
+  comment: ''
 19-01:多変量解析法：分類 QC検定1級範囲:
   id: 19-01
   formula: |
@@ -1142,6 +1198,7 @@
   formula: |
     \displaystyle
     目的･･･多変量データの次元削減。相関のある複数の変数を、無相関な主成分（軸）に変換する\\
+    \hspace{1em} 元の各変数を直交する新しいベクトル(主成分)に行列によって座標変換し無相関化する方法\\
     主成分の固有値\lambda： 元の変数の線形結合。第1主成分は分散最大\\
     寄与率： 各主成分がデータ全体のどの程度の情報を説明しているか\\
     累積寄与率： 第1主成分〜第n主成分までの合計寄与率\\
@@ -1152,8 +1209,13 @@
   formula: |
     \displaystyle
     主なものに限定\\
-    寄与率 = \frac{\lambda_i}{\sum\lambda},\;\;\;\;\;\;(\lambda_i：第i主成分の固有値、\sum\lambda：全主成分の固有値の合計=合計分散)\\
-    累積寄与率 = \frac{\lambda_1 + \lambda_2 + \ldots + \lambda_k}{\sum\lambda},\;\;\;\;\;\;(上位k個の主成分の合計寄与率)
+    ・寄与率 = \displaystyle \frac{\lambda_i}{\sum\lambda},\hspace{1em} 累積寄与率 = \displaystyle  \frac{\lambda_1 + \lambda_2 + \ldots + \lambda_k}{\sum\lambda},\;\;\;\;\;\;(上位k個の主成分の合計寄与率) \\
+    \hspace{1em} ※\lambda_i=V(z_i)：第i主成分の固有値(第i主成分の分散と同値) \\
+    \hspace{2em} \sum\lambda：全主成分の固有値の合計=合計分散(標準化されている場合は各分散が1なので変数の数) \\
+    ・主成分の直交性:Cov(z_i,z_j)=0,\hspace{1em}(i \neq j) \\
+    \hspace{1em} ※主成分同士の相関性はゼロ \\
+    ・主成分負荷量(主成分と元の変数の相関係数):r_{z_i,u_j}=r_{z_i,x_j}=\sqrt{\lambda_i}v_{ji} \\
+    \hspace{1em} ※v_{ji}:固有ベクトルの要素(例z_i=v_{1i}u_1+v_{2i}u_2+ \cdots +v_{pi}u_pの場合、元の変数x_1との相関関係で使う固有ベクトルはv_{1i}になる) \\
   comment: ''
 19-05:多変量解析法：クラスター分析:
   id: 19-05
@@ -1262,7 +1324,7 @@
   id: 20-04
   formula: |
     全ての水準を均等な数に振り分ける \\
-    L9の場合、3進数で振り分ける(0～2) \\ｓｓ
+    L9の場合、3進数で振り分ける(0～2) \\
     \log_{3}(9)[=3^2]  =2 \rightarrow 列A,Bにする \\
     A列目は000111222と3等分に振り分ける \\
     B列目は012012012とまたその3等分に振り分ける \\
