@@ -640,7 +640,7 @@
     \displaystyle
     相関係数r \\
     \begin{array}{ll}
-    r&= \displaystyle \frac{Cov(X,Y)}{\sigma_X\sigma_Y} \hspace{1em} (母集団) \\
+    \rho &= \displaystyle \frac{Cov(X,Y)}{\sigma_X\sigma_Y} \hspace{1em} (母集団) \\
     &Cov(X,Y):母共分散、\sigma_x,\sigma_Y:母標準偏差 \\
     r&= \displaystyle \frac{S_{xy}}{\sqrt{S_{xx}\times S_{yy}}} \hspace{1em} (標本データ) \\
     & S_{xy}:偏差積和=\sum (x-\bar{x})(y-\bar{y}) \\
@@ -1407,3 +1407,4 @@
     免責･･･引き渡したときの科学技術に関する知見では欠陥を認識できなかったことを証明できた場合 \\
     時効･･･被害者が損害と賠償義務者を知った時から３年。引き渡した時から10年。 \\
   comment: ''
+
