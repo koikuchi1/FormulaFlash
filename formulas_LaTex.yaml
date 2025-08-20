@@ -638,7 +638,7 @@
   id: 7-09
   formula: |
     \displaystyle
-    相関係数r \\
+    相関係数\rho,r \\
     \begin{array}{ll}
     \rho &= \displaystyle \frac{Cov(X,Y)}{\sigma_X\sigma_Y} \hspace{1em} (母集団) \\
     &Cov(X,Y):母共分散、\sigma_x,\sigma_Y:母標準偏差 \\
@@ -1407,4 +1407,5 @@
     免責･･･引き渡したときの科学技術に関する知見では欠陥を認識できなかったことを証明できた場合 \\
     時効･･･被害者が損害と賠償義務者を知った時から３年。引き渡した時から10年。 \\
   comment: ''
+
 
