@@ -29,9 +29,13 @@
   formula: |
     \displaystyle
     平方和を自由度で割ったもの。平均平方とも言う。単位は元のデータの２乗になる。\newline
-    例：\;
-    V = \frac{S}{\phi} = \frac{1}{n-1}\sum(x_i - \bar x)^2,\;\;\;\;\;\;
-    V = \frac{1}{n}\sum(x_i^2) - \bar x^2
+    \begin{array}{ll}
+    V &= \displaystyle \frac{S}{\phi}\\
+      &= \displaystyle \frac{1}{n-1}\sum(x_i - \bar x)^2 \\
+      &= \displaystyle \frac{1}{n}\sum(x_i^2) - \bar x^2 \\
+    V(X)&=\sigma^2=E[(X-\mu)^2] \hspace{1em} (母分散の場合) \\
+    V(x)&=s^2= \displaystyle \frac{1}{n-1} \displaystyle \sum_{}^{} (x_i-\bar{x})^2  \hspace{1em} (標本分散の場合) \\
+    \end{array} 
   comment: |
     データ数が増えた分を平均化するために合計値を単にnで割ると母分散よりも期待値が小さくなる。<br>
     期待値が小さくなる=偏り(バイアス)を補正するために自由度で割る
@@ -149,11 +153,26 @@
   id: 0-14
   formula: |
     \begin{array}{l}
-    ・期待値･･･母平均。確率変数Xの「平均的な値」「中心的な値」を表す \\
+    ・期待値･･･母平均。確率変数Xの「平均的な値」「中心的な値」を表す(標本集団は具体的な値なので期待値はない) \\
     \hspace{1em} 定義式 \\
     \hspace{1em} E[X]=\mu=  \displaystyle \sum_i x_iP(X=x_i) \hspace{1em} (離散型) \\
     \hspace{1em} E[X]=\mu= \displaystyle  \int_{ -\infty }^{ \infty }xf(x)dx \hspace{1em} (連続型)   \\
     ※期待値(母平均)は、標本平均\bar{x}=\displaystyle \frac{1}{n} \displaystyle \sum_{i=1}^{n}x_i とは異なる  \\
+    \end{array} 
+  comment: ''
+0-15:用語解説：母集団と標本集団:
+  id: 0-15
+  formula: |
+    \begin{array}{l|ll}
+    項目 &母集団 &標本集団\\
+    \hline \\
+    確率変数 &X & x_1,x_2, \dots ,x_n\\
+    平均 &\mu=E(X) &\bar{x}= \displaystyle \frac{1}{n} \displaystyle \sum_{}^{}x_i  \\
+    二乗の平均 &E(X)^2=\mu^2+\sigma^2 &\bar{x^2}=\bar{x}^2+  \displaystyle \frac{n-1}{n}s^2  \\
+    分散 &\sigma^2=V(X)=E[(X-\mu)^2] &s^2= \displaystyle \frac{1}{n-1} \displaystyle \sum_{}^{}(x_i-\bar{x})^2  \\
+    標準偏差 &\sigma=\sqrt{\sigma^2} &s=\sqrt{s^2}  \\
+    不偏性 &期待値は理論上の正確値 &標本平均･標本分散は母平均･母分散の推定値 \\
+    役割 &確率分布の特性 &母分散の統計値を推定するデータ \\
     \end{array} 
   comment: ''
 1-01:分散分析法(ANOVA法)：各記号:
@@ -494,14 +513,24 @@
   comment: |
     r: 行数、c: 列数。<br>
     クロス集計表で、行列合計の制約を除いた自由なセルの数。
-7-00:分布図の確率密度(又は質量)関数：用語:
+7-00:確率分布：用語:
   id: 7-00
   formula: |
     \displaystyle
-    確率密度関数(PDF: Probability Density Function）･･･連続型の分布につかう用語 \\
-    確率質量関数(PMF: Probability Mass Functio）･･･連続型の分布につかう用語
+    確率密度関数f(x)(PDF: Probability Density Function）･･･連続型の分布につかう用語 \\
+    確率質量関数P(X=k)(PMF: Probability Mass Functio）･･･離散型の分布につかう用語 \\
+    \text{}\\
+    \begin{array}{l|lll} \\
+    用語 & 定義 & ポイント & 例 \\
+    \hline
+    不偏性 & 推定量の期待値が母数に一致 & 平均的にズレがない & 標本平均\bar{x}は母平均\muの不偏推定量 \\
+    一致性 & 標本数が増えると真の母数に近づく & データが増えるほど正確 & 標本平均\bar{x}は一致推定量 \\
+    有効性 & 不偏推定量の中で分散が最小 & 精度が最も良い & 標本平均は正規分布で最良推定量 \\
+    再生性 & 標本をまとめても同じ分布族に従う & 統計量の分布の形が変わらない & 正規分布の和は正規分布、二項分布の和も二項分布 \\
+    記憶なし性 & 経過時間に関係なく残りの分布は同じ & 途中までの状態に依存しない & 故障時間が指数分布のとき、残りの故障時間は元の分布に従う \\
+    \end{array}
   comment: '以降の項目では、確率密度関数と簡易的に読んでいる'
-7-01:分布図の確率密度(又は質量)関数：正規分布:
+7-01:確率分布：正規分布:
   id: 7-01
   formula: |
     \displaystyle
@@ -510,7 +539,7 @@
     μ:平均、σ:標準偏差。x:変数、e:自然対数の底。<br>
     正規分布の確率密度関数。<br>
     正規分布は連続型の確率分布で、平均を中心に左右対称な形を持つ。
-7-02:分布図の確率密度(又は質量)関数：二項分布:
+7-02:確率分布：二項分布:
   id: 7-02
   formula: |
     \begin{array}{rl}
@@ -522,7 +551,7 @@
   comment: |
     n:サンプル数、x:不適合品数、p:不適合品率。<br>
     二項分布の確率密度関数。離散型の確率分布
-7-03:分布図の確率密度(又は質量)関数：ポアソン分布:
+7-03:確率分布：ポアソン分布:
   id: 7-03
   formula: |
     \displaystyle
@@ -532,7 +561,7 @@
     ポアソン分布の確率密度関数。<br>
     離散型の確率分布で、特定の時間内に発生する事象の数をモデル化する。<br>
     λは平均発生率
-7-04:分布図の確率密度(又は質量)関数：一様分布(Uniform Distribution）[連続型]:
+7-04:確率分布：一様分布(Uniform Distribution）[連続型]:
   id: 7-04
   formula: |
     \displaystyle
@@ -540,7 +569,7 @@
     期待値(平均)：E[X] = \frac{(a + b)}{2} \\
     分散：Var(X) = \frac{(b - a)^2}{12}
   comment: ''
-7-05:分布図の確率密度(又は質量)関数：一様分布(Uniform Distribution）[離散型]:
+7-05:確率分布：一様分布(Uniform Distribution）[離散型]:
   id: 7-05
   formula: |
     \displaystyle
@@ -551,7 +580,7 @@
     範囲が1 ～ nのとき(a = 1, b = n) \\
     Var(X) = \frac{n^2 - 1}{12} \\
   comment: 'サイコロの確率がよく例に出題される'
-7-06:分布図の確率密度(又は質量)関数：指数分布(Exponential Distribution）:
+7-06:確率分布：指数分布(Exponential Distribution）:
   id: 7-06
   formula: |
     \displaystyle
@@ -561,7 +590,7 @@
     期待値(平均)：E[X] = \frac{1}{\lambda} \\
     分散：Var(X) = \frac{1}{\lambda^2} \\
   comment: ''
-7-07:分布図の確率密度(又は質量)関数：二次元分布（Joint Distribution）[離散型]:
+7-07:確率分布：二次元分布（Joint Distribution）[離散型]:
   id: 7-07
   formula: |
     \displaystyle
@@ -580,7 +609,7 @@
   comment: |
     連続型はQC検定１級で出題はほとんどないので割愛<br>
     問題を解くには共分散の理解も必須
-7-08:分布図の確率密度(又は質量)関数：共分散（Covariance）:
+7-08:確率分布：共分散（Covariance）:
   id: 7-08
   formula: |
     \displaystyle
@@ -605,7 +634,7 @@
     X,Yがそれぞれ独立な確率変数の場合 \\
     \hspace{2em}Cov(X,Y) = 0
   comment: |
-7-09:分布図の確率密度(又は質量)関数：相関係数:
+7-09:確率分布：相関係数:
   id: 7-09
   formula: |
     \displaystyle
@@ -618,7 +647,7 @@
     \end{array} \\
     ※rは-1～+1の範囲を取る。
   comment: |
-7-10:分布図の確率密度(又は質量)関数：大数の法則(Law of Large Numbers）と中心極限定理（Central Limit Theorem）:
+7-10:確率分布：大数の法則(Law of Large Numbers）と中心極限定理（Central Limit Theorem）:
   id: 7-10
   formula: |
     \displaystyle
@@ -629,7 +658,7 @@
     弱法則：標本平均が母平均に確率的に収束する \\
     強法則：標本平均が母平均にほぼ確実に収束する（確率1で）
   comment: |
-7-11:分布図の確率密度(又は質量)関数：大数の法則(Law of Large Numbers）と中心極限定理（Central Limit Theorem）:
+7-11:確率分布：大数の法則(Law of Large Numbers）と中心極限定理（Central Limit Theorem）:
   id: 7-11
   formula: |
     \displaystyle
@@ -640,6 +669,26 @@
   comment: |  
     標準化なしに正規分布に従うということ。<br>
     ただし、標本平均が95%を下回る確率は？などの問題では標準化uを求める必要がある
+7-12:確率分布：確率分布まとめ表:
+  id: 7-12
+  formula: |
+    \begin{array}{l|lllllll}
+    分布名 &適用場面 &定義 &パラメータ &確率密度関数f/質量関数P &平均 &分散 &特徴 \\
+    \hline 
+    正規分布 &測定誤差や多くの自然現象 &N(\mu,\sigma^2) &平均\mu、分散\sigma^2 &f(x)= \displaystyle \frac{1}{\sqrt{2 \pi \sigma^2}}e^{- \frac{(x-\mu)^2}{2\sigma^2} }  &\mu &\sigma^2 &中心極限定理で重要、左右対称ベル型 \\
+    二項分布 &n回の独立試行での成功回数 &B(n,p )&試行回数n、成功確率p &P(X=k)= \binom{n}{k}p^k(1-p)^{n-k} &np &np(1-p) &pが小さいときポアソン分布に近似 \\
+    ポアソン分布 &一定時間･空間での発生回数 &Po(\lambda) &平均発生率\lambda &P(X=k)= \displaystyle \frac{e^{-\lambda}\lambda^k}{k!}  &\lambda &\lambda &希少事象の回数分布､二項分布の極限 \\
+     \chi^2分布 &分散の検定､適合度の検定など &※1 &自由度k &f(x)= \displaystyle \frac{1}{2^{k/2} \Gamma (k/2)}x^{k/2}e^{-x/2},(x>0)  &k &2k &正規分布の二乗の和から導かれる \\
+    一様分布(離散型) &全範囲で等確率 &\{1,\dots,n\} &\{1,\dots,n\} &P(X=k)= \displaystyle \frac{1}{n},(k=1, \dots ,n)  & \displaystyle \frac{n+1}{2}  & \displaystyle \frac{(n-1)^2}{12} &サイコロ等の等間隔の現象 \\
+    一様分布(連続型) &全範囲で等確率 &区間[a,b] &区間[a,b] &f(x)= \displaystyle \frac{1}{b-a},(a \leq x \leq b)  & \displaystyle \frac{a+b}{2}  & \displaystyle \frac{(b-a)^2}{12} &全ての値が同等の確率 \\
+    指数分布 &故障時間･待ち時間のモデル &\lambda e^{-\lambda x},x \geq 0 &平均待ち時間1/\lambda &f(x)=\lambda e^{-\lambda x},(x \geq 0) &1/\lambda &1/\lambda^2 &再生性なし､記憶なし性(途中からでも同じ分布に従う)､ポアソン過程の待ち時間分布 \\
+    二次元分布 &2変数以上の同時分布(多変量分布) &f(x,y) &平均ベクトル\mu、共分散行列 \Sigma &※2 &\muベクトル &\Sigma &相関係数\rhoでxとyの依存関係を表す \\
+    \end{array} \\
+    ※1:X= \displaystyle \sum_{i=1}^{k}Z_i^2,Z_i \sim N(0,1)自由度kの標準正規分布の二乗和 \\
+    ※2:f(x,y)=\frac{1}{2\pi\sigma_x\sigma_y\sqrt{1-\rho^2}}exp(-\frac{1}{2(1-\rho^2)}[\frac{(x-\mu x)^2}{\sigma_x^2}-\frac{2\rho(x-\mu x)(y-\mu y)}{\sigma_X \sigma_y}+\frac{(y-\mu y)^2}{\sigma_y^2}]) \\
+
+  comment: |  
+    確率密度関数f(x),f(x,y)などは連続型、確率質量関数P(X=k)は離散型
 8-01:工程能力：CpkとPpkの違い:
   id: 8-01
   formula: |
@@ -1348,4 +1397,13 @@
     8&2&1&0&1&2&0 \\
     9&2&2&1&0&0&2 \\
     \end{array}
+  comment: ''
+21-01製造物責任法(PL法):
+  id: 21-01
+  formula: |
+    目的･･･製造物の欠陥→人の生命や身体、財産にかかわる被害→製造者の損害賠償責任→国民生活の安定向上と国民帰依罪の健全な発展に寄与 \\
+    対象･･･製造または加工された「動産」の欠陥。サービスなどの役務の瑕疵(かし)、電気などの無形物は対象外。 \\
+    欠陥とは･･･通常有すべき安全性を欠いていること \\
+    免責･･･引き渡したときの科学技術に関する知見では欠陥を認識できなかったことを証明できた場合 \\
+    時効･･･被害者が損害と賠償義務者を知った時から３年。引き渡した時から10年。 \\
   comment: ''
