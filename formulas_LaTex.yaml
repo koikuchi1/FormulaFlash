@@ -28,7 +28,7 @@
   id: 0-04
   formula: |
     \displaystyle
-    平方和を自由度で割ったもの。平均平方とも言う。単位は元のデータの２乗になる。\newline
+    平方和を自由度で割ったもの。正しくは平均平方と言う(実際の分散は誤差成分と他のパラメータの効果を除いたもの※期待値で導出する)。単位は元のデータの２乗になる。\newline
     \begin{array}{ll}
     V &= \displaystyle \frac{S}{\phi}\\
       &= \displaystyle \frac{1}{n-1}\sum(x_i - \bar x)^2 \\
@@ -72,7 +72,7 @@
     \displaystyle
     寄与率 = \frac{ある要素の平方和}{全体の平方和}\times 100 \%,\;\;\;
     p = \frac{S_A}{S_T} = \frac{V_A}{V_T},\;\;\;\;\;\;
-    p = \frac{S_{AB}}{S_T} = \frac{V_{AB}}{V_T}'
+    p = \frac{S_{AB}}{S_T} = \frac{V_{AB}}{V_T}
   comment: |
     寄与率は、ある要素が全体の分散にどれだけ寄与(関係)しているかを示す指標。<br>
     分散分析(ANOVA)では、要因の寄与率を計算することで、各要因が全体のばらつきにどれだけ影響を与えているかを評価する。
@@ -312,16 +312,47 @@
     \end{array} 
   comment: |
     相関係数を求める際などに使われるので覚えておく
+3.5-02:一元配置と二元配置の自由度と平方和の関係式まとめ:
+  id: 3.5-02
+  formula: |
+    \begin{array}{c|ccc}
+    自由度 &一元配置 &二元配置(繰返し交互なし) &二元配置(繰返し交互あり) \\
+    \hline
+    \phi_T &an-1 &ab-1 &abn-1 \\
+    \phi_{AB} &なし &ab-1 &ab-1 \\
+    \phi_A &a-1&a-1(因子Bはb-1) &a-1(因子Bはb-1) \\
+    \phi_{A \times B} &なし &なし  &(a-1)(b-1) \\
+    \phi_E(バランス設計の場合) &a(n-1) &0=ab(n-1),(n=1のため) &ab(n-1) \\
+    \phi_E(不均衡の場合) &\phi_T-\phi_A &0=\phi_T-\phi_{AB}=\phi_T-(\phi_A+\phi_B) &\phi_T-\phi_{AB}=\phi_T-(\phi_A+\phi_B+\phi_{A \times B}) \\
+    \end{array} \\
+    \text{} \\
+    \begin{array}{c|ccc}
+    平方和 &一元配置 &二元配置(繰返し交互なし) &二元配置(繰返し交互あり) \\
+    \hline
+    関係式 &S_T=S_A+S_e &S_T=S_A+S_B+S_E &S_T=S_{AB}+S_e=S_A+S_B+S_{A \times B}+S_e \\
+    CT & \displaystyle \frac{T^2}{an}  &\displaystyle \frac{T^2}{ab}  &\displaystyle \frac{T^2}{abn}  \\
+    S_T & \sum(x_{ij}-\bar{T})^2= \sum x_{ij}^2-CT  & \leftarrow  & \leftarrow = \sum(x_{ijk}- \overline{A_iB_j})^2+ \sum(\overline{A_iB_j}-\bar{T})^2=\sum x_{ijk}^2-CT \\
+    S_{AB} &なし &S_A+S_B=\frac{1}{b}\sum( TA_{i})^2+\frac{1}{a}\sum( TB_{j})^2-2CT &S_A+S_B+S_{A \times B}=\frac{1}{n}\sum( TA_iB_j)^2-CT \\
+    S_A &n\sum(\bar{A_i}-\bar{T})^2=\frac{1}{n}\sum (TA_{i})^2-CT  &b\sum(\bar{A_i}-\bar{T})^2=\frac{1}{b}\sum (TA_{i})^2-CT(Bも同様)  &bn\sum(\bar{A_i}-\bar{T})^2=\frac{1}{bn}\sum (TA_{i})^2-CT(Bも同様) \\
+    S_{A \times B} &なし &なし &\sum(\overline{A_iB_j}-(\bar{A_i}+\bar{B_j}-\bar{T}))^2=\frac{1}{n}\sum(TAB_{ij})^2-S_A-S_B-CT \\
+    S_e &\sum(x_{ij}-\bar{A_i})^2 &\sum(x_{ij}-\bar{A_i}-\bar{B_j}+\bar{T})^2 &\sum(x_{ijk}-\overline{A_iB_j})^2 \\
+    S_e関係式から &=S_T-S_A &=S_T-S_{AB}=S_T-(S_A+S_B)(=0:繰り返しなしのため) &=S_T-S_{AB}=S_T-(S_A+S_B+S_{A \times B}) \\
+    \end{array} 
+  comment: |
+    二元配置(交互なし)は繰り返しなし(n=1)、二元配置(交互あり)は繰り返しあり(n≧2)
 4-01:標準化変数：母集団の個々のデータ:
   id: 4-01
   formula: '\displaystyle u = \frac{x - \mu}{\sigma}\sim N(0,1),\; x \sim N(\mu, \sigma^2)のとき'
   comment: |
     個々のデータxを母平均μと母標準偏差σで標準化したもの。<br>
-    この時のσは標準「誤差」であり標準「偏差」とは異なる。uはZなどでも表される
+    この時のσは標準偏差
 4-02:標準化変数：n個の平均(母分散既知):
   id: 4-02
-  formula: '\displaystyle u = \frac{\bar x - \mu}{\sqrt{\sigma^2/n}}\sim N(0,1) = N(\mu, \frac{\sigma^2}{n})'
-  comment: n個の平均なので、個々のデータxに対しn倍となっている分散σ²をnで割る
+  formula: |
+    標準化変数の式を平均値\bar{X}に対して拡張すると \\
+    \displaystyle z = \frac{\bar x - \mu}{\sqrt{\sigma^2/n}}\sim N(0,1) = N(\mu, \frac{\sigma^2}{n}) \\
+    標準誤差SE=\sigma_{\bar{X}}=\displaystyle \frac{\sigma}{\sqrt{n}} \\
+  comment: n個の平均なので、個々のデータxに対しn倍となっている分散σ²をnで割る。これを標準「誤差」という(標準偏差ではないので注意)。
 4-03:標準化変数：t分布[n個の平均(母分散未知)]:
   id: 4-03
   formula: |
@@ -438,9 +469,9 @@
 5-06:プールされた分散Vpの理解：プールされた分散Vp:
   id: 5-06
   formula: |
-    \displaystyle 
-    V_p = \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2} \\
-    ※分子のsは標本標準偏差であり平方和のS(大文字)ではないため注意
+    V_p = \displaystyle  \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2} \hspace{1em}, 分子のsは小文字の標本標準偏差 \\
+    \displaystyle 分散s_1^2=\frac{平方和S1}{自由度\phi_1}なので平方和を使って表すと \\
+    V_p = \displaystyle  \frac{S_1 + S_2}{n_1 + n_2 - 2} \hspace{1em}, 分子のSは大文字の平方和 \\
   comment: |
     分母は２因子の平方和を足したもの。<br>
     分子は自由度n<sub>1</sub>-1とn<sub>2</sub>-1を足したもの(それぞれの因子は独立で交互作用なしが前提)
@@ -517,8 +548,14 @@
   id: 7-00
   formula: |
     \displaystyle
-    確率密度関数f(x)(PDF: Probability Density Function）･･･連続型の分布につかう用語 \\
+    確率密度関数f(x)(PDF: Probability Density Function）･･･連続型の分布につかう用語。分布の形・密度を示す \\
     確率質量関数P(X=k)(PMF: Probability Mass Functio）･･･離散型の分布につかう用語 \\
+    累積分布関数F(x)または標準正規分布なら\Phi(x)(CDF: Cumulative Distribution Function)･･･累積的な確率を直接示す（範囲確率の計算が簡単） \\
+    ※CDFの微分がPDF \\
+    \begin{array}{rl}
+    F(x)&=  \displaystyle  \int_{ -\infty }^{x} f(t)dt \\
+    f(x)&= \displaystyle \frac{fF(x)}{dx} \\
+    \end{array} \\
     \text{}\\
     \begin{array}{l|lll} \\
     用語 & 定義 & ポイント & 例 \\
@@ -533,8 +570,10 @@
 7-01:確率分布：正規分布:
   id: 7-01
   formula: |
-    \displaystyle
-    f(x) = \frac{1}{\sqrt   {2\pi}\sigma}e^{-\frac{(x - \mu)^2}{2\sigma^2}}
+    確率密度関数:f(x) =  \displaystyle \frac{1}{\sqrt   {2\pi}\sigma}e^{-\frac{(x - \mu)^2}{2\sigma^2}} \\
+    標準化:z= \displaystyle \frac{x-\mu}{\sigma} \\
+    確率計算式:P(X>a)=1- \Phi  \left(  \displaystyle \frac{a-\mu}{\sigma}  \right)  \hspace{1em} ,(\Phi(z)は標準正規分布の累積分布関数(CDF) \\
+     \hspace{1em} ※標準化してからの累積分布関数の値は、計算が難しいので正規分布表から求める
   comment: |
     μ:平均、σ:標準偏差。x:変数、e:自然対数の底。<br>
     正規分布の確率密度関数。<br>
@@ -640,7 +679,7 @@
     \displaystyle
     相関係数\rho,r \\
     \begin{array}{ll}
-    \rho &= \displaystyle \frac{Cov(X,Y)}{\sigma_X\sigma_Y} \hspace{1em} (母集団) \\
+    \rho&= \displaystyle \frac{Cov(X,Y)}{\sigma_X\sigma_Y} \hspace{1em} (母集団) \\
     &Cov(X,Y):母共分散、\sigma_x,\sigma_Y:母標準偏差 \\
     r&= \displaystyle \frac{S_{xy}}{\sqrt{S_{xx}\times S_{yy}}} \hspace{1em} (標本データ) \\
     & S_{xy}:偏差積和=\sum (x-\bar{x})(y-\bar{y}) \\
@@ -997,19 +1036,20 @@
 14-02:新ＱＣ７つ道具:
   id: 14-02
   formula: |
-    \displaystyle
     親和図法(affinity diagram:KJ法)･･･類似した項目を群に分ける\\ \hspace{1em}
     【用途】言語データの分類など,\\
     関連図法･･･各項目を矢印でつないでいく\\ \hspace{1em}
     【用途】原因と結果が複雑に絡みあった問題を整理するなど,\\
     系統図法･･･言語をトーナメント表のような形に何段階かにつないでいく形式，\\ \hspace{1em}
-    【用途】目標などを達成するための手段などを何段階かに展開するなど,\\
+    【用途】目標などを達成するための手段などを何段階かに展開するなど,\\ \hspace{1em}
+    【種類】・構成要素展開型、・方策展開型 \\
     マトリックス図法･･･行と列で区切ったセル状の表\\ \hspace{1em}
     【用途】二元的な要素の関連の度数やレベル(数値や◎△などの記号)などで把握するなど,\\
     アローダイヤグラム法･･･系統図法と似ているが時系列を矢印で表す、\\ \hspace{1em}
     【用途】日程計画の推進、作業順序の明確化など,\\
-    ＰＤＰＣ法(Process Decision Program Chart)･･･枠の形で「対策、状態、分岐」などを明確化し、矢印でつなぐ\\ \hspace{1em}
-    【用途】プログラムの構築などでエラーやバグなどを想定した分岐を構築するなど,\\
+    ＰＤＰＣ法(Process Decision Program Chart)過程決定計画図･･･枠の形で「対策、状態、分岐」などを明確化し、矢印でつなぐ\\ \hspace{1em}
+    【用途】プログラムの構築などでエラーやバグなどを想定した分岐を構築するなど,\\ \hspace{1em}
+    【種類】・強制連結型、・逐次展開型 \\
     マトリックス・データ解析法･･･マトリックス図で得られたデータが数値化できるものであればそれを統計解析したもの。\\
     \hspace{1em}
     0を中心にxy方向プラスとマイナスに分けそれらに対義語となるような要因を割り当てた散布図など\\ \hspace{1em}
@@ -1327,7 +1367,7 @@
     \textbf{QC検定では}：L8, L16, L27 などが頻出し、数字は行数（＝実験回数）を示す。
     \end{array}
   comment: ''
-20-02実験計画法：サイズの選択:
+20-02実験計画法：直交表サイズの選択:
   id: 20-02
   formula: |
     \begin{array}{cccc}
@@ -1342,7 +1382,7 @@
     L27    &27            &13          &3         \\
     \end{array} 
   comment: ''
-20-03実験計画法：2水準の割り付け方(例L8):
+20-03実験計画法：直交表2水準の割り付け方(例L8):
   id: 20-03
   formula: |
     水準の割り付け方 \\
@@ -1369,7 +1409,7 @@
     8&1&1&1&0&0&0&1 \\
     \end{array}
   comment: ''
-20-04実験計画法：3水準の割り付け方(例L9):
+20-04実験計画法：直交表3水準の割り付け方(例L9):
   id: 20-04
   formula: |
     全ての水準を均等な数に振り分ける \\
@@ -1398,6 +1438,77 @@
     9&2&2&1&0&0&2 \\
     \end{array}
   comment: ''
+20-05実験計画法：乱塊法（Randomized Block Design, RBD）:
+  id: 20-05
+  formula: |
+    乱塊法の目的･･･ブロック(群や条件)によって結果が大きく左右されるときその影響を制御するために使用する \\
+    式は交互作用があり繰り返しありの二元配置と非常によく似ている(繰り返しのnをブロックのRに置き換えているだけの式が多い) \\
+    以下に式の一覧と、次項目では上記二元配置との違いをまとめる \\
+    \text{} \\
+    \begin{array}{c|cccc}
+    要素 &自由度\phi &平方和S &平方和のCT式 &平均平方(分散)V=S/\phi \\
+    \hline
+    総平方和 &N-1 &S_T= \displaystyle \sum_{i,j,k}(Y_{ijk}-\bar{T})^2 &S_T=\sum Y_{ijk}^2-CT &なし \\
+    因子A &a-1 &S_A=br\sum(\bar{A}_i-\bar{T})^2 &S_A=\frac{1}{br}\sum(TA_i)^2-CT &V_A=S_A/\phi_A \\
+    交互作用A \times B &(a-1)(b-1) &S_{A \times B}=r \displaystyle \sum_{i,j}( \overline{AB}_{ij}-\bar{A}_i-\bar{B}_j+\bar{T})^2 &S_{A \times B}=\frac{1}{r}\sum(TAB_{ij})^2-S_A-S_B-CT &V_{A \times B}=S_{A \times B}/\phi_{A \times B} \\
+    ブロックR &r-1 &S_R=ab\sum(\bar{R}_k-\bar{T})^2 &S_R=\frac{1}{ab}\sum(TR_k)^2-CT &V_R=S_R/\phi_R \\
+    誤差E(バランス設計) &(ab-1)(r-1) &S_E=\sum(Y_{ijk}- \overline{AB}_{ij}-\bar{R}_k+\bar{T})^2 &S_E=\sum(Y_{ijk}-\overline{AB}_{ij}-\bar{R}_k+\bar{T})^2 &V_E=S_E/\phi_E \\
+    &=\phi_T-\phi_A-\phi_B-\phi_{A \times B}-\phi_R & &=S_T-S_A-S_B-S_{A \times B}-S_R & \\
+    \end{array} \\
+    \text{} \\
+    \begin{array}{rl}
+    補正項&:CT= \displaystyle \frac{T^2}{abr} \\
+    Aの水準iにおける平均&:\bar{A}_i=\displaystyle \frac{1}{br}\sum_{j=1}^b\sum_{k=1}^rY_{ijk} \\
+    Aの水準i,Bの水準jにおける平均&:\overline{AB}_{ij}=\displaystyle \frac{1}{r}\sum_{k=1}^rY_{ijk} \\
+    (ブロックごとの繰り返しも含む)\\
+    ブロックkの平均&:\bar{R}_k=\displaystyle \frac{1}{ab}\sum_{i=1}^a\sum_{b=1}^bY_{ijk} \\
+    全データの平均&:\bar{T}=\displaystyle \frac{1}{abr}\sum_{i=1}^a\sum_{j=1}^b\sum_{k=1}^rY_{ijk} \\
+    確率変数&:Y_{ijk}=\mu+\alpha_i+\beta_j+(\alpha\beta)_{ij}+\rho_k+\ \epsilon_{ijk} \\
+    \end{array} \\
+    \text{} \\
+    a:Aの水準数 \\
+    b:Bの水準数 \\
+    r:ブロック数(乱塊法の繰り返し) \\
+    例br=A_i水準のデータ数(乱塊法ではバランス設計のため) \\
+    N=abr:総観測数 \\
+    T:全データ合計 \\
+    TA_i:Aの水準iのデータ合計 \\
+    TB_j:Bの水準jのデータ合計 \\
+    TAB_{ij}:A \times Bのデータ合計 \\
+    \mu:全体平均 \\
+    \alpha_i,\beta_j:因子効果 \\
+    (\alpha\beta)_{ij}:交互作用 \\
+    \rho_k:ブロック効果 \\
+    \epsilon_{ijk}:誤差(確率変数) \\
+  comment: ''
+20-06実験計画法：乱塊法と二元配置(交互作用あり)の比較:
+  id: 20-06
+  formula: |
+    \begin{array}{c|cccc}
+    平方和 &二元配置(交互作用あり) &乱塊法 \\
+    \hline
+    平方和の関係式 &S_T=S_A+S_B+S_{A \times B}+S_E &S_T=S_A+S_B+S_{A \times B}+ {\large\mathbf{S_R}}+S_E \\
+    CT &\displaystyle \frac{T^2}{abn} &\displaystyle \frac{T^2}{abr}  \\
+    S_T &\sum{x}_{ijk}^2-CT &\sum{x}_{ijk}^2-CT  \\
+    S_{AB} &\displaystyle \frac{1}{n}\sum(TA_iB_j)^2-CT &\displaystyle \frac{1}{r}\sum(TA_iB_j)^2-CT \\
+    S_A &\displaystyle \frac{1}{bn}\sum(TA_i)^2-CT &\displaystyle \frac{1}{br}\sum(TA_i)^2-CT \\
+    交互作用S_{A \times B} & \displaystyle \frac{1}{n}\sum(TAB_{ij})^2-S_A-S_B-CT  &\displaystyle \frac{1}{r}\sum(TAB_{ij})^2-S_A-S_B-CT \\
+    ブロックS_R &なし & \displaystyle \mathbf {\frac{1}{ab}\sum(TR_{k})^2-CT} \\
+    誤差E(バランス設計) &関係式から算出 &関係式から算出 \\
+    \end{array} \\
+    \text{} \\
+    \begin{array}{c|ccc}
+    自由度 &二元配置(繰返し交互あり) &乱塊法 \\
+    \hline
+    \phi_T &abn-1 &abr-1 \\
+    \phi_{AB} &ab-1 & \leftarrow  \\
+    \phi_A &a-1(因子Bはb-1) & \leftarrow  \\
+    \phi_{A \times B} &(a-1)(b-1) & \leftarrow \\
+    \phi_{R} &なし &r-1 \\ 
+    \phi_E(バランス設計の場合) &ab(n-1) &(ab{\Large\mathbf{-1}} )(r-1) \\
+    \phi_E(自由度の和差で) &\phi_T-\phi_{AB}=\phi_T-(\phi_A+\phi_B+\phi_{A \times B}) &\phi_T-(\phi_{AB}+\phi_{R})=\phi_{T}-(\phi_{A}+\phi_{B}+\phi_{A \times B}+{\large\mathbf{\phi_{R}}}) \\
+    \end{array} \\
+  comment: ''
 21-01製造物責任法(PL法):
   id: 21-01
   formula: |
@@ -1407,5 +1518,53 @@
     免責･･･引き渡したときの科学技術に関する知見では欠陥を認識できなかったことを証明できた場合 \\
     時効･･･被害者が損害と賠償義務者を知った時から３年。引き渡した時から10年。 \\
   comment: ''
-
-
+22-01数学的な展開など：期待値と分散:
+  id: 22-01
+  formula: |
+    期待値 \\
+    \hspace{1em} E[aX_1+bX_2]=aE[X_1]+bE[X_2] \hspace{1em} ※定数は外に出せる。和はそのまま分けられる。\\
+    分散･･･偏差の二乗の平均(平均は母分散なら期待値) \\
+    \hspace{1em} V(Y)=E[(Y-E[Y])^2] \\
+    \text{} \\
+    相関関係がある確率変数X_1とX_2について\\
+    Y= aX_1+bX_2の関係なら分散V(Y)は以下のように展開できる \\
+    \begin{array}{rl} 
+    V(Y)&=V(aX_1+bX_2) \\
+    E[Y]&=E[aX_1+bX_2)] \\
+    &=aE[X_1]+bE[X_2]より \\
+    Y-E[Y]&=(aX_1+bX_2)-(aE[X_1]+bE[X_2])\hspace{1em} X_1、X_2でまとめると \\
+    &=a(X_1-E[X_1])+b(X_2-E[X_2])\hspace{1em} 両辺に二乗を取ると \\
+    (Y-E[Y])^2&=\{a(X_1-E[X_1])+b(X_2-E[X_2])\}^2 \\
+    &=a^2(X_1-E[X_1])^2+2ab(X_1-E[X_1])(X_2-E[X_2])+b^2(X_2-E[X_2])^2 \\
+    \end{array} \\
+    両辺に期待値を取ると \\
+    \begin{array}{rl}
+    E[(Y-E[Y])^2]&=E[a^2(X_1-E[X_1])^2]+E[2ab(X_1-E[X_1])(X_2-E[X_2])]+E[b^2(X_2-E[X_2])^2] \\
+    &=a^2E[(X_1-E[X_1])^2]+2abE[(X_1-E[X_1])(X_2-E[X_2])]+b^2E[(X_2-E[X_2])^2] \\
+    \end{array} \\
+    これらを分散に変換して \\
+    \hspace{1em} V(Y)=a^2V(X_1)+2abCov(X_1,X_2)+b^2V(X_2) \\
+    これらを標準偏差\sigmaと相関係数\rhoで表すと \\
+    \hspace{1em} \rho = \displaystyle \frac{Cov(X_1,X_2)}{\sigma_{X_1}\sigma_{X_2}}なので\\
+    \hspace{1em} Cov(X_1,X_2) =\rho \sigma_{X_1}\sigma_{X_2} \hspace{1em} ,またV(Y)=\sigma_{Y}^2を代入して\\
+    \hspace{1em} \sigma_Y^2 =a^2\sigma_{X_1}^2+2ab\rho \sigma_{X_1}\sigma_{X_2}+b^2\sigma_{X_2}^2 \\
+  comment: ''
+22-02数学的な展開など：期待値の二乗:
+  id: 22-02
+  formula: |
+    \begin{array}{rl}
+    期待値の二乗\\
+    V(X)=\sigma^2&=E[(X-\mu)^2]この分散の定義より展開して\\
+    &=E[X^2-2\mu X+\mu^2]\hspace{1em}期待値の線形性により、定数を外に出し和差を分離して \\
+    &=E[X^2]-2\mu E[X]+\mu^2 \hspace{1em} ,E[X]=\muなので代入すると \\
+    &=E[X^2]-2\mu^2+\mu^2 \\
+    &=E[X^2]-\mu^2 \hspace{1em}移項すると \\
+    E[X^2]&=\sigma^2+\mu^2 \\
+    \end{array} \\
+    \text{} \\
+    分散を期待値だけで表すと\\
+    \begin{array}{rl}
+    V(X)&=E[X^2]-\mu^2より\\
+    V(X)&=E[X^2]-(E[X])^2
+    \end{array}
+  comment: ''
