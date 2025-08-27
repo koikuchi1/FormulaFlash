@@ -53,7 +53,7 @@
 0-06:用語解説：標準誤差[standard Error] σ(母集団)､s(小文字)(標本)(またはSE):
   id: 0-06
   formula: |
-    標準偏差を\sqrt n で割ったもの。単位は元のデータと同じになる。\\
+    標準偏差を\sqrt n で割った平均値のばらつきを見るためのもの。単位は元のデータと同じになる。\\
     例：\\
     \begin{array}{rl}
     SE &= \displaystyle \frac{σ}{\sqrt n}  \\
@@ -425,6 +425,22 @@
     ・対応がない･･･独立した別の対象の比較(例:男性群対女性群、工場Aと工場B) \\
     \end{array} 
   comment: |
+4.5-06:検定：検定の種類まとめ:
+  id: 4.5-06
+  formula: |
+    \begin{array}{l|lll}
+    検定名 & 用途 & 前提条件 & 棄却基準など \\
+    \hline
+    t検定 & 母平均の差を検定 & 正規性・等分散性を仮定 & t値 = \frac{\bar{X}_1 - \bar{X}_2}{\sqrt{s_p^2 \left( \frac{1}{n_1} + \frac{1}{n_2} \right) }} \\
+    F検定 & 母分散の差を検定 & 正規性 & F値 = \frac{s_1^2}{s_2^2} \\
+    \chi^2検定 & 母分散の検定、適合度検定、独立性の検定 & サンプルサイズ大 & 母分散検定では \chi^2 = \frac{(n-1)s^2}{\sigma_0^2} \\
+    \chi^2適合度検定 & 観測度数が理論分布に適合しているか & サンプルサイズ大 & \chi^2 = \sum \frac{(O-E)^2}{E} \\
+    \chi^2独立性検定 & クロス集計表で独立性を検定 & サンプルサイズ大 & 同上、自由度 (r-1)(c-1) \\
+    ハートレー検定 & 分散の一様性検定（サンプルサイズが同じ場合） & 正規性、サンプルサイズが等しい & F_{\text{max}} = \frac{\max(s_i^2)}{\min(s_i^2)} \\
+    バートレット検定 & 分散の一様性検定（サンプルサイズが異なる場合） & 正規性 & \chi^2 統計量を計算し、自由度 k-1 の \chi^2 分布比較 \\
+    ノンパラメトリック検定（例: 順位検定） & 正規性が仮定できない場合の中央値検定 & 分布の仮定が不要 & 検定方法による \\
+    \end{array}
+  comment: |
 5-01:t推定：平均の推定[t分布の式の変換]:
   id: 5-01
   formula: |
@@ -583,10 +599,14 @@
   formula: |
     \begin{array}{rl}
     P(X = x) &= f(x) \\
-    &= \binom{n}{x} p^x (1 - p)^{n - x} \\
-    &= \frac{n!}{x!(n - x)!} p^x (1 - p)^{n - x},\;\;\;\;\
-    \binom{n}{x} = {}_{n}C_{x}
-    \end{array}
+    &= \displaystyle \binom{n}{x} p^x (1 - p)^{n - x} \\
+    &= \displaystyle \frac{n!}{x!(n - x)!} p^x (1 - p)^{n - x},\;\;\;\;\
+    \displaystyle \binom{n}{x} = {}_{n}C_{x} \\
+    \end{array} \\
+    p^x:因子Aの出る確率 \\
+    (1 - p)^{n - x}:残り因子Bの出る確率 \\
+    {}_{n}C_{x}:因子A因子Bの出る組み合わせ \\
+    例:ある袋から5個玉を取り出すとき赤玉3、白玉2を取り出す確率密度関数は{}_{5}C_{3}p^3(1-p)^{5-3} \\
   comment: |
     n:サンプル数、x:不適合品数、p:不適合品率。<br>
     二項分布の確率密度関数。離散型の確率分布
@@ -728,6 +748,25 @@
 
   comment: |  
     確率密度関数f(x),f(x,y)などは連続型、確率質量関数P(X=k)は離散型
+7-13:確率分布：二項分布の正規分布近似法:
+  id: 7-13
+  formula: |
+    二項分布のn数が十分大きく母比率pが0や1から離れているとき、正規分布近似法を使うと計算が楽になる \\
+    \text{} \\
+    二項分布:B(n,p)  \approx  正規分布N(np,np(1-p))で近似。 \\
+    \hspace{1em}np=\mu,\hspace{1em}np(1-p)=\sigma^2 \\
+    \text{} \\
+    近似できるとされる条件(経験則)は以下。\\
+    \hspace{1em} np \geq 5およびnp(1-p) \geq 5 \\
+    これらの検定統計量は標本比率\hat{p}=\frac{X}{n}の場合\\
+    \hspace{1em} z= \displaystyle \frac{\hat{p}-p_0}{\sqrt{p_0(1-p_0)/n}}\\
+    棄却基準 \\
+    \hspace{1em}両側検定: \left|z\right| >z_{\alpha/2} \\
+    \hspace{1em}片側検定: z>z_{\alpha}またはz<-z_{\alpha} \\
+    \text{} \\
+    中心極限定理によりn \rightarrow  \infty のとき\\
+    \hspace{1em}u=\displaystyle \frac{X-np}{\sqrt{np(1-p)}} \rightarrow N(0,1)
+  comment: |  
 8-01:工程能力：CpkとPpkの違い:
   id: 8-01
   formula: |
@@ -938,13 +977,12 @@
 12-01:耐久性：密度関数、信頼度[Reliability]と故障率(ハザード関数):
   id: 12-01
   formula: |
-    \displaystyle
-    密度関数: f(t) = \frac{dF(t)}{dt} = -\frac{dR(t)}{dt} = \frac{\beta}{\eta}\left(\frac{t}{\eta}\right)^{\beta - 1}e^{-\left(\frac{t}{\eta}\right)^{\beta}}(ワイブル密度関数),\;\\
-    信頼度: R(t) = e^{-\left(\frac{t}{\eta}\right)^{\beta}},\;
-    不信頼度: F(t) = 1 - R(t),\;\\
-    ハザード関数:\lambda(t): 故障率:h(t) = \frac{f(t)}{R(t)} = \frac{\beta}{\eta}\left(\frac{t}{\eta}\right)^{\beta - 1}\\
+    密度関数: f(t) = \frac{dF(t)}{dt} = -\frac{dR(t)}{dt} = \frac{m}{\eta}\left(\frac{t-\gamma}{\eta}\right)^{m - 1}\exp\left[-\left(\frac{t-\gamma}{\eta}\right)^{m}\right](ワイブル密度関数),\;\\
+    信頼度: R(t) = \exp\left[-\left(\frac{t-\gamma}{\eta}\right)^{m}\right],\;
+    不信頼度: F(t) = 1 - R(t), \hspace{1em} t \geq \gamma\;\\
+    ハザード関数:\lambda(t): 故障率:h(t) = \frac{f(t)}{R(t)} = \frac{m}{\eta}\left(\frac{t}{\eta}\right)^{m - 1} \hspace{1em} \gamma は傾きに影響しないため考慮せず0とする\\
     ↓ \\ 
-    \beta = 1のとき,\\
+    m = 1のとき,\\
     f(t) = \frac{1}{\eta} \left(\frac{t}{\eta}\right)^{1 - 1} e^{-\left(\frac{t}{\eta}\right)^1} = \frac{1}{\eta} e^{-\frac{t}{\eta}},\;\;\; \left(\left(\frac{t}{\eta}\right)^0 = 1\right)\\
     R(t) = e^{-\left(\frac{t}{\eta}\right)^1} = e^{-\frac{t}{\eta}}\newline F(t) = 1 - R(t) = 1 - e^{-\frac{t}{\eta}}\\
     h(t) = \frac{f(t)}{R(t)} = \frac{\frac{1}{\eta} e^{-\frac{t}{\eta}}}{e^{-\frac{t}{\eta}}}
@@ -956,18 +994,35 @@
 12-02:耐久性：ワイブル分析とバスタブ曲線:
   id: 12-02
   formula: |
-    \displaystyle
-    ワイブルの確率密度関数:f(t) = \frac{\beta}{\eta}\left(\frac{t}{\eta}\right)^{\beta - 1}e^{-\left(\frac{t}{\eta}\right)^{\beta}},\;\;\;\;\; \\
-    時間:t \geq 0,\; 形状パラメータ\beta > 0,\; 尺度パラメータ\eta > 0 \\
-    \beta < 1 : 初期故障期(バスタブ曲線の左側)で故障率は減少(DFR型),\; \\
-    \beta = 1 : 定常故障期で故障率は一定(CFR型),\; \\
-    \beta > 1 : 摩耗故障期(バスタブ曲線の右側)で故障率は増加(IFR型)
-  comment: 製品のライフサイクルにおける故障率の変化を模式的に示した曲線で、浴槽（バスタブ）のような形状から名前がついている。
-12-03:耐久性：指数分布(ワイブル分布でβ = 1のとき):
+    ワイブルの確率密度関数:f(t) = \frac{m}{\eta}\left(\frac{t-\gamma}{\eta}\right)^{m - 1}\exp[-\left(\frac{t-\gamma}{\eta}\right)^{m}] \hspace{1em} ,t \geq \gamma \\
+    \hspace{1em} ・時間(寿命):t \geq 0 \\
+    \hspace{1em} ・位置パラメータ(ワイブルの時間軸方向の位置):\gamma \\
+    \hspace{1em} ・形状パラメータ(ワイブル曲線の形状):m \\
+    \hspace{1em} ・尺度パラメータ(寿命の代表値):\eta > 0 \\
+    \text{} \\
+    \begin{array}{c|ccc}
+    パラメータ(名前) &範囲 & 値の意味 \\
+    \hline
+    m(形状パラメータ) &&故障率の増減の形を決める\\
+    &m<1 &初期故障期(減少):バスタブ曲線の左側で故障率は減少(DFR型) \\
+    &m=1 &偶発故障期(一定):定常故障期で故障率は一定(CFR型) \\
+    &m<1 &摩耗故障期(増加):バスタブ曲線の右側で故障率は増加(IFR型) \\
+    \hline
+    \gamma(位置パラメータ) &&t \geq \gammaで故障が始まる(下限値)(横軸方向の位置) \\
+    &\gamma=0 &製造直後から故障の可能性あり \\
+    &\gamma>0 &故障は\gamma以降に始まる(初期不良の除外など) \\
+    \hline
+    \eta(尺度パラメータ) &&故障の広がり、寿命の代表値(累積故障率の63.2\%の時刻) \\
+    &&\etaが2倍になるとグラフの幅も2倍になる(\gamma=0のときMTTFは\etaに比例)\\    
+    &\etaが大きい &寿命が長く故障しにくい \\
+    &\etaが小さい &寿命が短く故障しやすい(グラフの横方向の広がり) \\
+    \end{array} \\    
+  comment: 製品のライフサイクルにおける故障率の変化を模式的に示した曲線で、浴槽（バスタブ）のような形状から名前がついている。形状パラメータmは統計学ではβで表されることが多い。
+12-03:耐久性：指数分布(ワイブル分布でm = 1のとき):
   id: 12-03
   formula: |
     \displaystyle
-    \beta = 1(故障率一定のとき),\\
+    m = 1(故障率一定のとき),\\
     密度関数: f(t) = \lambda e^{-\lambda t},\; (t \geq 0,\; \lambda > 0),\; \\
     信頼度: R(t) = e^{-\lambda t},\; 不信頼度:F(t) = 1 - R(t),\; \\ 
     ハザード関数: \lambda(t) = \lambda
@@ -975,16 +1030,16 @@
     指数分布は、故障が時間に依存せず一定の確率で発生する場合に用いられる。<br>
     λは平均故障率で、時間tにおける信頼度R(t)と不信頼度F(t)を表す。<br>
     ハザード関数λ(t)は一定で、故障率が時間に依存しないことを示す。<br>
-    指数分布はワイブル分布の特別なケースであり、β=1の場合に相当する。
+    指数分布はワイブル分布の特別なケースであり、m=1の場合に相当する。
 12-04:耐久性：MTTF(平均故障時間)とMTBF(平均故障間隔)、B<sub>10</sub>ライフ:
   id: 12-04
   formula: |
-    故障率\lambda が一定の時(\beta = 1のとき)\\
+    故障率\lambda が一定の時(m = 1のとき)\\
     信頼度:R(t) = e^{-\lambda t} \\
     密度関数:(t) = \lambda e^{-\lambda t} \\
-    平均稼働時間\text{MTTF} = \displaystyle \frac{\int_0^{\infty} t f(t) dt}{\int_0^{\infty} f(t) dt} = \frac{1}{\lambda} \\
+    平均故障時間\text{MTTF} = \displaystyle \frac{\int_0^{\infty} t f(t) dt}{\int_0^{\infty} f(t) dt} = \frac{1}{\lambda} \\
     修理系について \\
-    平均稼働時間\text{MTTF}= \displaystyle \frac{総稼働時間-総修理時間}{故障回数} \\
+    平均故障時間\text{MTTF}= \displaystyle \frac{総稼働時間-総修理時間}{故障回数} \\
     平均故障間隔\text{MTBF} = MTTF + MTTR \hspace{1em} ※修理不能系では\text{MTBF} = MTTF \\
     平均修理時間\text{MTTR} =  \displaystyle \frac{総修理時間}{修理個数} \\
     稼働率(アベイラビリティ)= \displaystyle \frac{MTBF}{MTBF + MTTR} \\
@@ -1349,6 +1404,55 @@
     \hspace{2em}・数量化\mathrm{II}類： 判別分析（目的変数が質的、説明変数が量的）\\
     \hspace{2em}・数量化\mathrm{III}類： クラスター分析のための質的データ処理
   comment: '数値化I類 例：カテゴリごとにスコア（例：満足＝2、普通＝1、不満＝0など）を付けて数値データに変換し、回帰分析を行う。など'
+19-09多変量解析法：主成分分析の深堀1(行列とかベクトルとか):
+  id: 19-09
+  formula: |
+    2変数で簡単に\\
+    標準化した変数u_1,u_2の相関行列:R= \begin{pmatrix} 1 & r \\ r & 1 \end{pmatrix}, \hspace{1em} r=Corr(u_1,u_2) \\
+    Rの固有値:\lambda_1=1+r, \hspace{1em} \lambda_2=1-r \\
+    \hspace{1em} \lambda_iは対応する主成分の固有値=分散 \\
+    第一主成分の寄与率z_1= \displaystyle \frac{第一主成分の分散}{全分散の合計}=\frac{\lambda_1}{\lambda_1 + \lambda_2}=\frac{\lambda_1}{\sum\lambda_i} \\
+  comment: |
+19-10多変量解析法：主成分分析の深堀2(固有値λの求め方):
+  id: 19-10
+  formula: |
+    2変数で簡単に\\
+    固有値とは標準化された相関行列Rがある方向に伸びる・縮む倍率 \\
+    (簡単に言うと行列の大きさを一つの数値に変換したもの=分散の大きさ) \\
+    固有値の求め方 \\
+    標準化された相関行列R= \begin{pmatrix} 1 & r \\ r & r \end{pmatrix} \\
+    単位行列I= \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, からA= \begin{pmatrix} a & b \\ c & d \end{pmatrix}の場合の行列式\det(A)=ad-bc  \\
+    \lambdaを単位行列Iで行列化したものが\lambda Iなので、\\
+    行列式\det(R-\lambda I)=0 \\
+    \begin{vmatrix} 1-\lambda & r \\ r & 1-\lambda \end{vmatrix} =(1-\lambda)^2-r^2=0 \\
+    (1-\lambda)^2=r^2 \Rightarrow 1-\lambda= \pm{r} \Rightarrow \lambda=1\pm{r} \\
+    第一主成分は分散が最も大きい方向なので、\lambda=1+rが第一主成分側になる \\
+    \text{} \\
+    固有値と分散の関係 \\
+    第一主成分z_1=v_1u_1+v_2u_2の分散は\\
+    V(z_1)=v^\top Rv\\
+    vが固有ベクトルで正規化されている場合\\
+    V(z_1)=\lambda_1, \hspace{1em} (分散=固有値となる) \\
+  comment: |
+19-11多変量解析法：主成分分析の深堀3(公式まとめ):
+  id: 19-11
+  formula: |
+    \begin{array}{c|cc}
+    項目 &式 &説明 \\
+    \hline
+    標準化u &u_j=\displaystyle\frac{x_j-\bar{x}_j}{\sigma_{x_j}} &元の変数x_j を平均0分散1に変換 \\
+    共分散行列S &S=Cov(x_i,x_j)= \begin{bmatrix} V(x_1) & Cov(x_1,x_2) \\ Cov(x_1,x_2) & V(x_2) \end{bmatrix}= \begin{bmatrix} S_{x_1x_1} & S_{x_1x_2} \\ S_{x_1x_2} & S_{x_2x_2} \end{bmatrix},(※2変数の場合)   &標準化する前の行列 \\
+    相関行列R &R_{ij}=(Corr(u_i,u_j))=\displaystyle\frac{S_{ij}}{\sqrt{S_{ii}S_{jj}}} &標準化変数の相関係数で作る行列(共分散行列を標準偏差で正規化したもの) \\
+    固有値\lambda &\det(R-\lambda I)=0 &固有値\lambda_iが主成分の分散 \\
+    固有値(標準化していない場合)\lambda &\det(S-\lambda I)=0 &標準化していない場合はRではなくSを用いる \\
+    主成分z_i &z_i=\sum_jv_{ji}u_j &固有ベクトルv_i(重みベクトルw_iとも言う)に沿った線形結合 \\
+    主成分の分散V &V(z_i)=\lambda_i &固有値そのものが主成分の分散(標準化していなくても成立) \\
+    寄与率(分散比) &寄与率(z_i)=\displaystyle\frac{\lambda_i}{\sum_j{\lambda_j}} &各主成分が全分散に占める割合 \\
+    主成分負荷量 &相関係数(主成分負荷量)Corr(z_i,u_j)=\sqrt{\lambda_i}v_{ji} &主成分と元の変数の相関係数,(v_{ji}は固有ベクトル要素) \\
+    主成分負荷量(標準化していない場合) &相関係数(主成分負荷量)Corr(z_i,x_j)=\displaystyle\frac{\sqrt{\lambda_i}v_{ji}}{\sigma_{x_j}} &標準化していないx_jでも成立 \\
+    主成分の直交性 &共分散Cov(z_i,z_j)=0, \hspace{1em} (i \neq j) &主成分同士は相関0(直交) \\
+    \end{array} 
+  comment: |
 20-01実験計画法：直交表の目的とサイズの表現:
   id: 20-01
   formula: |
