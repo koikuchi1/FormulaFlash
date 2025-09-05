@@ -334,7 +334,7 @@
     S_T & \sum(x_{ij}-\bar{T})^2= \sum x_{ij}^2-CT  & \leftarrow  & \leftarrow = \sum(x_{ijk}- \overline{A_iB_j})^2+ \sum(\overline{A_iB_j}-\bar{T})^2=\sum x_{ijk}^2-CT \\
     S_{AB} &なし &S_A+S_B=\frac{1}{b}\sum( TA_{i})^2+\frac{1}{a}\sum( TB_{j})^2-2CT &S_A+S_B+S_{A \times B}=\frac{1}{n}\sum( TA_iB_j)^2-CT \\
     S_A &n\sum(\bar{A_i}-\bar{T})^2=\frac{1}{n}\sum (TA_{i})^2-CT  &b\sum(\bar{A_i}-\bar{T})^2=\frac{1}{b}\sum (TA_{i})^2-CT(Bも同様)  &bn\sum(\bar{A_i}-\bar{T})^2=\frac{1}{bn}\sum (TA_{i})^2-CT(Bも同様) \\
-    S_{A \times B} &なし &なし &\sum(\overline{A_iB_j}-(\bar{A_i}+\bar{B_j}-\bar{T}))^2=\frac{1}{n}\sum(TAB_{ij})^2-S_A-S_B-CT \\
+    S_{A \times B} &なし &なし &n\sum(\overline{A_iB_j}-(\bar{A_i}+\bar{B_j}-\bar{T}))^2=\frac{1}{n}\sum(TAB_{ij})^2-S_A-S_B-CT \\
     S_e &\sum(x_{ij}-\bar{A_i})^2 &\sum(x_{ij}-\bar{A_i}-\bar{B_j}+\bar{T})^2 &\sum(x_{ijk}-\overline{A_iB_j})^2 \\
     S_e関係式から &=S_T-S_A &=S_T-S_{AB}=S_T-(S_A+S_B)(=0:繰り返しなしのため) &=S_T-S_{AB}=S_T-(S_A+S_B+S_{A \times B}) \\
     \end{array} 
@@ -2037,3 +2037,4 @@
     非復元抽出：一度選ばれた個体は もう選ばれない \\
     \end{array}
   comment: |
+
