@@ -760,10 +760,11 @@
     一様分布(連続型) &全範囲で等確率 &区間[a,b] &区間[a,b] &f(x)= \displaystyle \frac{1}{b-a},(a \leq x \leq b)  & \displaystyle \frac{a+b}{2}  & \displaystyle \frac{(b-a)^2}{12} &全ての値が同等の確率 \\
     指数分布 &故障時間･待ち時間のモデル &\lambda e^{-\lambda x},x \geq 0 &平均待ち時間1/\lambda &f(x)=\lambda e^{-\lambda x},(x \geq 0) &1/\lambda &1/\lambda^2 &再生性なし､記憶なし性(途中からでも同じ分布に従う)､ポアソン過程の待ち時間分布 \\
     二次元分布 &2変数以上の同時分布(多変量分布) &f(x,y) &平均ベクトル\mu、共分散行列 \Sigma &※2 &\muベクトル &\Sigma &相関係数\rhoでxとyの依存関係を表す \\
+    超幾何分布 & 有限母集団､ロットサイズ小 &H(N,M,n) & 母集団サイズN、成功数M、標本サイズn & P(X=k)= \dfrac{\binom{M}{k}\binom{N-M}{n-k}}{\binom{N}{n}} & n\dfrac{M}{N} & n\dfrac{M}{N}\left(1-\dfrac{M}{N}\right)\dfrac{N-n}{N-1}  &高精度の確率計算 \\
+    &&&&&&\dfrac{N-n}{N-1},(有限母集団補正) &二項分布の非復元版(引いたら戻さない)\\
     \end{array} \\
     ※1:X= \displaystyle \sum_{i=1}^{k}Z_i^2,Z_i \sim N(0,1)自由度kの標準正規分布の二乗和 \\
     ※2:f(x,y)=\frac{1}{2\pi\sigma_x\sigma_y\sqrt{1-\rho^2}}exp(-\frac{1}{2(1-\rho^2)}[\frac{(x-\mu x)^2}{\sigma_x^2}-\frac{2\rho(x-\mu x)(y-\mu y)}{\sigma_X \sigma_y}+\frac{(y-\mu y)^2}{\sigma_y^2}]) \\
-
   comment: |  
     確率密度関数f(x),f(x,y)などは連続型、確率質量関数P(X=k)は離散型
 7-13:確率分布：二項分布の正規分布近似法:
@@ -1104,17 +1105,88 @@
     L(y):損失、y:出力、T:目標値､k:比例係数(損失係数)。<br>
     タグチメソッドでは、製品や工程の性能を目標値Tに近づけるための損失関数を定義し、最小化することでロバスト性を高める。<br>
     損失は目標値からのずれに比例して増加すると仮定される。
-13-03:ロバスト設計：タグチメソッド SN比(３種):
+13-03:ロバスト設計：SN比の種類:
   id: 13-03
   formula: |
-    \displaystyle
-    大きい方がよい: SN比 = -10\log_{10}\left(\frac{1}{n} \sum_{i=1}^n \frac{1}{y_i^2}\right) \\
-    小さい方がよい: SN比 = -10\log_{10}\left(\frac{1}{n} \sum_{i=1}^n y_i^2\right) \\
-    目標値に近い方がよい: SN比 = -10\log_{10}\left(\frac{1}{n} \sum_{i=1}^n (y_i - T)^2\right)
+    SN比のポイント\\
+    SN比･･･ [S]ignal÷[N]oiseの10を底とした対数を10倍した値(dBデシベル) \\
+    \hspace{1em} S:望ましい中心値や平均、N:揺らぎやばらつき\\
+    \hspace{1em} 式の符号にマイナスがある場合は、値が小さい方がよい場合や値の逆数を取っている場合となる\\
+    \text{}\\
+    SN比計算の種類\\
+    \begin{array}{l|lll}
+    種類 &メリット &デメリット &備考 \\
+    \hline
+    直積法 &手計算に向いている &誤差に弱い場合がある &QC検定でよく使われる \\
+    &&統計的整合性がやや弱い\\
+    \hline
+    標準法 &理論的に明確｡ &分散の計算が必要 & & \\
+    &精度が高い\\
+    &統計的解析と整合性がある \\
+    \hline
+    \end{array} \\
+    \text{}\\
+    \begin{array}{l|llll}
+    種類 &目的 &メリット &デメリット &備考 \\
+    \hline
+    静特性SN比 &定常値のばらつきを評価 &誤差因子に対する感度がわかる &計算がやや複雑 &QC検定での出題あり \\
+    &&目標値との偏差を考慮できる &動特性を考慮できない  \\
+    &&k個の水準誤差因子に対応可能 &測定誤差が大きい場合、誤差評価が粗い \\ 
+    \hline
+    動特性SN比 &過渡応答や時間変化を評価&&&QC検定ではほとんど出題なし\\
+    &実務やシミュレーション向き\\
+    \end{array} 
+  comment: |
+13-04:ロバスト設計：タグチメソッド SN比式まとめ:
+  id: 13-04
+  formula: |
+    SN比の式まとめ\\
+    下式は値が大きい方に符号を統一した式\\
+    \begin{array}{l|lllll}
+    評価目的 &式 &Signal &Noise &意味 &備考 \\
+    \hline
+    一般推定式 &10\log_{10}\left(\dfrac{\hat{\mu^2}}{\hat{\sigma^2}}\right) &\hat{\mu^2} &\hat{\sigma^2} & \\
+    \hline
+    直積法\\
+    望大特性(大きい方が良い) &-10\log_{10}\left(\dfrac{1}{n}\displaystyle \sum_{i=1}^n\dfrac{1}{y_i^2}\right) &個々の応答値の二乗の逆数平均 &暗黙的にNoiseを除去 &値が「大きい」ほど良い &Signal値が逆数で、式にマイナスが付いていることに注意 \\
+    望小特性(小さい方が良い) &-10\log_{10}\left(\dfrac{1}{n}\displaystyle \sum_{i=1}^n{y_i^2}\right) &個々の応答値の二乗平均 &↑ &↑ &マイナス符号で逆転して統一している \\
+    望目特性(目標値がある) &-10\log_{10}\left(\dfrac{1}{n}\displaystyle \sum_{i=1}^n (y_i - T)^2\right) &目標値との差の二乗の平均 &↑ &↑ &目標値に近いほどSN比大 \\
+    \hline
+    標準法\\
+    大きい方が良い &10\log_{10}\left(\dfrac{\bar{y}_i^2}{s^2}\right) &平均応答の二乗\bar{y}^2 &分散s^2 &↑ &式にマイナスが付いていないことに注意 \\
+    小さい方が良い &-10\log_{10}\left(\dfrac{\bar{y}_i^2}{s^2}\right) &↑ &↑ &↑ &マイナス符号で逆転して統一している \\
+    目標値がある &-10\log_{10}\left(\dfrac{1}{n}\displaystyle \sum_{i=1}^n (y_i - T)^2\right) &目標値との差の二乗の平均 &- &↑ &目標値に近いほどSN比大 \\
+    \hline
+    静特性(誤差因子k水準) \\
+    大きい方が良い &10\log_{10}\dfrac{S_m}{V_e} &S_m=\dfrac{(\sum_{i=1}^k{y_i})^2}{k} &V_e=\left(\sum_{i=1}^k{y_i^2}\right)-S_m &↑ &  \\
+    小さい方が良い &-10\log_{10}\dfrac{S_m}{V_e} &↑ &↑ &↑ &  \\
+    目標値がある &10\log_{10}\left(\dfrac{\dfrac{1}{k}(S_m-V_e)}{V_e}\right) &↑ &↑ &↑ &目標値に近いほどSN比大 \\
+    &&\dfrac{1}{k}(S_m-V_e) &V_e  \\
+    \hline
+    静特性(誤差因子2水準) \\
+    大きい方が良い(同上) \\
+    小さい方が良い(同上) \\
+    目標値がある &10\log_{10}\left(\dfrac{\dfrac{1}{2}(S_m-V_e)}{V_e}\right) &\dfrac{1}{2}(S_m-V_e) &V_e &大きいほど目標に近く揺れに強い &目標値に近いほどSN比大 \\
+    &&S_m=\dfrac{(y_1+y_2)^2}{2} &V_e=(y_1^2+y_2^2)-S_m &&誤差因子2水準の統合値\\
+    &&&=\dfrac{(y_1-y_2)^2}{2} \\
+    \end{array}  \\
+    y:因子の効果、\bar{y}:平均応答、s^2:分散、T:目標値\\
+    S_m(Signal\hspace{0.5em}Mean\hspace{0.5em}Squere):誤差因子の各水準を統合した平方和の平均成分､信号に比例した成分(信号項) \\
+    V_e:誤差分散 \\
+    \text{}\\
+    感度の式\\
+    \begin{array}{l|ll}
+    タイプ &式 &備考\\
+    \hline
+    感度推定値 &10\log_{10}(\dfrac{1}{k}(S_m-V_e)) &Signal部分だけのデシベル。 \\
+    &&SN比と整合を取るためにデシベル補正したもの\\
+    目標値での正規化&\dfrac{\sqrt{S_m}}{T}=\dfrac{\sum_{i=1}^k{y_i}}{T\sqrt{k}} &誤差2水準の場合:\dfrac{y_1+y_2}{T\sqrt{2}}\\
+    簡易感度(正規化なし) &\dfrac{\sum_{i=1}^k{y_i}}{k} &誤差2水準の場合:\dfrac{y_1+y_2}{2}\\
+    \end{array} \\
   comment: |
     SN比はSignal-to-Noise比の略で、信号（目的の値）とノイズ（ばらつき）の比率を表す指標。<br>
     大きい方がよい、または小さい方がよい、目標値に近い方がよいなど、目的に応じて異なる定義がある。<br>
-    SN比を最大化することで、製品や工程の性能を向上させることができる。
+    SN比を最大化することで、製品や工程の性能を向上させることができる。    
 14-01:ＱＣ７つ道具:
   id: 14-01
   formula: |
@@ -1313,17 +1385,23 @@
 18-02:抜取検査：関連用語:
   id: 18-02
   formula: |
-    AQL[Acceptable Quality Level](合格品質限界)･･･ロットを合格としてよい不良率の限界値(生産者側)\\
-    LTPD[Lot Tolerance Percent Defective]（ロット不受入限界）\\
-    \hspace{2em}･･･この不良率以上のロットは受け入れたくないとする限界値(消費者側)\\
-    \alpha(生産者危険)･･･良品ロットを誤って不合格とするリスク\\
-    \beta(消費者危険)･･･不良ロットを誤って合格とするリスク\\
-    OC曲線[Operating Characteristic Curve]･･･不良率（p）に対するロット合格確率のグラフ\\
-    ASN曲線[Average Sample Number Curve]･･･不良率に対する平均検査数を示すグラフ\\
-    n･･･抜取数\\
-    c(合格限度)･･･合格と判定できる不良個数の最大値\\
-    検査水準･･･抜取数（n）を決めるための基準(通常、厳重、緩和)\\
-    Dodge-Romig表･･･抜取検査の代表的な表。平均全数検査数（ASN）を最小にする
+    \begin{array}{rll}
+    用語 &詳細表現 &内容\\
+    \hline
+    AQL &[Acceptable Quality Level](合格品質限界) &ロットを合格としてよい不良率の限界値(生産者側)\\
+    LTPD &[Lot Tolerance Percent Defective]（ロット不受入限界）&この不良率以上のロットは受け入れたくないとする限界値(消費者側)\\
+    \alpha &生産者危険 &良品ロットを誤って不合格とするリスク\\
+    \beta &消費者危険 &不良ロットを誤って合格とするリスク\\
+    1-\beta &検出力 &不良率がLTPDに達している場合に、ロットを正しく不合格と判定できる確率\\
+    累積確率曲線 &ゾーンダイク曲線 &あらかじめ確率を計算したグラフ(ポアソン分布などで近似したもの)\\
+    OC曲線 &[Operating Characteristic Curve] &不良率（p）に対するロット合格確率のグラフ(累積確率曲線のひとつ)\\
+    ASN曲線 &[Average Sample Number Curve] &不良率に対する平均検査数を示すグラフ\\
+    n &&抜取数\\
+    c &合格限度 &合格と判定できる不良個数の最大値\\
+    検査水準 &&抜取数（n）を決めるための基準(通常、厳重、緩和)\\
+    超幾何分布 &&二項分布の非復元抽出版(抜き取ったら戻さない) \\
+    Dodge-Romig表 &&抜取検査の代表的な表。平均全数検査数（ASN）を最小にする
+    \end{array} 
   comment: |
     生産者側と消費者側の要求をバランスよく設計する必要がある。<br>
     当社では検査規格(検査基準)で使われる n=5/c=0 など。<br>
@@ -2037,4 +2115,3 @@
     非復元抽出：一度選ばれた個体は もう選ばれない \\
     \end{array}
   comment: |
-
