@@ -27,15 +27,30 @@
 0-04:用語解説：分散 V[variance](またはs<sup>2</sup>):
   id: 0-04
   formula: |
-    \displaystyle
-    平方和を自由度で割ったもの。正しくは平均平方と言う(実際の分散は誤差成分と他のパラメータの効果を除いたもの※期待値で導出する)。単位は元のデータの２乗になる。\newline
-    \begin{array}{ll}
-    V &= \displaystyle \frac{S}{\phi}\\
-      &= \displaystyle \frac{1}{n-1}\sum(x_i - \bar x)^2 \\
-      &= \displaystyle \frac{1}{n}\sum(x_i^2) - \bar x^2 \\
-    V(X)&=\sigma^2=E[(X-\mu)^2] \hspace{1em} (母分散の場合) \\
-    V(x)&=s^2= \displaystyle \frac{1}{n-1} \displaystyle \sum_{}^{} (x_i-\bar{x})^2  \hspace{1em} (標本分散の場合) \\
-    \end{array} 
+    分散の分類 \\
+    \begin{array}{l|l|l}
+    &定義式 &推定式\\
+    \hline
+    記号 &V=\sigma^2 &V=s^2 \\
+    式 &=E[(X-\mu)^2]=E[(X-E[X])^2]=E[X^2]-(E[X])^2 &=\dfrac{S}{\phi}=\dfrac{\displaystyle\sum_{i=1}^n(x_i-\bar{x})^2}{n-1}=\dfrac{1}{n}\sum(x_i^2)-\bar{x}^2 \\
+    &=(データ-母平均)^2つまり誤差、の期待値 &=\dfrac{平方和(つまり実際の誤差の総和)}{自由度} \\
+    式の意味 &誤差成分のみ &標本データから計算した誤差分散の推定量 \\
+    呼び方 &母分散 &平均平方(不偏分散) \\
+    分類 &理論上の式 &ANOVAなどの実務で使用\\
+    全体との関係&&V_{全体}=V_{全要因}+V_e[ANOVAでの分散分解] \\
+    \end{array} \\
+    単位は元のデータの２乗\\
+    \text{}\\
+    分散の線形変換 \\
+    \begin{array}{l|rl}
+    パターン &式(※a,bは定数) \\
+    \hline
+    1変数Xのみの場合    &V(aX+b)&=a^{\Large \mathbf{2}}V(X) \\
+    ２変数の場合 &V(aX+bY)&=a^2V(X)+b^2V(Y)+2abCov(X,Y) \hspace{1em} (母分散) \\
+    &s^2_{aX+bY}&=a^2s^2_{X}+b^2s^2_{Y}+2abC_{XY} \hspace{1em} (標本分散) \\
+    a=b=1(係数1の場合) &V(X+Y)&=V(X)+V(Y)+ {\Large \mathbf{2} } Cov(X,Y) \hspace{1em} (共分散には２が掛かっていることに注意) \\
+    \end{array} \\
+    ※係数は２乗、定数は消える。
   comment: |
     データ数が増えた分を平均化するために合計値を単にnで割ると母分散よりも期待値が小さくなる。<br>
     期待値が小さくなる=偏り(バイアス)を補正するために自由度で割る
@@ -153,12 +168,33 @@
   id: 0-14
   formula: |
     \begin{array}{l}
-    ・期待値･･･母平均。確率変数Xの「平均的な値」「中心的な値」を表す(標本集団は具体的な値なので期待値はない) \\
+    ・期待値･･･母平均。確率変数Xの「平均的な値」「中心的な値」を表す \\
+    \hspace{1em}(標本集団は具体的な値なので期待値はない)\\
     \hspace{1em} 定義式 \\
     \hspace{1em} E[X]=\mu=  \displaystyle \sum_i x_iP(X=x_i) \hspace{1em} (離散型) \\
     \hspace{1em} E[X]=\mu= \displaystyle  \int_{ -\infty }^{ \infty }xf(x)dx \hspace{1em} (連続型)   \\
-    ※期待値(母平均)は、標本平均\bar{x}=\displaystyle \frac{1}{n} \displaystyle \sum_{i=1}^{n}x_i とは異なる  \\
-    \end{array} 
+    \end{array} \\
+    \text{}\\
+    期待値とは母平均\\
+    E[X]=\mu\\
+    理論上の平均値なので、標本には期待値はなく標本平均\bar{x}=\displaystyle \frac{1}{n} \displaystyle \sum_{i=1}^{n}x_iが母平均の推定値になる。\\
+    \text{}\\
+    期待値の線形分解\\
+    \begin{array}{l|rll}
+    分類 &式(a,bは定数)\\
+    \hline
+    1変数X &E[aX+b]&=aE[X]+b\\
+    \hline
+    2変数X_1,X_2の和 &E[aX_1+bX_2]&=aE[X_1]+bE[X_2]\\
+    \hline
+    2変数X_1,X_2の積(独立) &E[aX_1X_2+b]&=aE[X_1]E[X_2]+b(独立の場合は分解可能)\\
+    \hline
+    2変数X_1,X_2の積(相関あり) &E[aX_1X_2+b]&=aE[X_1X_2]+b(相関ある場合は分解不可)\\
+    &↑&=a(Cov(X_1,X_2)+E[X_1]E[X_2])+b\\
+    &&Cov(X_1,X_2)=E[X_1X_2]-E[X_1]E[X_2]を代入\\
+    \end{array} \\
+    ※分散と異なり、係数はそのまま外に出せ、和差はそのまま分けられる。定数もそのまま分けられる。\\
+    \hspace{1em}積は独立ならE[X_1X_2]=E[X_1]E[X_2]に分解可能。相関がある場合は単純に分解できない。 \\    
   comment: ''
 0-15:用語解説：母集団と標本集団:
   id: 0-15
@@ -493,7 +529,10 @@
     分母は自由度n<sub>1</sub>-1とn<sub>2</sub>-1を足したもの(それぞれの因子は独立で交互作用なしが前提)
 5-07:個々のデータ範囲(存在区間)の推定:
   id: 5-07
-  formula: '\bar x \pm t(\phi_e,\alpha)\sqrt{(1 + \frac{1}{n})V_e}\sim t(自由度\phi:n - 1)'
+  formula: |
+    母平均\muと新しい観測値（個々の1点）との差を推定する区間 に使う\\
+    予測区間と呼ばれる\\
+    \bar{x}\pm t(\phi_e,\alpha)\sqrt{\left(1 + \dfrac{1}{n}\right)V_e}\sim t(自由度\phi:n - 1)\\
   comment: |
     個々のデータ範囲(存在区間)の推定。<br>
     t分布のt値を用いて、個々のデータの推定区間を求める。Veは誤差分散でs²を用いる
@@ -511,6 +550,7 @@
   id: 5-09
   formula: |
     母平均の差の算出方法を母比率の差に応用 \\
+    例えばロットAとロットBの不良品率が同じかなど\\
     \text{}\\
     \begin{array}{c|ccc} 
     \text{検定の種類} & \text{統計量} t & \text{分散}（V_p) & \text{備考} \\ 
@@ -522,6 +562,21 @@
     &&&分母に+1､分子に+0.5する補正を「連続修正」または「0.5補正」「補正あり比率」という\\
     &&&(\overset{*}{p}:補正あり母不適合品率の推定値)\\
     \end{array}
+  comment: |
+5-10:t推定の応用:正規分布と二項分布の分散の比較:
+  id: 5-10
+  formula: |
+    正規分布二項分布の分散の比較\\
+    \begin{array}{l|rlrl}
+    項目 &正規分布 &&二項分布 \\
+    \hline
+    個々の値と母平均の差 &V(x_i-\mu)&=\sigma^2 &V(X)&=np(1-p)\\
+    標本平均(正規)/標本比率(二項)の差 &V(\bar{X}-\mu)&=\dfrac{\sigma^2}{n} &V(\hat{p}-p)&=\dfrac{p(1-p)}{n} \\
+    &&&↑V(\dfrac{X}{n}-p)=V(\dfrac{X}{n})&=\dfrac{np(1-p)}{n^2}※1\\
+    母平均(正規)/母比率(二項)の差 &V(\bar{x}_1-\bar{x}_2)&=V_p\left(\dfrac{1}{n_1}+\dfrac{1}{n_2}\right) &V(\hat{p}_1-\hat{p}_2)&=\hat{p}(1-\hat{p})\left(\dfrac{1}{n_1}+\dfrac{1}{n_2}\right) \\
+    標本平均(正規)/標本比率(二項) &\bar{X}&=\dfrac{1}{n}\displaystyle\sum_{i=1}^n{X_i} &\hat{p}&=\dfrac{1}{n}\displaystyle\sum_{i=1}^n{X_i} \\
+    \end{array} \\
+    ※1:分散の展開で定数を取り出すとき、和差された定数pは消える。積除された定数nは二乗になる。\\
   comment: |
 6-01:χ<sup>2</sup>(カイ二乗)検定：とは？何に使う？:
   id: 6-01
@@ -689,17 +744,23 @@
   formula: |
     \displaystyle
     定義：2つの変数 X, Y が 同時に増減する傾向 を示す指標 \\
-    定義式： \\
-    \hspace{2em}Cov(X,Y)=E[XY]-E[X]E[Y],\;\;\; (母共分散) \\
-    \hspace{2em}C_{XY}=\frac{1}{n-1}S_{XY}=\frac{1}{n-1} \displaystyle \sum_{i=1}^{n} (X_i-\bar{X})(Y_i-\bar{Y}),\;\;\; (標本共分散) \\
-    \hspace{3em}※S_{XY}:X,Yの偏差積和 \\
-    計算式：\\
-    \hspace{2em}Cov(X,Y) = \frac{\sum (x_i - \bar x)(y_i - \bar y)}{n},\;\;\; (母共分散) \\
-    \hspace{2em}C_{XY} = \frac{\sum (x_i - \bar x)(y_i - \bar y)}{n - 1},\;\;\; (標本共分散) \\
-    特徴： \\
-    \hspace{2em}正なら「Xが増えるとYも増える」傾向 \\
-    \hspace{2em}負なら「Xが増えるとYは減る」傾向 \\
-    \hspace{2em}ゼロなら無相関(ただし独立とは限らない) \\
+    共分散\\
+    \begin{array}{l|rlrl}
+    &定義式&&推定式\\
+    \hline
+    分類&母共分散&(母平均既知) &標本共分散&(母平均未知)\\
+    式 &Cov(X,Y)&=E[XY]-E[X]E[Y]&C_{XY}&=\dfrac{S_{XY}}{n-1}\\
+    &&=\dfrac{\sum(x_i-\mu_{X})(y_i-\mu_{Y})}{n} &&=\dfrac{\sum(x_i-\bar{x})(y_i-\bar{y})}{n-1}\\
+    \end{array} \\
+    ※S_{XY}はXとYの偏差積和\\
+    \text{}\\
+    共分散の符号による相関性\\
+    \begin{array}{l|lll}
+    符号 &正 &負 &0 \\
+    \hline
+    相関 &Xが増えると &Xが増えると &相関性なし \\
+    &Yも増加 &Yは減少 &(ただし独立とは限らない) \\
+    \end{array} \\
     \text{}\\
     分散の線形変換 \\
     \hspace{2em}V(aX+bY)=a^2V(X)+b^2V(Y)+2abCov(X,Y) \hspace{1em} (母分散) \\
@@ -750,18 +811,26 @@
   id: 7-12
   formula: |
     \begin{array}{l|lllllll}
-    分布名 &適用場面 &定義 &パラメータ &確率密度関数f/質量関数P &平均 &分散 &特徴 \\
+    分布名 &適用場面 &定義 &確率密度関数f/質量関数P &平均 &分散 &特徴 \\
     \hline 
-    正規分布 &測定誤差や多くの自然現象 &N(\mu,\sigma^2) &平均\mu、分散\sigma^2 &f(x)= \displaystyle \frac{1}{\sqrt{2 \pi \sigma^2}}e^{- \frac{(x-\mu)^2}{2\sigma^2} }  &\mu &\sigma^2 &中心極限定理で重要、左右対称ベル型 \\
-    二項分布 &n回の独立試行での成功回数 &B(n,p )&試行回数n、成功確率p &P(X=k)= \binom{n}{k}p^k(1-p)^{n-k} &np &np(1-p) &pが小さいときポアソン分布に近似 \\
-    ポアソン分布 &一定時間･空間での発生回数 &Po(\lambda) &平均発生率\lambda &P(X=k)= \displaystyle \frac{e^{-\lambda}\lambda^k}{k!}  &\lambda &\lambda &希少事象の回数分布､二項分布の極限 \\
-     \chi^2分布 &分散の検定､適合度の検定など &※1 &自由度k &f(x)= \displaystyle \frac{1}{2^{k/2} \Gamma (k/2)}x^{k/2}e^{-x/2},(x>0)  &k &2k &正規分布の二乗の和から導かれる \\
-    一様分布(離散型) &全範囲で等確率 &\{1,\dots,n\} &\{1,\dots,n\} &P(X=k)= \displaystyle \frac{1}{n},(k=1, \dots ,n)  & \displaystyle \frac{n+1}{2}  & \displaystyle \frac{(n-1)^2}{12} &サイコロ等の等間隔の現象 \\
-    一様分布(連続型) &全範囲で等確率 &区間[a,b] &区間[a,b] &f(x)= \displaystyle \frac{1}{b-a},(a \leq x \leq b)  & \displaystyle \frac{a+b}{2}  & \displaystyle \frac{(b-a)^2}{12} &全ての値が同等の確率 \\
-    指数分布 &故障時間･待ち時間のモデル &\lambda e^{-\lambda x},x \geq 0 &平均待ち時間1/\lambda &f(x)=\lambda e^{-\lambda x},(x \geq 0) &1/\lambda &1/\lambda^2 &再生性なし､記憶なし性(途中からでも同じ分布に従う)､ポアソン過程の待ち時間分布 \\
-    二次元分布 &2変数以上の同時分布(多変量分布) &f(x,y) &平均ベクトル\mu、共分散行列 \Sigma &※2 &\muベクトル &\Sigma &相関係数\rhoでxとyの依存関係を表す \\
-    超幾何分布 & 有限母集団､ロットサイズ小 &H(N,M,n) & 母集団サイズN、成功数M、標本サイズn & P(X=k)= \dfrac{\binom{M}{k}\binom{N-M}{n-k}}{\binom{N}{n}} & n\dfrac{M}{N} & n\dfrac{M}{N}\left(1-\dfrac{M}{N}\right)\dfrac{N-n}{N-1}  &高精度の確率計算 \\
-    &&&&&&\dfrac{N-n}{N-1},(有限母集団補正) &二項分布の非復元版(引いたら戻さない)\\
+    正規分布 &測定誤差や多くの自然現象 &N(\mu,\sigma^2) &f(x)= \displaystyle \frac{1}{\sqrt{2 \pi \sigma^2}}e^{- \frac{(x-\mu)^2}{2\sigma^2} }  &\mu &\sigma^2 &中心極限定理で重要、左右対称ベル型 \\
+    &&平均\mu、分散\sigma^2\\
+    二項分布 &n回の独立試行での成功回数 &B(n,p ) &P(X=k)= \binom{n}{k}p^k(1-p)^{n-k} &np &np(1-p) &pが小さいときポアソン分布に近似 \\
+    &&試行回数n、成功確率p \\
+    ポアソン分布 &一定時間･空間での発生回数 &Po(\lambda) &P(X=k)= \displaystyle \frac{e^{-\lambda}\lambda^k}{k!}  &\lambda &\lambda &希少事象の回数分布､二項分布の極限 \\
+    &&平均発生率\lambda \\
+     \chi^2分布 &分散の検定､適合度の検定など &※1 &f(x)= \displaystyle \frac{1}{2^{k/2} \Gamma (k/2)}x^{k/2}e^{-x/2},(x>0)  &k &2k &正規分布の二乗の和から導かれる \\
+     &&自由度k \\
+    一様分布(離散型) &全範囲で等確率 &\{1,\dots,n\} &P(X=k)= \displaystyle \frac{1}{n},(k=1, \dots ,n)  & \displaystyle \frac{n+1}{2}  & \displaystyle \frac{(n-1)^2}{12} &サイコロ等の等間隔の現象 \\
+    一様分布(連続型) &全範囲で等確率 &区間[a,b] &f(x)= \displaystyle \frac{1}{b-a},(a \leq x \leq b)  & \displaystyle \frac{a+b}{2}  & \displaystyle \frac{(b-a)^2}{12} &全ての値が同等の確率 \\
+    指数分布 &故障時間･待ち時間のモデル &\lambda e^{-\lambda x},x \geq 0 &f(x)=\lambda e^{-\lambda x},(x \geq 0) &1/\lambda &1/\lambda^2 &再生性なし､記憶なし性(途中からでも同じ分布に従う) \\
+    &&&&&&ポアソン過程の待ち時間分布\\
+    &&平均待ち時間1/\lambda \\
+    二次元分布 &2変数以上の同時分布(多変量分布) &f(x,y) &※2 &\muベクトル &\Sigma &相関係数\rhoでxとyの依存関係を表す \\
+    &&平均ベクトル\mu、共分散行列 \Sigma \\
+    超幾何分布 & 有限母集団､ロットサイズ小 &H(N,M,n) & P(X=k)= \dfrac{\binom{M}{k}\binom{N-M}{n-k}}{\binom{N}{n}} & n\dfrac{M}{N} & n\dfrac{M}{N}\left(1-\dfrac{M}{N}\right)\dfrac{N-n}{N-1}  &高精度の確率計算 \\
+    &&母集団サイズN、成功数M、標本サイズn \\
+    &&&&&\dfrac{N-n}{N-1},(有限母集団補正) &二項分布の非復元版(引いたら戻さない)\\
     \end{array} \\
     ※1:X= \displaystyle \sum_{i=1}^{k}Z_i^2,Z_i \sim N(0,1)自由度kの標準正規分布の二乗和 \\
     ※2:f(x,y)=\frac{1}{2\pi\sigma_x\sigma_y\sqrt{1-\rho^2}}exp(-\frac{1}{2(1-\rho^2)}[\frac{(x-\mu x)^2}{\sigma_x^2}-\frac{2\rho(x-\mu x)(y-\mu y)}{\sigma_X \sigma_y}+\frac{(y-\mu y)^2}{\sigma_y^2}]) \\
