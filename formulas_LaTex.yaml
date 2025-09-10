@@ -162,7 +162,8 @@
     \hspace{2em} 母集団の特性値を評価･･･定量的 \\
     ・検定･･･母数が意味ある基準かどうかの判定 \\
     \hspace{2em} 母集団の分布をある仮定に置き、成立するかを判定･･･定性的 \\
-    \end{array} 
+    \end{array} \\
+    ※例：t検定をするために立てた仮説H_0をt検定の式で推定する\\    
   comment: ''
 0-14:用語解説：期待値:
   id: 0-14
@@ -389,11 +390,13 @@
     \displaystyle z = \frac{\bar x - \mu}{\sqrt{\sigma^2/n}}\sim N(0,1) = N(\mu, \frac{\sigma^2}{n}) \\
     標準誤差SE=\sigma_{\bar{X}}=\displaystyle \frac{\sigma}{\sqrt{n}} \\
   comment: n個の平均なので、個々のデータxに対しn倍となっている分散σ²をnで割る。これを標準「誤差」という(標準偏差ではないので注意)。
-4-03:標準化変数：t分布[n個の平均(母分散未知)]:
+4-03:標準化変数：t分布[n個の平均(母分散未知)]スチューデントのt推定の式:
   id: 4-03
   formula: |
-    \displaystyle t = \frac{\bar x - \mu}{\sqrt{s^2/n}}\sim t(自由度\phi:n - 1),\;
-    但し\; s^2 = \frac{1}{n-1}\sum(x_i - \bar x)^2 = \frac{Sum}{n - 1}
+    t = \dfrac{\bar x - \mu}{\sqrt{s^2/n}}\sim t(自由度\phi:n - 1),\;
+    \hspace{1em} 但し\; s^2 = \dfrac{1}{n-1}\sum(x_i - \bar x)^2 = \dfrac{Sum}{n - 1}\\
+    スチューデントのt推定の式の一般化\\
+    t=\dfrac{(推定値-帰無仮説値)}{(標準誤差)}\\
   comment: 母分散σ²が未知なので代わりに標本分散s²を用いる。tは自由度n-1のt分布に従う→標本分散s²はn-1で割る
 4.5-01:検定：用語1:
   id: 4.5-01
@@ -928,50 +931,115 @@
     \end{array} 
   comment: |
     その他右記などがある。XmR管理図(X:個々の値､mR:移動範囲[連続する2点の差])･･･1個ずつしか測定できない場合(破壊検査など)に用いる
-10-01:回帰分析：単回帰分析(単一の要素):
+10-01:回帰分析：単回帰分析(単一の要素)と最小二乗法:
   id: 10-01
-  formula: 'y = \beta_0 + \beta_1 x + \epsilon'
+  formula: |
+    単回帰分析\\
+    \begin{array}{l|ll}
+    &モデル&最小二乗法\\
+    \hline
+    式&y=\beta_0+\beta_1x+\epsilon &y=\dfrac{S_{xy}}{S_{xx}}(x-\bar{x})+\bar{y} \\
+    傾き(回帰係数) &\beta_1 &\hat{\beta}_1=\dfrac{S_{xy}}{S_{xx}} \\
+    切片 &\beta_0 &\hat{\beta}_0=\bar{y}-\dfrac{S_{xy}}{S_{xx}}\bar{x}=\bar{y}-\hat{\beta}_1\bar{x} \\
+    \end{array} \\
+    x:説明変数(独立変数)､y:目的変数(従属変数)\\
+    \beta_0,\beta_1:定数、\epsilon:誤差項(ランダムな確率変数)\\
+    S_{xy}:xyの偏差積和、S_{xx}:xの偏差平方和\\  
   comment: |
-    x:目的変数(従属変数)、y:説明変数(独立変数)、β<sub>0</sub>:切片[定数項](αで表すことも)、β<sub>1</sub>:回帰係数(傾き､勾配)、ε:誤差項。<br>
     単回帰分析は1つの説明変数xが目的変数yに与える影響を評価するための手法。<br>
     直線の方程式で表され、データの傾向をモデル化する。
-10-02:回帰分析：単回帰分析の最小二乗法:
+10-02:回帰分析：単回帰分析の偏差平方和の関係式と決定係数R<sup>2</sup>:
   id: 10-02
   formula: |
-    \begin{array}{rl}
-    \displaystyle
-    \bar x &= \displaystyle \frac{1}{n}\sum x_i \\
-    \bar y &= \displaystyle \frac{1}{n}\sum y_i \\
-    傾き:\hat\beta_i &= b = \displaystyle \frac{\sum (x_i - \bar x)(y_i - \bar y)}{\sum (x_i - \bar x)^2} =  \displaystyle \frac{S_{xy}}{S_{xx}} \\
-    切片:\hat\beta_0 &= a = \bar y - \beta_1 \bar x
+    偏差平方和の関係式と決定係数\\
+    \begin{array}{l|rlrl}
+    項目 &残差の導出 &&偏差平方和 \\
+    \hline
+    実現値&y&=\beta_1x+\beta_0と置いたとき、&S_{yy}=&S_T=\displaystyle \sum_{i=1}^n(y_i-\bar{y})^2=\displaystyle \sum_{i=1}^n(y_i)^2-n\bar{y}^2 \\
+    推定値&\hat{y_i}&=\beta_1x_i+\beta_0より &S_{\hat{y}y}=&S_R=\displaystyle \sum_{i=1}^n(\hat{y}_i-\bar{y})^2 \\
+    残差&e_i&=y_i-\hat{y}_i &&S_e=\displaystyle \sum_{i=1}^n(y_i-\hat{y})^2 \\
+    &&=y_i-(\beta_1x_i+\beta_0) \\
+    関係式 &&-----&&S_T=S_R+S_e\\
+    \end{array} \\
+    \text{}\\
+    決定係数:R^2=\dfrac{S_R}{S_T}=1-\dfrac{S_e}{S_T}と定義する\\
+    \begin{array}{l}
+    単回帰分析の場合\\
+    決定係数:R^2=r^2(相関係数)\\
     \end{array} 
-  comment: ''
-10-03:回帰分析：単回帰分析の分散分析と決定係数R<sup>2</sup>:
-  id: 10-03
-  formula: |
-    \begin{array}{rl}
-    R^2 &= r^2(相関係数),\;\;\; \\
-    &= 1 - \frac{S_e}{S_T} \\
-    &= \frac{S_R}{S_T},\;\;\;\;\;\;\\
-    S_T &= S_e + S_R,\;\;\; \\
-    &= \sum (y_i - \bar y)^2,\;\;\; \\
-    S_R &= \sum (\hat y_i - \bar y)^2,\;\;\; \\
-    S_e &= \sum (y_i - \hat y_i)^2
-    \end{array}
+    \hspace{2em} \begin{array}{l}\\
+    S_T=S_R+S_eを変形して\\
+    S_R=S_T-S_e\\
+    \dfrac{S_R}{S_T}=1-\dfrac{S_e}{S_T}、[S_RとS_Tの比としたものをR^2と定義]\\
+    \end{array} 
   comment: |
     単回帰分析では相関係数と決定係数は同じ値となる。<br>
     S<sub>R</sub>:(変動の平方和:一元配置分散分析のS_Aが置き換わったもの)。<br>
     分散分析から決定係数R²を求める。<br>
     R²は回帰モデルがデータのばらつきをどれだけ説明できるかを示す指標。<br>
     0から1の範囲で、1に近いほどモデルがデータをよく説明していることを意味する。
+10-03:回帰分析：単回帰分析の偏差平方和の関係式の証明:
+  id: 10-03
+  formula: |
+    偏差平方和関係式S_T=S_R+S_eの証明\\
+    \begin{array}{rl}
+    y_i-\bar{y}&=(y_i-\hat{y}_i)-(\hat{y}_i-\bar{y}),\hspace{0.5em} e_i=y_i-\hat{y}_iより \\
+    &=e_i-(\hat{y}_i-\bar{y}),\hspace{0.5em}両辺を二乗して和を取ると \\
+    \sum(y_i-\bar{y})^2&=\sum(e_i-(\hat{y}_i-\bar{y}))^2\\
+    S_T&=\sum{e_i^2}+2\sum{e_i(\hat{y}_i-\bar{y})}+\sum{(\hat{y}_i-\bar{y})}^2 \\
+    &=S_e+2\sum{e_i(\hat{y}_i-\bar{y})}+S_R,\hspace{0.5em}\hat{y}_i-\bar{y}=\hat\beta_1(x_i-\bar{x})より \\
+    &=S_e+2\sum{e_i(\hat\beta_1(x_i-\bar{x}))}+S_R\\
+    &=S_e+2\hat\beta_1\sum{e_i(x_i-\bar{x})}+S_R\\
+    \end{array} \\
+    \text{}\\
+    クロス項2\hat\beta_1\sum{e_i(x_i-\bar{x})}=0の証明\\
+    \begin{array}{rl}
+    e_i&=y_i-\hat{y}_i, \hspace{0.5em}\hat{y}_i=\hat\beta_0+\hat\beta_1x_iより \\
+    &=y_i-(\hat\beta_0+\hat\beta_1x_i), \hspace{0.5em} \hat\beta_0=\bar{y}-\hat\beta_1\bar{x}より\\
+    &=y_i-((\bar{y}-\hat\beta_1\bar{x})+\hat\beta_1x_i) \\
+    &=(y_i-\bar{y})-\hat\beta_1(x_i-\bar{x}),両辺に和を取ると \\
+    \sum{e_i}&=\sum{(y_i-\bar{y})}-\hat\beta_1\sum{(x_i-\bar{x})},\hspace{0.5em}偏差和\sum{(y_i-\bar{y})}=\sum{(x_i-\bar{x})}=0なので \\
+    &=0-\hat\beta_1\cdot0\\
+    &=0\\
+    \end{array} \\
+    \text{}\\
+    偏差和がゼロの理由\\
+    偏差和は各データと全データから算出した平均値との差であるため、\\
+    プラスの差とマイナスの差で均されてゼロになる\\
+    yの偏差和での証明\\
+    \begin{array}{rl}
+    \sum({y_i-\bar{y}})&=\sum{y_i}-\sum\bar{y}\\
+    &=\sum{y_i}-n\bar{y}, \hspace{0.5em}\bar{y}=\dfrac{1}{n}\sum{y_i}(n個のデータの平均)より \\
+    &=\sum{y_i}-n(\dfrac{1}{n}\sum{y_i}) \\
+    &=0\\
+    \end{array}\\     
+    \begin{array}{rl}
+    \sum{e_i}&=\sum(y_i-\bar{y})-\hat\beta_1\sum(x_i-\bar{x})より\\
+    \sum{e_i(x_i-\bar{x})}&=\sum(y_i-\bar{y})(x_i-\bar{x})-\hat\beta_1\sum(x_i-\bar{x})^2 \\
+    &=S_{xy}-\hat\beta_1S_{xx}, \hspace{0.5em}\hat\beta_1=\dfrac{S_{xy}}{S_{xx}}より  \\
+    &=S_{xy}-\dfrac{S_{xy}}{S_{xx}}\cdot S_{xx}  \\
+    &=0,よって\\
+    2\hat\beta_1\sum{e_i(x_i-\bar{x})}&=2\hat\beta_1\cdot0\\
+    &=0\\
+    \end{array} \\
+    これより\\
+    S_T=S_R+S_e    
+  comment: |
 10-04:回帰分析：単回帰分析での寄与率と各自由度[F検定関連]:
   id: 10-04
   formula: |
-    \displaystyle
-    寄与率:r^2 = R^2(決定係数),\;\;\;\;\;\\
-    \phi_T = n - 1,\;\\
-    \phi_R = 1,\;\\
-    \phi_e = n - 2,
+    単回帰分析をF検定で使うときの関連する値\\
+    寄与率:r^2 = R^2(決定係数)\\
+    \text{}\\
+    \begin{array}{l|ll}
+    項目 &自由度 &理由 \\
+    \hline
+    全体&\phi_T = n - 1 &平均を基準にしているため \\
+    回帰&\phi_R = 1 &パラメータは傾きしか使っていないため \\
+    &&切片は必ず点(\bar{x},\bar{y})を通るため、傾き\beta_1のみで決まる\\
+    &&\hat{\beta}_0=\bar{y}-\hat{\beta}_1\bar{x}\\
+    誤差&\phi_e = n - 2 &\phi_e=\phi_T-\phi_R \\
+    \end{array} 
   comment: |
     単回帰では寄与率は決定係数と同じになる(重回帰では異なる)。<br>
     各自由度はF検定で用いられる。
