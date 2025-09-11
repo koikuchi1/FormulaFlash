@@ -634,6 +634,52 @@
   comment: |
     r: 行数、c: 列数。<br>
     クロス集計表で、行列合計の制約を除いた自由なセルの数。
+6-08:χ<sup>2</sup>(カイ二乗)検定：種類まとめ一覧:
+  id: 6-08
+  formula: |
+    \begin{array}{l|lllllll} 
+    種類 &用途 &公式\chi^2 &自由度\phi &期待度数E &クロス表縦軸(行)r &クロス表横軸(列)c \\
+    \hline
+    一般式 &観測値の期待値からのズレ、比率(確率)を評価 &\chi^2=\displaystyle\sum_{i=1}^{k}\dfrac{(O_i-E_i)^2}{E_i} &k-1 &- &- &-  \\
+    &特徴:グラフは正の値のみで左右非対称\\
+    &\hspace{2em}自由度が増えると山が横軸増加方向にずれる \\
+    &\hspace{2em}山自体も横に広がる\\
+    ※クロス表を使う場合&↑&↑&(r-1)(c-1) &E_{ij}=\dfrac{N_{i行}N_{j列}}{N},(N:合計値) &r個のパラメータ &c個のパラメータ\\
+    &&&(r:行数、c:列数)\\
+    \hline
+    適合度検定 &データが理論分布（例：二項、正規）に従うか &↑ &k-1-m &E_i=N\times{P_i} &- &-   \\
+    &(想定された確率との差) &&&(P_i=利用する分布関数の理論確率) \\
+    \hline
+    独立性の検定 &1つの母集団で2つの質的変数が独立か &\displaystyle \sum_{i=1}^{r}  \displaystyle \sum_{j=1}^{c} \dfrac{(n_{ij}-E_{ij})^2}{E_{ij}} &(r-1)(c-1) &E_{ij}=\dfrac{N_{i行}N_{j列}}{N},(N:合計値) &r個の変数1 &c個の変数2  \\
+    \hline
+    同等性の検定\\
+    (r群c分類表) &r群の比率がc分類で同じか &\displaystyle \sum_{i=1}^{r}  \displaystyle \sum_{j=1}^{c} \dfrac{(n_{ij}-E_{ij})^2}{E_{ij}} &↑ &↑ &r群 &c分類  \\
+    (2群2分類表) &2群の比率が同じか &\chi^2=\dfrac{(N-1)(ad-bc)^2}{(a+b)(c+d)(a+c)(b+d)} &1  &E_{ij}=\dfrac{N_{1行目}N_{j列}}{N},(N:合計値) &群(標本など) &分類(成功/失敗など)  \\
+    &&=\dfrac{(自由度)(行列関数)^2}{(N_{1行目})(N_{2行目})(N_{1列目})(N_{2列目})},(N:合計) &\\
+    (r群2分類表) &r群の比率が同じか &\chi^2= \displaystyle \sum_{j=1}^{r}\dfrac{(n_{1j}-E_{1j})^2}{E_{1j}}+\displaystyle \sum_{j=1}^{r}\dfrac{(n_{2j}-E_{2j})^2}{E_{2j}} &r-1 &E_{1j}=\dfrac{N_{1行目}N_{j列}}{N},E_{2j}=\dfrac{N_{2行目}N_{j列}}{N} &r群(標本など) &分類(成功/失敗など) \\
+    &&=\dfrac{N^2}{N_{j列}(N-N_{j列})}\left[\sum_{i=1}^{r}\dfrac{n_{ij}^2}{N_{i行}} - \dfrac{N_{j列}^2}{N}\right] \\
+    \hline
+    母分散の検定&母分散\sigma^2が仮説値\sigma_0^2と等しいか &\chi^2=\dfrac{(n-1)s^2}{\sigma_0^2} &n-1 &- &- &- \\
+    母分散の区間推定&母分散の信頼区間を求める &\dfrac{(n-1)s^2}{\chi^2_{1-\alpha/2}} \leq \sigma^2 \leq \dfrac{(n-1)s^2}{\chi^2_{\alpha/2}}   &↑ &- &- &- \\
+    &&(グラフが左右非対称なので±の形にはしない)\\
+    \end{array} \\
+    O:観測値、E:期待度数、k:区分数\\
+    m:推定した母数の数(つまり利用した母数のパラメータ数(p値,\mu,\sigmaなど))\\
+    n:標本データやセルの値\\
+    N:標本サイズ\\
+    \text{}\\
+    クロス表の例\\
+    \begin{array}{l|llll|ll}
+    &分類1(j=1) &分類2(j=2) & \cdots &分類c(j=c) &列合計 \\
+    \hline
+    群1(i=1) &n_{i=1,j=1} &n_{i=1,j=2}  &\cdots  &n_{i=1,j=c} &N_{1行目}=\displaystyle\sum_{j=1}^{c}n_{i=1,j} \\
+    群2(i=2) &n_{i=2,j=1} &n_{i=2,j=2}  &\cdots  &n_{i=2,j=c} &N_{2行目}=\displaystyle\sum_{j=1}^{c}n_{i=1,j} \\
+    \vdots &\vdots &\vdots &\vdots &\vdots &\vdots \\
+    群r(i=r) &n_{i=r,j=1} &n_{i=r,j=2} & \cdots  &n_{i=r,j=c} &N_{r行目}=\displaystyle\sum_{j=1}^{c}n_{i=r,j} \\
+    \hline
+    行合計 &N_{j列目}=\displaystyle\sum_{i=1}^{r}n_{i,j=1} &N_{2列目}=\displaystyle\sum_{i=1}^{r}n_{j,j=2} & \cdots &N_{r列目}=\displaystyle\sum_{i=1}^{r}n_{j,j=c}  &N=\displaystyle\sum_{i=1}^{r}\displaystyle\sum_{j=1}^{c}n_{i,j}\\
+    \end{array} 
+  comment: |
 7-00:確率分布：用語:
   id: 7-00
   formula: |
@@ -1046,11 +1092,20 @@
 10-05:回帰分析：単回帰分析でのp値[t検定関連]:
   id: 10-05
   formula: |
-    \displaystyle
-    t = \frac{b}{SE_b},\;\;\;\;
-    SE_b = \frac{s}{\sqrt{\sum (x_i - \bar x)^2}},\;\;\;\;
-    s = \sqrt{\frac{S_e}{n - 2}},\;\;\;\;
-    p = 2(1 - t(\phi_e, |t|))
+    単回帰分析のt推定(係数\beta_1の推定)\\
+    一般の定義、母平均の定義との比較表\\
+    \begin{array}{l|llll}
+    &一般定義&母平均の推定(1標本) &単回帰分析 \\
+    \hline
+    推定値 &\hat{\theta}(任意の推定値) &標本平均\bar{x} &回帰係数\hat\beta_1 \\
+    帰無仮説の値 &\theta_0 &母平均\mu_0 &\beta_1=0 \\
+    自由度 &\phi(推定に応じて) &n-1(平均を使用) &n-2(切片と傾きを使用) \\
+    分散 &V_{\hat{\theta}}=\dfrac{S}{\phi}=\dfrac{平方和}{自由度} &s^2=\dfrac{S_T}{n-1} &V_e=\dfrac{S_e}{n-2} \\
+    標準誤差 &s_{\hat{\theta}}=\sqrt{V_{\hat{\theta}}}=(分散の平方根) &s_{\bar{x}}=\sqrt{\dfrac{s^2}{n}} &s_{\hat\beta_1}=\sqrt{\dfrac{V_e}{S_{xx}}},(S_{xx}=\sum(x-\bar{x})^2) \\
+    tの式 &t=\dfrac{\hat{\theta}-\theta_0}{s_{\hat{\theta}}}=\dfrac{推定値-帰無仮説の値}{標準誤差} &t=\dfrac{\bar{x}-\mu_0}{s_{\bar{x}}} &t=\dfrac{\hat\beta_1-\beta_1(=0)}{s_{\hat\beta_1}}=\dfrac{\hat\beta_1}{s_{\hat\beta_1}},(\hat\beta_1=\dfrac{S_{xy}}{S_{xx}}) \\
+    &&&=\dfrac{S_{xy}}{S_{xx}}\sqrt{\dfrac{S_{xx}}{V_e}}={S_{xy}}\sqrt{\dfrac{1}{V_eS_{xx}}}\\
+    p値 &p=2(1-t(\phi,\left|t\right|)) &p=2(1-t(\phi[=n-1],\left|t\right|)) &p=2(1-t(\phi_e[=n-2],\left|t\right|)) \\
+    \end{array}\\
   comment: |
     b:回帰係数(傾き)、SE<sub>b</sub>:回帰係数の標準誤差、s：残差の標準偏差。<br>
     t値を計算し、p値をt分布表から求めることで回帰係数が統計的に有意かどうかを判断する。<br>
