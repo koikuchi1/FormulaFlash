@@ -1255,16 +1255,16 @@
 12-01:耐久性：密度関数、信頼度[Reliability]と故障率(ハザード関数):
   id: 12-01
   formula: |
-    密度関数: f(t) = \frac{dF(t)}{dt} = -\frac{dR(t)}{dt} = \frac{m}{\eta}\left(\frac{t-\gamma}{\eta}\right)^{m - 1}\exp\left[-\left(\frac{t-\gamma}{\eta}\right)^{m}\right](ワイブル密度関数),\;\\
-    信頼度: R(t) = \exp\left[-\left(\frac{t-\gamma}{\eta}\right)^{m}\right],\;
-    不信頼度: F(t) = 1 - R(t), \hspace{1em} t \geq \gamma\;\\
-    ハザード関数:\lambda(t): 故障率:h(t) = \frac{f(t)}{R(t)} = \frac{m}{\eta}\left(\frac{t}{\eta}\right)^{m - 1} \hspace{1em} \gamma は傾きに影響しないため考慮せず0とする\\
-    ↓ \\ 
-    m = 1のとき,\\
-    f(t) = \frac{1}{\eta} \left(\frac{t}{\eta}\right)^{1 - 1} e^{-\left(\frac{t}{\eta}\right)^1} = \frac{1}{\eta} e^{-\frac{t}{\eta}},\;\;\; \left(\left(\frac{t}{\eta}\right)^0 = 1\right)\\
-    R(t) = e^{-\left(\frac{t}{\eta}\right)^1} = e^{-\frac{t}{\eta}}\newline F(t) = 1 - R(t) = 1 - e^{-\frac{t}{\eta}}\\
-    h(t) = \frac{f(t)}{R(t)} = \frac{\frac{1}{\eta} e^{-\frac{t}{\eta}}}{e^{-\frac{t}{\eta}}}
-    = \frac{1}{\eta}\newline \lambda(t) = \frac{1}{\eta} \left(\frac{t}{\eta}\right)^{1 - 1} = \frac{1}{\eta} = \lambda(一定の故障率)
+    ワイブル密度関数に関する公式と意味\\
+    \begin{array}{l|llll}
+    項目 &公式 &意味 \\
+    \hline
+    信頼度R(t) & \exp\left[-\left(\frac{t-\gamma}{\eta}\right)^{m}\right] \hspace{0.5em},(t \geq \gamma)  &まだ壊れていない確率(常に減少) \\
+    不信頼度F(t) &1-R(t) &その時間までに壊れている確率(常に増加)\\
+    ワイブル密度関数f(t) &\dfrac{dF(t)}{dt}=-\dfrac{dR(t)}{dt} &その時刻周辺で故障する確率の分布(信頼度が急激に減少するときに高くなる)\\
+    &=\dfrac{m}{\eta}\left(\dfrac{t-\gamma}{\eta}\right)^{m - 1}\exp\left[-\left(\dfrac{t-\gamma}{\eta}\right)^{m}\right] \\
+    ハザード関数[故障率]\lambda(t) &\dfrac{f(t)}{R(t)}=\dfrac{m}{\eta}\left(\dfrac{t}{\eta}\right)^{m-1},(寿命開始時刻\gamma=0とする) &その時点で壊れる割合(m値の組み合わせでバスタブ曲線となる)\\
+    \end{array} \\
   comment: |
     R(t)は時間tまで製品が故障しない確率（信頼度）。F(t)は不信頼度、f(t)は密度関数で単位時間あたりの故障確率。<br>
     h(t)はハザード関数（瞬間故障率）で、時間tにおける故障のリスクを示す。<br>
@@ -1282,9 +1282,9 @@
     パラメータ(名前) &範囲 & 値の意味 \\
     \hline
     m(形状パラメータ) &&故障率の増減の形を決める\\
-    &m<1 &初期故障期(減少):バスタブ曲線の左側で故障率は減少(DFR型) \\
-    &m=1 &偶発故障期(一定):定常故障期で故障率は一定(CFR型) \\
-    &m<1 &摩耗故障期(増加):バスタブ曲線の右側で故障率は増加(IFR型) \\
+    Decreasing Failure Rate&m<1 &初期故障期(減少):バスタブ曲線の左側で故障率は減少(DFR型) \\
+    Constant Failure Rate&m=1 &偶発故障期(一定):定常故障期で故障率は一定(CFR型) \\
+    Increasing Failure Rate&m<1 &摩耗故障期(増加):バスタブ曲線の右側で故障率は増加(IFR型) \\
     \hline
     \gamma(位置パラメータ) &&t \geq \gammaで故障が始まる(下限値)(横軸方向の位置) \\
     &\gamma=0 &製造直後から故障の可能性あり \\
@@ -1296,14 +1296,27 @@
     &\etaが小さい &寿命が短く故障しやすい(グラフの横方向の広がり) \\
     \end{array} \\    
   comment: 製品のライフサイクルにおける故障率の変化を模式的に示した曲線で、浴槽（バスタブ）のような形状から名前がついている。形状パラメータmは統計学ではβで表されることが多い。
-12-03:耐久性：指数分布(ワイブル分布でm = 1のとき):
+12-03:耐久性：指数分布(ワイブル分布でm値による整理):
   id: 12-03
   formula: |
-    \displaystyle
-    m = 1(故障率一定のとき),\\
-    密度関数: f(t) = \lambda e^{-\lambda t},\; (t \geq 0,\; \lambda > 0),\; \\
-    信頼度: R(t) = e^{-\lambda t},\; 不信頼度:F(t) = 1 - R(t),\; \\ 
-    ハザード関数: \lambda(t) = \lambda
+    ワイブル形状パラメータmによる整理\\
+    \begin{array}{l|llll}
+    m値 &m<1 &m=1 &m>1 &その他傾向 \\
+    \hline
+    信頼度R(t) &減少傾向(初期:急､その後:緩) &徐々に緩やかになる &減少傾向(前半:緩､一定時間後:急) &R(0)=1,(すべてのm値) \\
+    &&R(t)=e^{-{\lambda}t}指数分布&&常に減少方向\\
+    \hline
+    ワイブル密度関数&f(t) &f(t)={\lambda}e^{-{\lambda}t}&f(t) \\
+    &f(0)=\infty(初期:急減､その後:緩減) &f(0)=\lambda(徐々に減少) &f(0)=0(前半:増加､後半:減少) &m>1だけ前半に増加となる山型グラフ\\
+    &&&&m<1,m=1は常に減少方向\\
+    \hline
+    故障率\lambda(t) &\dfrac{m}{\eta}\left(\dfrac{t}{\eta}\right)^{m-1} &\dfrac{1}{\eta}=\lambda,(定数) &\dfrac{m}{\eta}\left(\dfrac{t}{\eta}\right)^{m-1} &故障開始時刻\gamma=0として簡易に計算  \\
+    故障率の増減 &↘初期に高く減少 &→一定 &↗増加 &バスタブ曲線  \\
+    故障率初期値 &\lambda(0)=\infty&\lambda(0)=\lambda&\lambda(0)=0\\
+    \hline
+    意味 &初期故障 &偶発故障 &摩耗故障  \\
+    \end{array} \\
+    ※統計学でのハザード関数h(t)=信頼性工学では故障率\lambda(t)
   comment: |
     指数分布は、故障が時間に依存せず一定の確率で発生する場合に用いられる。<br>
     λは平均故障率で、時間tにおける信頼度R(t)と不信頼度F(t)を表す。<br>
@@ -1312,16 +1325,29 @@
 12-04:耐久性：MTTF(平均故障時間)とMTBF(平均故障間隔)、B<sub>10</sub>ライフ:
   id: 12-04
   formula: |
-    故障率\lambda が一定の時(m = 1のとき)\\
-    信頼度:R(t) = e^{-\lambda t} \\
-    密度関数:(t) = \lambda e^{-\lambda t} \\
-    平均故障時間\text{MTTF} = \displaystyle \frac{\int_0^{\infty} t f(t) dt}{\int_0^{\infty} f(t) dt} = \frac{1}{\lambda} \\
-    修理系について \\
-    平均故障時間\text{MTTF}= \displaystyle \frac{総稼働時間-総修理時間}{故障回数} \\
-    平均故障間隔\text{MTBF} = MTTF + MTTR \hspace{1em} ※修理不能系では\text{MTBF} = MTTF \\
-    平均修理時間\text{MTTR} =  \displaystyle \frac{総修理時間}{修理個数} \\
-    稼働率(アベイラビリティ)= \displaystyle \frac{MTBF}{MTBF + MTTR} \\
-    B_{10}ライフ:アイテムの10\%が故障するまでの時間
+    m=1の場合の故障時間関連の項目の整理\\
+    共通部分\\
+    \begin{array}{l|lll}
+    項目 &公式･定義 &補足 \\
+    \hline
+    信頼度 &R(t)=e^{-{\lambda}t} &t時間までに故障していない確率 \\
+    密度関数 &f(t)={\lambda}e^{-{\lambda}t}={\lambda}R(t) &t時刻に故障する確率密度 \\
+    B10ライフ &アイテムの10\%が故障するまでの時間 &信頼性保証の目安B_{10}=\dfrac{-\ln{(0.9)}}{\lambda}\\
+    \end{array} \\
+    \text{}\\
+    故障時間関連項目\\
+    \begin{array}{l|lll}
+    項目 &分類 &公式･定義 &補足 \\
+    \hline
+    平均故障時間 &修理不能系 &MTTF=\dfrac{\int_0^{\infty} t f(t) dt}{\int_0^{\infty} f(t) dt} = \dfrac{1}{\lambda} &製品の平均寿命 \\
+    &&\hspace{1em}=\text{Mean Time To Failure}\\
+    平均故障間隔&修理系 &MTBF=\dfrac{総稼働時間}{修理回数(故障回数)} &故障しても修理する場合の平均稼働時間 \\
+    &&\hspace{1em}=\text{Mean Time Between Failures}\\
+    平均修理時間 &↑ &MTTR=\dfrac{総修理時間}{修理回数} &故障1回あたりの平均修理時間\\
+    &&\hspace{1em}=\text{Mean Time To Repair}\\
+    稼働率(アベイラビリティ) &↑ &Availability=\dfrac{MTBF}{MTBF+MTTR} &稼働している確率\\
+    &&&(修理時間が短くなれば稼働率は上がる)\\
+    \end{array} 
   comment: |
     MTTFは平均故障時間で製品が故障するまでの平均時間を示す(使い捨てや、修理不可能製品に適用)。<br>
     MTBFは平均故障間隔で故障と修理の間の平均時間を示す(修理可能製品に適用)。
@@ -1687,7 +1713,7 @@
     Mahalanobis距離（マハラノビス距離)：{D^2 = (x - \mu)^T S^{-1}(x - \mu)}(ベクトル、行列計算),\;\;\;\;\\
     \hspace{2em}(x：観測値ベクトル,\mu：平均ベクトル,S^{-1}：共分散行列の逆行列,()^T：行列の転置(縦横を入れ替える))\\
     \hspace{2em}xや\muの例：x = \binom{10}{5},\;\mu = \binom{8}{4}\;\;\; →\;\;\; x - \mu = \binom{2}{1}(列ベクトル)\;\;\;→\;\;\; (x - \mu)^T = (2, 1)(行ベクトル)\\
-    \hspace{2em}行列Sとその逆行列S = \begin{pmatrix}a & b \\ c & d \end{pmatrix} \;\;\; →\;\;\; S^{-1} = \frac{1}{ad - bc}\begin{pmatrix}d & -b \\ -c & d \end{pmatrix}
+    \hspace{2em}行列Sとその逆行列S = \begin{pmatrix}a & b \\ c & d \end{pmatrix} \;\;\; →\;\;\; S^{-1} = \dfrac{1}{ad - bc}\begin{pmatrix}a & -b \\ -c & d \end{pmatrix}
   comment: |
     利用例： 不良品・良品の分類、顧客の属性分類など。<br>
     距離は「分散が大きい方向ほど短く評価」される（例：縦長の楕円クラスタ）。つまり、ばらつきが大きいとそれぞれの特徴の差が小さくなる<br>
