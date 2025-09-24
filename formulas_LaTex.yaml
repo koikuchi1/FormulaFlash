@@ -800,6 +800,8 @@
     分類&母共分散&(母平均既知) &標本共分散&(母平均未知)\\
     式 &Cov(X,Y)&=E[XY]-E[X]E[Y]&C_{XY}&=\dfrac{S_{XY}}{n-1}\\
     &&=\dfrac{\sum(x_i-\mu_{X})(y_i-\mu_{Y})}{n} &&=\dfrac{\sum(x_i-\bar{x})(y_i-\bar{y})}{n-1}\\
+    &&&&=\dfrac{n}{n-1}(E[XY]-E[X]E[Y])\\
+    &&&&=\dfrac{n}{n-1}×(母分散の推定値)\\
     \end{array} \\
     ※S_{XY}はXとYの偏差積和\\
     \text{}\\
