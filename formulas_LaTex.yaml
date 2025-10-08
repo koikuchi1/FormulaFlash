@@ -887,6 +887,7 @@
     \end{array} \\
     ※1:X= \displaystyle \sum_{i=1}^{k}Z_i^2,Z_i \sim N(0,1)自由度kの標準正規分布の二乗和 \\
     ※2:f(x,y)=\frac{1}{2\pi\sigma_x\sigma_y\sqrt{1-\rho^2}}exp(-\frac{1}{2(1-\rho^2)}[\frac{(x-\mu x)^2}{\sigma_x^2}-\frac{2\rho(x-\mu x)(y-\mu y)}{\sigma_X \sigma_y}+\frac{(y-\mu y)^2}{\sigma_y^2}]) \\  comment: |  
+  comment: |  
     確率密度関数f(x),f(x,y)などは連続型、確率質量関数P(X=k)は離散型
 7-13:確率分布：二項分布の正規分布近似法:
   id: 7-13
@@ -2432,4 +2433,5 @@
     ローレンス曲線 & 品目別累積比率を曲線で表示 & 品目の集中度分析、ABC分析の補助 & グラフ解釈問題で出題の可能性 \\
     \end{array}
   comment: |  
+
 
