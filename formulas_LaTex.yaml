@@ -870,8 +870,10 @@
     &&試行回数n、成功確率p \\
     ポアソン分布 &一定時間･空間での発生回数 &Po(\lambda) &P(X=k)= \displaystyle \frac{e^{-\lambda}\lambda^k}{k!}  &\lambda &\lambda &希少事象の回数分布､二項分布の極限 \\
     &&平均発生率\lambda \\
-     \chi^2分布 &分散の検定､適合度の検定など &※1 &f(x)= \displaystyle \frac{1}{2^{k/2} \Gamma (k/2)}x^{k/2}e^{-x/2},(x>0)  &k &2k &正規分布の二乗の和から導かれる \\
-     &&自由度k \\
+     \chi^2分布 &分散の検定､適合度の検定など &※1 &f(x)= \displaystyle \frac{1}{2^{\phi/2} \Gamma (\phi/2)}x^{\phi/2}e^{-x/2},(x>0)  &\phi &2\phi &正規分布の二乗の和から導かれる \\
+     &&自由度\phi \\
+    t分布 &母平均の推定・検定(母分散未知) &t(\phi) &f(x)= \displaystyle \frac{\Gamma\left(\frac{\phi+1}{2}\right)}{\sqrt{\phi\pi}\,\Gamma\left(\frac{\phi}{2}\right)}\left(1+\frac{x^2}{\phi}\right)^{-\frac{\phi+1}{2}}  &0 & \displaystyle \frac{\phi}{\phi-2}\;(\phi>2) &母分散未知時の平均推定に使用、裾が厚く\phi増加で正規分布に近づく \\ 
+    &&自由度\phi\\
     一様分布(離散型) &全範囲で等確率 &\{1,\dots,n\} &P(X=k)= \displaystyle \frac{1}{n},(k=1, \dots ,n)  & \displaystyle \frac{n+1}{2}  & \displaystyle \frac{(n-1)^2}{12} &サイコロ等の等間隔の現象 \\
     一様分布(連続型) &全範囲で等確率 &区間[a,b] &f(x)= \displaystyle \frac{1}{b-a},(a \leq x \leq b)  & \displaystyle \frac{a+b}{2}  & \displaystyle \frac{(b-a)^2}{12} &全ての値が同等の確率 \\
     指数分布 &故障時間･待ち時間のモデル &\lambda e^{-\lambda x},x \geq 0 &f(x)=\lambda e^{-\lambda x},(x \geq 0) &1/\lambda &1/\lambda^2 &再生性なし､記憶なし性(途中からでも同じ分布に従う) \\
@@ -884,8 +886,7 @@
     &&&&&\dfrac{N-n}{N-1},(有限母集団補正) &二項分布の非復元版(引いたら戻さない)\\
     \end{array} \\
     ※1:X= \displaystyle \sum_{i=1}^{k}Z_i^2,Z_i \sim N(0,1)自由度kの標準正規分布の二乗和 \\
-    ※2:f(x,y)=\frac{1}{2\pi\sigma_x\sigma_y\sqrt{1-\rho^2}}exp(-\frac{1}{2(1-\rho^2)}[\frac{(x-\mu x)^2}{\sigma_x^2}-\frac{2\rho(x-\mu x)(y-\mu y)}{\sigma_X \sigma_y}+\frac{(y-\mu y)^2}{\sigma_y^2}]) \\
-  comment: |  
+    ※2:f(x,y)=\frac{1}{2\pi\sigma_x\sigma_y\sqrt{1-\rho^2}}exp(-\frac{1}{2(1-\rho^2)}[\frac{(x-\mu x)^2}{\sigma_x^2}-\frac{2\rho(x-\mu x)(y-\mu y)}{\sigma_X \sigma_y}+\frac{(y-\mu y)^2}{\sigma_y^2}]) \\  comment: |  
     確率密度関数f(x),f(x,y)などは連続型、確率質量関数P(X=k)は離散型
 7-13:確率分布：二項分布の正規分布近似法:
   id: 7-13
@@ -2431,3 +2432,4 @@
     ローレンス曲線 & 品目別累積比率を曲線で表示 & 品目の集中度分析、ABC分析の補助 & グラフ解釈問題で出題の可能性 \\
     \end{array}
   comment: |  
+
