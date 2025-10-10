@@ -1015,7 +1015,7 @@
     項目 &残差の導出 &&偏差平方和 \\
     \hline
     実現値&y&=\beta_1x+\beta_0と置いたとき、&S_{yy}=&S_T=\displaystyle \sum_{i=1}^n(y_i-\bar{y})^2=\displaystyle \sum_{i=1}^n(y_i)^2-n\bar{y}^2 \\
-    推定値&\hat{y_i}&=\beta_1x_i+\beta_0より &S_{\hat{y}y}=&S_R=\displaystyle \sum_{i=1}^n(\hat{y}_i-\bar{y})^2 \\
+    推定値&\hat{y_i}&=\beta_1x_i+\beta_0より &S_{\hat{y}y}=&S_R=\displaystyle \sum_{i=1}^n(\hat{y}_i-\bar{y})^2=\hat\beta_1S_{xy}=\dfrac{S_{xy}^2}{S_{xx}} \\
     残差&e_i&=y_i-\hat{y}_i &&S_e=\displaystyle \sum_{i=1}^n(y_i-\hat{y})^2 \\
     &&=y_i-(\beta_1x_i+\beta_0) \\
     関係式 &&-----&&S_T=S_R+S_e\\
