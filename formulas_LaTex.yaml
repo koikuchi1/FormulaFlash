@@ -1144,8 +1144,78 @@
     β<sub>1</sub>~β<sub>i</sub>:偏回帰係数、ε:誤差項。<br>
     重回帰分析は複数の説明変数を持つ式で表される。<br>
     複数の説明変数が目的変数に与える影響を同時に評価するための手法。
-10-07:回帰分析：重回帰分析の多重共線性とVIF(分散拡大係数)QC検定1級範囲:
+10-07:回帰分析：重回帰分析(複数の要素)の最小二乗法:
   id: 10-07
+  formula: |
+    最小二乗法とは、\\
+    誤差項e_iの二乗和\sum{e_i}^2を最小にするような係数\beta_jを求める方法\\
+    モデルを行列式\hat{b}=(X'X)^{-1}X'Yに変換して\hat{b}の各パラメータから\beta_jを求める手法をとる\\
+    ※実際の3\times{3}以上の逆行列の計算はかなり複雑なため、実務ではエクセルなどを用いて求める\\
+    ※説明変数が２つの場合は、偏差平方和及び偏差積和をを用いて各\beta_jを求める方が簡単\\
+    \text{}\\
+    説明変数が２の場合の例:\\
+    モデル:y_i=\beta_0+\beta_1x_{1i}+\beta_2x_{2i}+ \epsilon_i \\
+    \begin{array}{ll}
+    S=\sum{e_i}^2&=\sum(y_i-\hat{y}_i)^2\\
+    &=\sum(y_i-(\beta_0+\beta_1x_{1i}+\beta_2x_{2i}))^2\\
+    \end{array} \\
+    \text{}\\
+    上式を各\betaで偏微分しゼロと置く\\
+    \begin{array}{l|ll}
+    偏微分&&連立方程式\\
+    \hline
+    \dfrac{\partial{S}}{\partial{\beta_0}} =0 &→&\sum{y_i}= \mathbf{{\Large{n}}}\beta_0+\beta_1\sum{x_{1i}}+\beta_2\sum{x_{2i}} \\
+    \dfrac{\partial{S}}{\partial{\beta_1}} =0 &→&\sum{\mathbf{{\Large{x_{1i}}}}y_i}=\beta_0\mathbf{{\Large{\sum{x_{1i}}}}}+\beta_1\sum{x_{1i}\mathbf{{\Large{^2}}}}+\beta_2\sum{\mathbf{{\Large{x_{1i}}}}x_{2i}} \\
+    \dfrac{\partial{S}}{\partial{\beta_2}} =0 &→&\sum{\mathbf{{\Large{x_{2i}}}}y_i}=\beta_0\mathbf{{\Large{\sum{x_{2i}}}}}+\beta_1\sum{x_{1i}\mathbf{{\Large{x_{2i}}}}}+\beta_2\sum{x_{2i}\mathbf{{\Large{^2}}}} \\
+    \end{array} 
+    \hspace{2em} 
+    \Rightarrow 
+    \hspace{2em} 
+    \begin{array}{l|ll}
+    行列式化\\
+    \hline
+    \begin{bmatrix} \sum{y_i} \\ \sum{x_{1i}y_i} \\ \sum{x_{2i}y_i} \end{bmatrix} =
+    \begin{bmatrix} n & \sum{x_{1i}} & \sum{x_{2i}} \\ \sum{x_{1i}} & \sum{x_{1i}^2} & \sum{x_{1i}x_{2i}} \\ \sum{x_{2i}} & \sum{x_{1i}x_{2i}} & \sum{x_{2i}^2} \end{bmatrix}
+    \begin{bmatrix} \beta_0  \\ \beta_1 \\ \beta_2  \end{bmatrix} 
+    \\
+    X'Y=X'X\hat{b}
+    \end{array} \\
+    \text{}\\
+    X'Y=X'X\hat{b}より \\
+    \hat{b}=(X'X)^{-1}X'Y \\
+    \begin{bmatrix} \beta_0  \\ \beta_1 \\ \beta_2  \end{bmatrix} =
+    \begin{bmatrix} n & \sum{x_{1i}} & \sum{x_{2i}} \\ \sum{x_{1i}} & \sum{x_{1i}^2} & \sum{x_{1i}x_{2i}} \\ \sum{x_{2i}} & \sum{x_{1i}x_{2i}} & \sum{x_{2i}^2} \end{bmatrix}
+    \begin{bmatrix} \sum{y_i} \\ \sum{x_{1i}y_i} \\ \sum{x_{2i}y_i} \end{bmatrix} 
+    \\
+    \text{}\\
+    以下は行列式への変換のための各ベクトルと行列の定義\\
+    X:説明変数の行列(各列:\beta_0用､\beta_1用､\beta_2用)\\
+    X= \begin{bmatrix} 1 & x_{11} & x_{21} \\ 1 & x_{12} & x_{22} \\ 1 & x_{13} & x_{23} \end{bmatrix} \\
+    X'= \begin{bmatrix} 1 & 1 & 1 \\ x_{11} & x_{12} & x_{13} \\ x_{21} & x_{22} & x_{23} \end{bmatrix} \\
+    \begin{array}{ll}
+    ①係数行列X'X&=\begin{bmatrix} 1 & 1 & 1 \\ x_{11} & x_{12} & x_{13} \\ x_{21} & x_{22} & x_{23} \end{bmatrix}\begin{bmatrix} 1 & x_{11} & x_{21} \\ 1 & x_{12} & x_{22} \\ 1 & x_{13} & x_{23} \end{bmatrix} \\
+    &=\begin{bmatrix} n & \sum{x_{1i}} & \sum{x_{2i}} \\ \sum{x_{1i}} & \sum{x_{1i}^2} & \sum{x_{1i}x_{2i}} \\ \sum{x_{2i}} & \sum{x_{1i}x_{2i}} & \sum{x_{2i}^2} \end{bmatrix}\\
+    \end{array} \\
+    \text{}\\
+    目的変数のベクトル\\
+    Y=  \begin{bmatrix} y_1 \\ y_2 \\ y_3 \end{bmatrix} \\
+    \begin{array}{ll}
+    ②定数ベクトルX'Y&=\begin{bmatrix} 1 & 1 & 1 \\ x_{11} & x_{12} & x_{13} \\ x_{21} & x_{22} & x_{23} \end{bmatrix} \begin{bmatrix} y_1 \\ y_2 \\ y_3 \end{bmatrix} \\
+    &=\begin{bmatrix} \sum{y_i} \\ \sum{x_{1i}y_i} \\ \sum{x_{2i}y_i} \end{bmatrix}\\
+    \end{array} \\
+    ③未知数ベクトル\hat{b}= \begin{bmatrix} \beta_0  \\ \beta_1 \\ \beta_2  \end{bmatrix} \\
+    ④係数行列の逆行列(X'X)^{-1}=\dfrac{1}{ \Delta } 
+    \begin{bmatrix} 
+    (\sum{x_{1i}^2})(\sum{x_{2i}^2})-(\sum{x_{1i}x_{2i}})^2 & (\sum{x_{2i}})(\sum{x_{1i}x_{2i}})-(\sum{x_{1i}})(\sum{x_{2i}^2}) & (\sum{x_{1i}})(\sum{x_{1i}x_{2i}})-(\sum{x_{2i}})(\sum{x_{1i}^2})  \\
+    (\sum{x_{2i}})(\sum{x_{1i}x_{2i}})-\sum{x_{1i}}\sum{x_{2i}^2} & n\sum{x_{2i}^2}-(\sum{x_{1i}})^2 & (\sum{x_{1i}})(\sum{x_{2i}})-n(\sum{x_{1i}x_{2i}}) \\
+    (\sum{x_{1i}})(\sum{x_{1i}x_{2i}})-(\sum{x_{2i}})(\sum{x_{1i}^2}) & (\sum{x_{1i}})(\sum{x_{2i}})-n(\sum{x_{1i}x_{2i}}) & n(\sum{x_{1i}^2})-(\sum{x_{1i}})^2
+    \end{bmatrix} \\
+    \Delta =n \left( (\sum{x_{1i}^2})(\sum{x_{2i}^2})-(\sum{x_{1i}x_{2i}})^2 \right) 
+    -(\sum{x_{1i}}) \left( (\sum{x_{1i}})(\sum{x_{2i}^2})-(\sum{x_{2i}})(\sum{x_{1i}x_{2i}}) \right) 
+    +(\sum{x_{2i}}) \left( (\sum{x_{1i}})(\sum{x_{1i}x_{2i}})-(\sum{x_{2i}})(\sum{x_{1i}^2}) \right).  
+  comment: |
+10-08:回帰分析：重回帰分析の多重共線性とVIF(分散拡大係数)QC検定1級範囲:
+  id: 10-08
   formula: |
     \displaystyle
     VIF_j = \frac{1}{1 - R^2_j},\;\;\;(VIF:分散拡大係数、多重共線性の強さを測る指標。10以上なら注意が必要),\\
@@ -1156,14 +1226,18 @@
   comment: |
     多重共線性は、説明変数同士が強く相関している場合に発生し、回帰係数の推定が不安定になる。p値が大きくなる。<br>
     VIF(Variance Inflation Factor)は各説明変数の多重共線性の程度を示す指標で、VIFが10を超えると多重共線性の問題があるとされる。
-10-08:回帰分析：重回帰分析の分散分析:
-  id: 10-08
+10-09:回帰分析：重回帰分析の分散分析:
+  id: 10-09
   formula: |
-    重回帰分析 \\
+    重回帰分析の各係数\betaの算出と分散分析(説明変数２の例) \\
     モデル:y_i=\beta_0+\beta_1x_{1i}+\beta_2x_{2i}+\epsilon_i \\
     切片\hat{\beta}_0=\bar{y}-\hat{\beta}_1\bar{x}_1-\hat{\beta}_2\bar{x}_2 \\
-    \hat{\beta}_1=\dfrac{(\sum{x_{2i}^2})(\sum{x_{1i}y_{i}})-(\sum{x_{1i}x_{2i}})(\sum{x_{2i}y_{i}})-\frac{\sum{x_{2i}}}{n}[(\sum{y_i})(\sum{x_{2i}^2})-(\sum{x_{1i}})(\sum{x_{1i}y_{i}})]}
+    \begin{array}{ll}
+    \hat{\beta}_1&=\dfrac{(\sum{x_{2i}^2})(\sum{x_{1i}y_{i}})-(\sum{x_{1i}x_{2i}})(\sum{x_{2i}y_{i}})-\frac{\sum{x_{2i}}}{n}[(\sum{y_i})(\sum{x_{2i}^2})-(\sum{x_{1i}})(\sum{x_{1i}y_{i}})]}
     {(\sum{x_{1i}^2})(\sum{x_{2i}^2})-(\sum{x_{1i}x_{2i}})^2-\frac{1}{n}[(\sum{x_{1i}})^2\sum{x_{2i}^2}+(\sum{x_{2i}})^2\sum{x_{1i}^2}-2(\sum{x_{1i}})(\sum{x_{2i}})(\sum{x_{1i}x_{2i}})]} \\
+    &=\dfrac{S_{x_1y}S_{x_2^2}-S_{x_2y}S_{x_1x_2}}{S_{x_1^2}S_{x_2^2}-(S_{x_1x_2})^2} \\
+    \hat{\beta}_2&=\dfrac{S_{x_2y}S_{x_1^2}-S_{x_1y}S_{x_1x_2}}{S_{x_1^2}S_{x_2^2}-(S_{x_1x_2})^2} \\
+    \end{array}     \\
     \text{} \\
     分散分析表 \\
     \begin{array}{c|rlrlcc}
@@ -1171,14 +1245,18 @@
     \hline
     回帰R &S_R&=\sum(\hat{y}_i-\bar{y})^2 &\phi_{R}&=k(説明変数数) &V_R=\dfrac{S_R}{\phi_R} &\dfrac{V_R}{V_E} \\
     &&=\hat{\beta}_1\sum{x_{1i}y_i}+\hat{\beta}_2\sum{x_{2i}y_i}+n\hat{\beta}_0\bar{y}-n\bar{y}^2  \\
+    &&=\hat{\beta}_1S_{x_1y}+\hat{\beta}_2S_{x_2y}(偏差積和を使った計算式)\\
+    &&=\hat{\beta'}X'Y-n\bar{y}^2(※1)\\
     残差E &S_E&=S_T-S_R &\phi_E&=n-1-k &V_E=\dfrac{S_E}{\phi_E} \\
     \hline
     合計T &S_T&=\sum(y_i-\bar{y})^2 &\phi_T&=n-1(n:データ数) \\
     &&=\sum{y_i^2}-n\bar{y}^2 \\
-    \end{array}
+    \end{array}\\
+    ※1：行列を使った計算式､\hat{\beta}':係数の転置ベクトル、X'Y:定数ベクトル\\
+
   comment: |    
-10-09:回帰分析：重回帰分析関連の公式まとめ:
-  id: 10-09
+10-10:回帰分析：重回帰分析関連の公式まとめ:
+  id: 10-10
   formula: |
     QC検定1級 重回帰分析 公式一覧（頻出順)\\
     \begin{array}{l|llll}
@@ -1196,7 +1274,7 @@
     残差の標準偏差 &s_e=\sqrt{\dfrac{S_e}{n-2}} &s_e=\sqrt{\dfrac{S_e}{n-p-1}} \\
     切片 & \beta_0 = \bar{Y} - \beta_1 \bar{X_1} & \beta_0 = \bar{Y} -  \displaystyle \sum_{j=1}^{p}\beta_j\bar{X}_j   & 切片を求める式  \\
     決定係数(寄与率) & R^2 = \dfrac{S_R}{S_T} = 1 - \dfrac{S_e}{S_T} & ← & モデルの説明力(回帰の当てはまりの良さ)を表す指標 \\
-    相関係数 & r^2 = R^2 & 該当なし &単回帰の場合のみ決定係数と同値になる \\
+    相関係数 & r^2 = R^2 & 個々の説明変数の相関係数は以下で求める &単回帰の場合は説明変数が１つなので決定係数と同値になる \\
     &r=\dfrac{S_{XY}}{\sqrt{S_{XX}S_{YY}}} &← \\
     F値（回帰全体） & F = \dfrac{S_R / 1}{S_e / (n-2)}=\dfrac{V_R}{V_e} & F = \dfrac{S_R / p}{S_e / (n-p-1)}=\dfrac{V_R}{V_e} & 回帰式全体の有意性を検定 \\
     t値（係数の有意性） & t_1 = \dfrac{\beta_1}{s(\beta_1)} & t_i = \dfrac{\beta_i}{s(\beta_i)} & 個別係数の有意性を評価 \\
@@ -1223,6 +1301,180 @@
     &&通常の最小二乗法（OLS）の代わりに、誤差の分散共分散行列\Omegaを考慮して推定\\
     \end{array}
   comment: |   
+10-11:重回帰分析に用いる行列及びベクトルの計算補足1:
+  id: 10-11
+  formula: |
+    行列及びベクトルの計算補足\\
+    \begin{array}{ll}
+    \large\textbf{(1)単位行列}\normalsize I&= \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}(2\times2の場合) \\
+    &= \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}(3\times3の場合) \\
+    \end{array} \\
+    ※行と列の数が同じ\\
+    \text{}\\
+    \large\textbf{(2)行列の転置}\normalsize (記号は「'」又は「^\top」 )\\
+    A=\begin{bmatrix}  \Large{\mathbf{a}} & \Large{\mathbf{b}} & \Large{\mathbf{c}} \\ p & q & r \\   \mathbb{X} & \mathbb{Y} & \mathbb{Z} \end{bmatrix}\\
+    A'=A^\top =\begin{bmatrix} \Large{\mathbf{a}} & p & \mathbb{X} \\ \Large{\mathbf{b}} & q & \mathbb{Y} \\ \Large{\mathbf{c}} & r & \mathbb{Z} \end{bmatrix}\\
+    \text{}\\
+    \large\textbf{(3)行列の積算}\normalsize (前の行列の行と、後ろの行列の列の数が同じでないと成立しない)\\
+    A= \begin{bmatrix} \Large{\mathbf{a}} & \Large{\mathbf{b}} & \Large{\mathbf{c}} \\ d & e & f \\ \Large{\mathrm{g}} & \Large{\mathrm{h}} & \Large{\mathrm{i}}   \end{bmatrix}, B=\begin{bmatrix}  \large{\mathbb{P}}  & Q & \underline{R}  \\ \large{\mathbb{S}} & T & \underline{U} \\ \large{\mathbb{V}} & W & \underline{X} \end{bmatrix} \\
+    \begin{array}{ll}
+    AB&=\begin{bmatrix} \Large{\mathbf{a}} & \Large{\mathbf{b}} & \Large{\mathbf{c}} \\ d & e & f \\ \Large{\mathrm{g}} & \Large{\mathrm{h}} & \Large{\mathrm{i}}   \end{bmatrix}\begin{bmatrix}  \large{\mathbb{P}}  & Q & \underline{R}  \\ \large{\mathbb{S}} & T & \underline{U} \\ \large{\mathbb{V}} & W & \underline{X} \end{bmatrix} (前の行列の行、後ろの行列の列を掛ける) \\
+    &=\begin{bmatrix} 
+    \Large{\mathbf{a}}\large{\mathbb{P}}+\Large{\mathbf{b}}\large{\mathbb{S}}+\Large{\mathbf{c}}\large{\mathbb{V}} & \Large{\mathbf{a}}Q+\Large{\mathbf{b}}T+\Large{\mathbf{c}}W & \Large{\mathbf{a}}\underline{R}+\Large{\mathbf{b}}\underline{U}+\Large{\mathbf{c}}\underline{X} \\
+    d\large{\mathbb{P}}+e\large{\mathbb{S}}+f\large{\mathbb{V}} & dQ+eT+fW & d\underline{R}+e\underline{U}+f\underline{X} \\ 
+    \Large{\mathrm{g}}\large{\mathbb{P}}+\Large{\mathrm{h}}\large{\mathbb{S}}+\Large{\mathrm{i}}\large{\mathbb{V}} & \Large{\mathrm{g}}Q+\Large{\mathrm{h}}T+\Large{\mathrm{i}}W & \Large{\mathrm{g}}\underline{R}+\Large{\mathrm{h}}\underline{U}+\Large{\mathrm{i}}\underline{X} \end{bmatrix}
+    \end{array} \\
+    \text{}\\
+    \large\textbf{(4)行列式}\normalsize\\
+    \begin{array}{l|ll}
+    次元&行列&行列式\Delta\\
+    \hline
+    2\times{2} &  \begin{bmatrix} \Large{\mathbf{a}} & \large{\mathbb{B}} \\ \large{\mathbb{C}} & \Large{\mathbf{d}} \end{bmatrix}  & \Large{\mathbf{ad}}-\large{\mathbb{BC}} \\
+    3\times{3} &  \begin{bmatrix} \Large{\mathbf{a}} & \large{\mathbb{B}} & \underline{c} \\ \underline{p} & \Large{\mathbf{q}} & \large{\mathbb{R}} \\ \large{\mathbb{X}} & \underline{y} & \Large{\mathbf{z}} \end{bmatrix}  
+    & \Large{\mathbf{aqz}}+\large{\mathbb{BRX}}+\underline{cpy}-\Large{\mathbf{a}}\large{\mathbb{R}}\underline{y}-\large{\mathbb{B}}\underline{p}\Large{\mathbf{z}}-\underline{c}\Large{\mathbf{q}}\large{\mathbb{X}} \\
+    &&=\Large{\mathbf{a}}(\Large{\mathbf{qz}}-\large{\mathbb{R}}\underline{y})-\large{\mathbb{B}}(\underline{p}\Large{\mathbf{z}}-\large{\mathbb{RX}})+\underline{c}(\underline{py}-\Large{\mathbf{q}}\large{\mathbb{X}})\\
+    &&=\Large{\mathbf{a}}\begin{bmatrix} \Large{\mathbf{q}} & \large{\mathbb{R}} \\ \underline{y} & \Large{\mathbf{z}} \end{bmatrix} -\large{\mathbb{B}} \begin{bmatrix} \underline{p} & \large{\mathbb{R}} \\ \large{\mathbb{X}} & \Large{\mathbf{z}} \end{bmatrix} +\underline{c} \begin{bmatrix}  \underline{p} & \Large{\mathbf{q}} \\ \large{\mathbb{X}} & \underline{y} \end{bmatrix} 
+    \end{array} \\
+    ※式は１行目を係数として符号は+-が交互になった１つ下の次元の行列になる\\  
+  comment: |
+10-12:重回帰分析に用いる行列及びベクトルの計算補足2(逆行列):
+  id: 10-12
+  formula: |
+    行列及びベクトルの計算補足\\
+    \large\textbf{(5)逆行列}\normalsize\\
+    AA^{-1}=I(単位行列)のとき\\ \begin{bmatrix} a & b \\ c & d \end{bmatrix}  \begin{bmatrix} a & b \\ c & d \end{bmatrix} 
+    A^{-1}はAの逆行列\\
+    \text{}\\
+    2\times2の逆行列は覚える\\
+    A=\begin{bmatrix} a & b \\ c & d \end{bmatrix} \\
+    A^{-1}=\dfrac{1}{ad-bc} \begin{bmatrix} d & -b \\ -c & a \end{bmatrix},(ad-bc \neq 0の場合のみ) \\
+    \text{}\\
+    3\times3算出方法(掃き出し法[ガウス=ジョルダン法])\\
+    A=\begin{bmatrix} a & b & c \\ p & q & r \\ x & y & z \end{bmatrix} \\
+    \textbf{手順1)拡大行列(右側に単位行列を付ける)を作る}\\
+    [A|I]= \left[ 
+    \begin{array}{ccc|ccc}
+    a & b & c & 1 & 0 & 0 \\ 
+    p & q & r & 0 & 1 & 0 \\ 
+    x & y & z & 0 & 0 & 1 \\
+    \end{array} 
+    \right] \\
+    \textbf{手順2)第1列目を正規化する}\\
+    \textbf{手順2-1)1行目を1にするようにaで割る。}\\
+    \left[ 
+    \begin{array}{ccc|ccc}
+    1 & b/a & c/a & 1/a & 0 & 0 \\ 
+    p & q & r & 0 & 1 & 0 \\ 
+    x & y & z & 0 & 0 & 1 \\
+    \end{array} 
+    \right] \\
+    R_1=\begin{bmatrix} 1 & b/a & c/a & 1/a & 0 & 0 \end{bmatrix}\\
+    \textbf{手順2-2)2行目のpをゼロにするように2行目を}R_2-pR_1\textbf{を行う}\\
+    R_2-pR_1= \begin{bmatrix} p & q & r & 0 & 1 & 0 \end{bmatrix}-p\times \begin{bmatrix} 1 & b/a & c/a & 1/a & 0 & 0 \end{bmatrix} \\
+    \left[ 
+    \begin{array}{ccc|ccc}
+    1 & b/a & c/a & 1/a & 0 & 0 \\ 
+    0 & q-pb/a & r-pc/a & -p/a & 1 & 0 \\ 
+    x & y & z & 0 & 0 & 1 \\
+    \end{array} 
+    \right] \\
+    \textbf{手順2-3)3行目のxをゼロにするように3行目を}R_3-xR_1\textbf{を行う(}R_2\textbf{を計算する前の}R_1\textbf{を使う(つまり}R_2\textbf{と同時に計算するイメージ))}\\
+    R_3-xR_1= \begin{bmatrix} x & y & z & 0 & 0 & 1 \end{bmatrix}-x\times \begin{bmatrix} 1 & b/a & c/a & 1/a & 0 & 0 \end{bmatrix} \\
+    \left[ 
+    \begin{array}{ccc|ccc}
+    1 & b/a & c/a & 1/a & 0 & 0 \\ 
+    0 & q-pb/a & r-pc/a & -p/a & 1 & 0 \\ 
+    0 & y-xb/a & z-xc/a & -x/a & 0 & 1 \\
+    \end{array} 
+    \right] \\    
+    \textbf{手順3)第2列目を正規化する}\\    
+    \textbf{手順3-1)2行目を1にするように}\alpha\textbf{で割る｡}\\
+    \alpha=q-pb/a, \hspace{1em} \beta=r-pc/a, \hspace{1em} \gamma=y-xb/a, \hspace{1em} \delta=z-xc/aと置く,(但し\alpha \neq 0)\\
+    \left[ 
+    \begin{array}{ccc|ccc}
+    1 & b/a & c/a & 1/a & 0 & 0 \\ 
+    0 & \alpha & \beta & -p/a & 1 & 0 \\ 
+    0 & \gamma & \delta & -x/a & 0 & 1 \\
+    \end{array} 
+    \right] \\    
+    \begin{array}{ll}
+    R_2&=\begin{bmatrix} 0 & \alpha & \beta & -p/a & 1 & 0 \end{bmatrix}/\alpha\\
+    &=\begin{bmatrix} 0 & 1 & \beta/\alpha & -p/(a\alpha) & 1/\alpha & 0 \end{bmatrix}\\
+    \end{array} \\
+    \left[ 
+    \begin{array}{ccc|ccc}
+    1 & b/a & c/a & 1/a & 0 & 0 \\ 
+    0 & 1 & \beta/\alpha & -p/(a\alpha) & 1/\alpha & 0 \\ 
+    0 & \gamma & \delta & -x/a & 0 & 1 \\
+    \end{array} 
+    \right] \\  
+    \textbf{手順3-2)1行目のb/aをゼロにするように1行目を}R_1-b/a\cdot{R_2}\textbf{を行う}\\
+    \begin{array}{rl}
+    R_1-b/a\cdot{R_2}&= \begin{bmatrix} 1 & b/a & c/a & 1/a & 0 & 0 \end{bmatrix}-b/a\times \begin{bmatrix} 0 & 1 & \beta/\alpha & -p/(a\alpha) & 1/\alpha & 0 \end{bmatrix} \\
+    新たなR_1&=\begin{bmatrix} 1 & 0 & c/a-b\beta/(a\alpha) & 1/a+bp/(a^2\alpha) & -b/(a\alpha) & 0 \end{bmatrix}\\
+    \end{array}\\
+    \textbf{手順3-3)3行目の}\gamma\textbf{をゼロにするように3行目を}R_3-\gamma{R_2}\textbf{を行う(}R_1\textbf{を計算する前の}R_2\textbf{を使う(つまり}R_1\textbf{と同時に計算するイメージ))}\\
+    \begin{array}{rl}
+    R_3-\gamma{R_2}&= \begin{bmatrix} 0 & \gamma & \delta & -x/a & 0 & 1 \end{bmatrix}-\gamma\times \begin{bmatrix}  0 & 1 & \beta/\alpha & -p/(a\alpha) & 1/\alpha & 0 \end{bmatrix} \\
+    新たなR_3&=\begin{bmatrix} 0 & 0 & \delta-\gamma\beta/\alpha & -x/a+\gamma{p}/(a\alpha) & -\gamma/\alpha & 1 \end{bmatrix}\\
+    \end{array}\\
+    新たなR_1とR_3を代入して\\
+    \left[ 
+    \begin{array}{ccc|ccc}
+    1 & 0 & c/a-b\beta/(a\alpha) & 1/a+bp/(a^2\alpha) & -b/(a\alpha) & 0 \\ 
+    0 & 1 & \beta/\alpha & -p/(a\alpha) & 1/\alpha & 0 \\ 
+    0 & 0 & \delta-\gamma\beta/\alpha & -x/a+\gamma{p}/(a\alpha) & -\gamma/\alpha & 1 \\
+    \end{array} 
+    \right] \\  
+    \textbf{手順4)第3列目を正規化する}\\    
+    \textbf{手順4-1)3行目を1にするように}\omega\textbf{で割る｡}\\
+    \omega=\delta-\gamma\beta/\alphaと置く,(但し\omega \neq 0)\\
+    \begin{array}{rl}
+    \omega&=\delta-\gamma\beta/\alpha\\
+    &=\dfrac{a(qz-ry)-b(pz-rx)+c(py-qx)}{aq-bp}\\
+    &=\dfrac{\Delta}{aq-bp}\\
+    \end{array} \\
+    \left[ 
+    \begin{array}{ccc|ccc}
+    1 & 0 & c/a-b\beta/(a\alpha) & 1/a+bp/(a^2\alpha) & -b/(a\alpha) & 0 \\ 
+    0 & 1 & \beta/\alpha & -p/(a\alpha) & 1/\alpha & 0 \\ 
+    0 & 0 & \omega & -x/a+\gamma{p}/(a\alpha) & -\gamma/\alpha & 1 \\
+    \end{array} 
+    \right] \\  
+    \begin{array}{ll}
+    R_3&=\begin{bmatrix} 0 & 0 & \omega & -x/a+\gamma{p}/(a\alpha) & -\gamma/\alpha & 1 \end{bmatrix}/\omega\\
+    &=\begin{bmatrix} 0 & 0 & 1 & \dfrac{-x/a+\gamma{p}/(a\alpha)}{\omega} & \dfrac{-\gamma/\alpha}{\omega} & 1/\omega \end{bmatrix}\\
+    &=\begin{bmatrix} 0 & 0 & 1 & \dfrac{-x+\gamma{p}/\alpha}{a\omega} & \dfrac{-\gamma}{\alpha\omega} & 1/\omega \end{bmatrix}\\
+    \end{array} \\
+    \left[ 
+    \begin{array}{ccc|ccc}
+    1 & 0 & c/a-b\beta/(a\alpha) & 1/a+bp/(a^2\alpha) & -b/(a\alpha) & 0 \\ 
+    0 & 1 & \beta/\alpha & -p/(a\alpha) & 1/\alpha & 0 \\ 
+    0 & 0 & 1 & \dfrac{-x+\gamma{p}/\alpha}{a\omega} & \dfrac{-\gamma}{\alpha\omega} & 1/\omega \\
+    \end{array} 
+    \right] \\  
+    \textbf{手順4-2)1行目の}  \theta=c/a-b\beta/(a\alpha) \textbf{をゼロにするように1行目を}R_1-\theta{R_3}\textbf{を行う}\\
+    \begin{array}{rl}
+    R_1-\theta{R_3}&= \begin{bmatrix} 1 & 0 & \theta & 1/a+bp/(a^2\alpha) & -b/(a\alpha) & 0 \end{bmatrix}-\theta\begin{bmatrix} 0 & 0 & 1 & \dfrac{-x+\gamma{p}/\alpha}{a\omega} & \dfrac{-\gamma}{\alpha\omega} & 1/\omega \end{bmatrix} \\
+    新たなR_1&=\begin{bmatrix} 1 & 0 & 0 & 1/a+bp/(a^2\alpha)-\theta\dfrac{-x+\gamma{p}/\alpha}{a\omega} & -b/(a\alpha)-\theta\dfrac{-\gamma}{\alpha\omega} & -\theta/\omega \end{bmatrix}\\
+    &=\begin{bmatrix} 1 & 0 & 0 & \dfrac{(a\alpha+bp)\omega+(x\alpha-\gamma{p})a\theta}{a^2\alpha\omega} & \dfrac{-b\omega+a\theta\gamma}{a\alpha\omega} & -\dfrac{\theta}{\omega} \end{bmatrix}\\
+    \end{array}\\
+    \textbf{手順4-3)2行目の}  \eta=\beta/\alpha \textbf{をゼロにするように2行目を}R_2-\eta{R_3}\textbf{を行う}\\
+    \begin{array}{rl}
+    R_2-\eta{R_3}&= \begin{bmatrix} 0 & 1 & \eta & -p/(a\alpha) & 1/\alpha & 0 \end{bmatrix}-\eta\begin{bmatrix} 0 & 0 & 1 & \dfrac{-x+\gamma{p}/\alpha}{a\omega} & \dfrac{-\gamma}{\alpha\omega} & 1/\omega \end{bmatrix} \\
+    新たなR_2&=\begin{bmatrix} 0 & 1 & 0 & -p/(a\alpha)-\eta\dfrac{-x+\gamma{p}/\alpha}{a\omega} & 1/\alpha-\eta\dfrac{-\gamma}{\alpha\omega} & 0-\eta/\omega \end{bmatrix}\\
+    &=\begin{bmatrix} 0 & 1 & 0 & \dfrac{-p\omega+(x\alpha-{p}\gamma)\eta}{a\alpha\omega} & \dfrac{\omega+\gamma\eta}{\alpha\omega} & -\dfrac{\eta}{\omega} \end{bmatrix}\\
+    \end{array}\\
+    \left[ 
+    \begin{array}{ccc|ccc}
+    1 & 0 & 0 & \dfrac{(a\alpha+bp)\omega+(x\alpha-p\gamma)a\theta}{a^2\alpha\omega} & \dfrac{-b\omega+a\theta\gamma}{a\alpha\omega} & -\dfrac{\theta}{\omega} \\ 
+    0 & 1 & 0 & \dfrac{-p\omega+(x\alpha-{p}\gamma)\eta}{a\alpha\omega} & \dfrac{\omega+\gamma\eta}{\alpha\omega} & -\dfrac{\eta}{\omega} \\ 
+    0 & 0 & 1 & \dfrac{-(x\alpha-p\gamma)}{a\alpha\omega} & \dfrac{-\gamma}{\alpha\omega} & \dfrac{1}{\omega} \\
+    \end{array} 
+    \right] \\  
+    \textbf{手順5)この右側の行列に代入した}\alpha\textbf{以降の文字を元に戻すと以下の逆行列となる}\\    
+    A^{-1}=\dfrac{1}{\Delta} \begin{bmatrix} qz-ry & -(bz-cy) & br-cq \\ -(pz-rx) & qz-cx & -(ar-cp) \\ py-qx & -(ay-bx) & aq-bp \end{bmatrix}     
+  comment: |
 11-01:相関分析:相関係数r(ピアソンの積率相関係数):
   id: 11-01
   formula: |
