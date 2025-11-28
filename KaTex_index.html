@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>公式 単語帳</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" 
+          integrity="sha384-Gvr4r22/B38/fV+qB5/C2T+jRkUvJd4L5i5B5L7vFv3/2+R4I5b0VpA6A5u7zF7V95B9B7B6B5" 
+          crossorigin="anonymous">
+</head>
+<body>
+
+    <div id="flashcard-container">
+        <div class="top-row">
+            <button id="back-button">戻る</button>
+            <button id="next-button">次へ</button>
+            <input type="text" id="id-input" placeholder="ID(例:1-01）">
+            <button id="jump-button">ジャンプ</button>
+        </div>
+        
+        <div id="card-content">
+            <h2 id="card-label"></h2>
+            <div id="formula-display" class="formula-area"></div>
+            <p id="card-comment"></p>
+        </div>
+    </div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"
+            integrity="sha384-c5E6r/X531/k1J8dG/bT0Ym15w3+rA+nE+qVjHkL/3Fz6yK9i5B0VpA6A5u7zF7V95B9B7B6B"
+            crossorigin="anonymous"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+            integrity="sha384-y0H98FjE2n/2XfKj7y0cR1v1j/j33p28K3j4B6D8Wn2U3z6qW3lD5yM5q2b8q8v7qW3k5B9G9D9G9D9G9D9G9D9G9D"
+            crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
