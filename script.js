@@ -44,30 +44,24 @@ function updateDisplay() {
         return; // ここで処理を終了
     }
 
+    // script.js の updateDisplay 関数内の if (isFormulaVisible) ブロック
+
     if (isFormulaVisible) {
-        // 1. 数式をKaTeX記法（$$...$$）で挿入
-        //    KaTeXにレンダリングさせるため、$$で囲みます。
+        // 数式をそのままHTML要素に挿入
         formulaDisplay.innerHTML = `$$${card.formula}$$`;
         commentElement.innerHTML = `<span style="margin-left: 20px;">${card.comment}</span>`;
         
-        // 2. KaTeXのレンダリング関数を呼び出す（エラーハンドリング強化）
+        // MathJax v3 のレンダリング関数を使用
         try {
-            if (typeof renderMathInElement !== 'undefined') {
-                 renderMathInElement(formulaDisplay, {
-                     delimiters: [
-                         {left: "$$", right: "$$", display: true},
-                         {left: "$", right: "$", display: false}
-                     ],
-                     // ★重要★ エラーが発生しても処理を中断せず、エラー部分をプレーンテキストとして残す
-                     throwOnError: false, 
-                     // 日本語などの非数式テキストを扱うために必要になることがある
-                     trust: true 
-                 });
-             } else {
-                 console.error("KaTeXの自動レンダリング関数 (renderMathInElement) がロードされていません。");
-             }
+            if (window.MathJax) {
+                 // MathJaxに、新しく内容が変わった formulaDisplay 要素を再レンダリングさせる
+                 MathJax.typeset([formulaDisplay]);
+                 
+            } else {
+                 console.error("MathJaxがロードされていません。");
+            }
         } catch (e) {
-            console.error("KaTeXのレンダリング中にエラーが発生しました:", e);
+            console.error("MathJaxのレンダリング中にエラーが発生しました:", e);
         }
     }
 }
@@ -118,4 +112,5 @@ function attachEventListeners() {
 // 初期化
 
 loadFormulas();
+
 
