@@ -37,24 +37,35 @@ function updateDisplay() {
     // タイトルは常に表示
     labelElement.innerHTML = `<b>${card.title}</b>`;
 
+// 非表示時はクリア（変更なし）
+    if (!isFormulaVisible) {
+        formulaDisplay.innerHTML = ''; 
+        commentElement.innerHTML = '';
+        return; // ここで処理を終了
+    }
+
     if (isFormulaVisible) {
-        // 数式をKaTeX記法（$$...$$）で挿入
+        // 1. 数式をKaTeX記法（$$...$$）で挿入
         formulaDisplay.innerHTML = `$$${card.formula}$$`;
         commentElement.innerHTML = `<span style="margin-left: 20px;">${card.comment}</span>`;
         
-        // KaTeXでレンダリング（HTML要素が更新された後で実行する必要がある）
-        // KaTeXの自動レンダリング機能 (auto-render.js) を使います。
-        renderMathInElement(formulaDisplay, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false}
-            ]
-        });
-
-    } else {
-        // 非表示時はクリア
-        formulaDisplay.innerHTML = '';
-        commentElement.innerHTML = '';
+        // 2. KaTeXのレンダリング関数を呼び出す（エラーハンドリング付き）
+        try {
+            // KaTeXの初期化が完了しているか確認
+            if (typeof renderMathInElement !== 'undefined') {
+                 renderMathInElement(formulaDisplay, {
+                     // デリミタの定義
+                     delimiters: [
+                         {left: "$$", right: "$$", display: true},
+                         {left: "$", right: "$", display: false}
+                     ]
+                 });
+             } else {
+                 console.error("KaTeXの自動レンダリング関数 (renderMathInElement) がロードされていません。");
+             }
+        } catch (e) {
+            console.error("KaTeXのレンダリング中にエラーが発生しました:", e);
+        }
     }
 }
 
@@ -102,4 +113,5 @@ function attachEventListeners() {
 }
 
 // 初期化
+
 loadFormulas();
