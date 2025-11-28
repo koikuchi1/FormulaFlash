@@ -1,3 +1,23 @@
+/* styles.css */
+
+#formula-display {
+    /* ... 既存のスタイル ... */
+    margin: 20px 0;
+    font-size: 1.5em; 
+    min-height: 50px; 
+    
+    /* ★★★ ここから追加/修正 ★★★ */
+    text-align: left; /* 数式を左揃えにするとスクロールしやすくなります */
+    overflow-x: auto; /* ★横方向にはみ出したらスクロールバーを表示★ */
+    padding-bottom: 10px; /* スクロールバーが数式に重なるのを防ぐ */
+}
+
+/* カード本体にも max-width と overflow: hidden; を設定しておくとより安全です */
+#card-content {
+    /* ... 既存のスタイル ... */
+    overflow: hidden; /* 子要素のはみ出しを隠す */
+}
+
 #flashcard-container {
     max-width: 600px;
     margin: 30px auto;
@@ -31,4 +51,5 @@
     font-style: italic;
     color: #555;
     min-height: 30px;
+
 }
