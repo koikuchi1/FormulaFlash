@@ -44,14 +44,19 @@ function updateDisplay() {
         return; // ここで処理を終了
     }
 
-    // script.js の updateDisplay 関数内の if (isFormulaVisible) ブロック
-
     if (isFormulaVisible) {
-        // 数式をそのままHTML要素に挿入
-        formulaDisplay.innerHTML = `$$${card.formula}$$`;
+        let formulaContent = card.formula;
+        
+        // ★★★ 修正点: \begin{array}{l} ... \end{array} でラップ ★★★
+        // \\ や \newline が array 内の改行として機能するようにする
+        const wrappedFormula = "\\begin{array}{l}" + formulaContent + "\\end{array}";
+        
+        // 1. 数式を挿入 (デリミタは \[\...] の代わりに $$...$$ を使用)
+        //    ここで挿入するのは、ラップされた array 環境
+        formulaDisplay.innerHTML = `$$${wrappedFormula}$$`;
         commentElement.innerHTML = `<span style="margin-left: 20px;">${card.comment}</span>`;
         
-        // MathJax v3 のレンダリング関数を使用
+        // 2. MathJaxのレンダリング関数を呼び出す
         try {
             if (window.MathJax) {
                  // MathJaxに、新しく内容が変わった formulaDisplay 要素を再レンダリングさせる
@@ -61,6 +66,7 @@ function updateDisplay() {
                  console.error("MathJaxがロードされていません。");
             }
         } catch (e) {
+            // 日本語テキストや複雑な構文によるエラーはここで捕捉される
             console.error("MathJaxのレンダリング中にエラーが発生しました:", e);
         }
     }
@@ -112,5 +118,6 @@ function attachEventListeners() {
 // 初期化
 
 loadFormulas();
+
 
 
