@@ -34,6 +34,10 @@ function updateDisplay() {
 
     const card = formulas[currentFormulaIndex];
 
+    // ★★★ 修正点: IDナンバーをタイトルの前に組み込む ★★★
+    // 例: "0-01: オイラーの公式" のように表示
+    labelElement.innerHTML = `<b>${card.id}: ${card.title}</b>`;
+
     // タイトルは常に表示
     labelElement.innerHTML = `<b>${card.title}</b>`;
 
@@ -152,6 +156,7 @@ function attachEventListeners() {
 // 初期化
 
 loadFormulas();
+
 
 
 
