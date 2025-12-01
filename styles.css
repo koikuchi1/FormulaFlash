@@ -56,38 +56,61 @@
 
 /* --- 目次エリアのスタイル --- */
 #index-container {
-    max-width: 800px; /* カードコンテナと同じ幅に合わせる */
+    max-width: 800px; 
     margin: 40px auto;
     padding: 20px;
     border-top: 2px solid #ddd;
+    text-align: left; /* 目次全体を左寄せにする */
 }
 
+/* 親リスト (#index-list) の設定を修正 */
 #index-list {
     list-style-type: none;
     padding: 0;
-    display: flex; /* 横並びにする */
-    flex-wrap: wrap; /* 画面幅に応じて折り返す */
-    gap: 15px 20px; /* アイテム間の隙間 */
+    /* 横並びをやめ、縦のリストに戻す */
+    display: block; 
+    gap: 0; 
+    margin-top: 15px;
 }
 
-#index-list li a {
-    text-decoration: none;
-    color: #0056b3; /* リンク色 */
-    font-size: 0.9em;
-    padding: 2px 5px;
-    border-radius: 3px;
-    transition: background-color 0.2s;
-}
-
-#index-list li a:hover {
-    background-color: #f0f0f0; /* ホバー時の背景色 */
-    text-decoration: underline;
-}
-
-#index-list h3 {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
+/* 大分類 (index-category) のスタイル */
+.index-category {
     margin-bottom: 20px;
+    border: 1px solid #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* 大分類のタイトル (h4) */
+.index-category h4 {
+    margin: 0 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #e0e0e0;
+    color: #333;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+/* 小分類（個別のカードリスト）のスタイル */
+.index-subcategory-list {
+    list-style-type: none;
+    padding: 0 0 0 20px; /* インデントを設定 */
+}
+
+.index-subcategory-list li {
+    margin-bottom: 5px;
+}
+
+.index-subcategory-list li a {
+    text-decoration: none;
+    color: #0056b3; 
+    font-size: 0.9em;
+    transition: color 0.2s;
+}
+
+.index-subcategory-list li a:hover {
+    color: #e66; /* ホバー時の色 */
+    text-decoration: underline;
 }
 
 
