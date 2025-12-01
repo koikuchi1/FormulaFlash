@@ -90,61 +90,61 @@
         "comment": ""
     },
     {
-        "id": "1-01",
+        "id": "0.5-01",
         "title": "分散分析法(ANOVA法)：各記号",
         "formula": "\\displaystyle T, \\; A, \\; e, \\; S, \\; \\phi, \\; V = \\frac{S}{\\phi}, \\; F = \\frac{V_A}{V_e},\\; F(\\phi_A,\\phi_e,\\alpha), \\; p = \\frac{S_A - \\phi_A V_e}{S_T}",
         "comment": "順に、総数、要因、誤差(残差)、平方和、自由度、分散、F値、F分布のパラメータ、寄与率"
     },
     {
-        "id": "1-02",
+        "id": "1-01",
         "title": "一元配置分散分析：平方和の関係式",
         "formula": "S_T = S_A + S_e",
         "comment": "総平方和 は、要因平方和と誤差平方和の和"
     },
     {
-        "id": "1-03",
+        "id": "1-02",
         "title": "一元配置分散分析：総平方和",
         "formula": "S_T = \\sum(x_{ij} - \\bar{T})^2  = \\sum(A_{ij})^2 - CT",
         "comment": "全データを2乗して合計したものからCTを引いたもの"
     },
     {
-        "id": "1-04",
+        "id": "1-03",
         "title": "一元配置分散分析：要因平方和(群間平方和)",
         "formula": "S_A = n\\sum(\\bar{A}_i - \\bar{T})^2  = \\displaystyle \\frac{1}{n}\\sum(T_{Ai})^2 - CT",
         "comment": "i群(水準i)の全データを2乗して合計しnで割ったものからCTを引いたもの"
     },
     {
-        "id": "1-05",
+        "id": "1-04",
         "title": "一元配置分散分析：誤差平方和",
         "formula": "S_e = \\sum(x_{ij} - \\bar{A}_i)^2  = S_T - S_A",
         "comment": "誤差平方和は総平方和から要因平方和を引いたもの"
     },
     {
-        "id": "1-06",
+        "id": "1-05",
         "title": "一元配置分散分析：修正項",
         "formula": "CT = \\displaystyle \\frac{T^2}{an}",
         "comment": "総データの2乗和を全データ数(a:水準数、n:繰り返し数)で割ったもの"
     },
     {
-        "id": "1-07",
+        "id": "1-06",
         "title": "一元配置分散分析：総平方和の自由度",
         "formula": "\\phi_T = an - 1",
         "comment": "総データから1を引いたもの"
     },
     {
-        "id": "1-08",
+        "id": "1-07",
         "title": "一元配置分散分析：要因平方和の自由度",
         "formula": "\\phi_A = a - 1",
         "comment": "群(水準数)から1を引いたもの"
     },
     {
-        "id": "1-09",
+        "id": "1-08",
         "title": "一元配置分散分析：誤差平方和の自由度",
         "formula": "\\phi_e = a(n - 1)",
         "comment": "総データから群(水準数)を引いたもの"
     },
     {
-        "id": "1-10",
+        "id": "1-09",
         "title": "一元配置分散分析：分散(平均平方)の期待値",
         "formula": "\\begin{array}{l} 一元配置実験での分散の期待値 \\\\ 因子Aの期待値:E[V_A]=n\\sigma_A^2+\\sigma_e^2 \\\\ 誤差eの期待値:E[V_e]=\\sigma_e^2 \\\\ \\end{array}",
         "comment": ""
