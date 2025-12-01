@@ -115,29 +115,81 @@ function onJumpClicked() {
 }
 
 // ====================
-// 目次作成関数
+// 目次作成関数 (階層化対応)
 // ====================
 function createIndex() {
-    const indexList = document.getElementById('index-list');
-    indexList.innerHTML = ''; // 既存の内容をクリア
+    const indexListElement = document.getElementById('index-list');
+    indexListElement.innerHTML = ''; // 既存の内容をクリア
 
-    formulas.forEach((card, index) => {
-        const listItem = document.createElement('li');
+    // 1. データを階層構造に整理
+    const categories = {};
+    
+    formulas.forEach(card => {
+        // IDから大分類キー（例: "0"）とタイトルを抽出
+        const idParts = card.id.split('-'); // ["0", "15"]
+        const majorKey = idParts[0];      // "0"
+
+        // タイトルから大分類名（例: "用語解説"）を抽出
+        const titleParts = card.title.split('：');
+        const majorTitle = titleParts[0].trim(); // "用語解説"
+
+        // 階層のキーを結合して一意な大分類名にする
+        const categoryKey = `${majorKey}-${majorTitle}`; // 例: "0-用語解説"
+
+        if (!categories[categoryKey]) {
+            // 新しい大分類をオブジェクトに作成
+            categories[categoryKey] = {
+                title: `${majorKey}. ${majorTitle}`, // 例: "0. 用語解説"
+                items: []
+            };
+        }
         
-        // <a>タグとして表示し、クリックでジャンプするように設定
-        listItem.innerHTML = `<a href="#" data-id="${card.id}">${card.id}: ${card.title}</a>`;
+        // 個別のカード情報を大分類に追加
+        categories[categoryKey].items.push(card);
+    });
+
+    // 2. 階層構造を使ってHTMLリストを生成
+    
+    // 大分類のキー（例: "0-用語解説"）でソートして表示順を制御
+    const sortedKeys = Object.keys(categories).sort();
+
+    sortedKeys.forEach(key => {
+        const category = categories[key];
+
+        // 大分類のタイトルを表示する ul 要素を作成
+        const categoryContainer = document.createElement('li');
+        categoryContainer.className = 'index-category';
         
-        // クリックイベントを追加
-        listItem.querySelector('a').addEventListener('click', function(e) {
-            e.preventDefault(); // リンクのデフォルト動作（ページ遷移）を防止
+        // 大分類のタイトル
+        const majorTitleHeader = document.createElement('h4');
+        majorTitleHeader.textContent = category.title;
+        categoryContainer.appendChild(majorTitleHeader);
+
+        // 小分類（カードリスト）の ul 要素を作成
+        const subList = document.createElement('ul');
+        subList.className = 'index-subcategory-list';
+
+        category.items.forEach(card => {
+            const listItem = document.createElement('li');
             
-            const targetId = this.getAttribute('data-id');
+            // 小分類のリンク
+            const anchor = document.createElement('a');
+            anchor.href = "#";
+            anchor.setAttribute('data-id', card.id);
+            anchor.textContent = `${card.id}: ${card.title}`;
             
-            // ジャンプ機能の実行
-            onIndexJump(targetId); 
+            // クリックイベントを追加 (onIndexJump を呼び出す)
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault(); 
+                onIndexJump(this.getAttribute('data-id')); 
+            });
+
+            listItem.appendChild(anchor);
+            subList.appendChild(listItem);
         });
 
-        indexList.appendChild(listItem);
+        categoryContainer.appendChild(subList);
+        indexListElement.appendChild(categoryContainer);
     });
 }
 
