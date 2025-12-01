@@ -18,6 +18,10 @@ async function loadFormulas() {
     try {
         const response = await fetch('formulas.json');
         formulas = await response.json();
+
+        // ★★★ 修正点: 目次作成の呼び出しを追加 ★★★
+        createIndex();
+
         updateDisplay();
         attachEventListeners();
     } catch (error) {
