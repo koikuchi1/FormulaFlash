@@ -111,6 +111,55 @@ function onJumpClicked() {
 }
 
 // ====================
+// 目次作成関数
+// ====================
+function createIndex() {
+    const indexList = document.getElementById('index-list');
+    indexList.innerHTML = ''; // 既存の内容をクリア
+
+    formulas.forEach((card, index) => {
+        const listItem = document.createElement('li');
+        
+        // <a>タグとして表示し、クリックでジャンプするように設定
+        listItem.innerHTML = `<a href="#" data-id="${card.id}">${card.id}: ${card.title}</a>`;
+        
+        // クリックイベントを追加
+        listItem.querySelector('a').addEventListener('click', function(e) {
+            e.preventDefault(); // リンクのデフォルト動作（ページ遷移）を防止
+            
+            const targetId = this.getAttribute('data-id');
+            
+            // ジャンプ機能の実行
+            onIndexJump(targetId); 
+        });
+
+        indexList.appendChild(listItem);
+    });
+}
+
+// ====================
+// 目次クリック時のジャンプ処理
+// ====================
+function onIndexJump(targetId) {
+    const index = formulas.findIndex(f => f.id === targetId);
+    
+    if (index !== -1) {
+        currentFormulaIndex = index;
+        isFormulaVisible = false; // 表面（タイトル）を表示
+        updateDisplay();
+        
+        // ページトップへスムーズにスクロール
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        
+    } else {
+        console.error(`ID ${targetId} が見つかりませんでした。`);
+    }
+}
+
+// ====================
 // イベントリスナーの登録
 // ====================
 function attachEventListeners() {
@@ -156,7 +205,6 @@ function attachEventListeners() {
 // 初期化
 
 loadFormulas();
-
 
 
 
