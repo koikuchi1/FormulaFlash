@@ -23,7 +23,7 @@
 /* 3. コメント (#card-comment) の文字サイズ調整 (ついでに調整するなら) */
 #card-comment {
     /* 修正前: デフォルトサイズ */
-    font-size: 0.9em; /* 少し小さくして本文との差をつける */
+    font-size: 0.8em; /* 少し小さくして本文との差をつける */
     text-align: left;
     font-style: italic;
     color: #555;
@@ -32,8 +32,8 @@
 
 #flashcard-container {
     max-width: 1500px;
-    margin: 30px auto;
-    padding: 20px;
+    margin: 10px auto;
+    padding: 10px;
     border: 1px solid #ccc;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
 }
@@ -48,11 +48,12 @@
 /* カード本体にも max-width と overflow: hidden; を設定しておくとより安全です */
 #card-content {
     min-height: 700px;
-    padding: 15px;
+    padding: 10px;
     border: 1px solid #eee;
     text-align: center;
     overflow: hidden; /* 子要素のはみ出しを隠す */
 }
+
 
 
 
