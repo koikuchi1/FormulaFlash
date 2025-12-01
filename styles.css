@@ -10,7 +10,7 @@
 /* 2. 数式 (#formula-display) の文字サイズ調整 */
 #formula-display {
     /* 修正前: font-size: 1.8em; (前回大きくしたサイズ) */
-    font-size: 1.2em; /* ★サイズを調整 (例: 1.2em または 18px)★ */
+    font-size: 1.0em; /* ★サイズを調整 (例: 1.2em または 18px)★ */
     margin: 10px 0; 
     min-height: 150px;
     
@@ -53,6 +53,7 @@
     text-align: center;
     overflow: hidden; /* 子要素のはみ出しを隠す */
 }
+
 
 
 
