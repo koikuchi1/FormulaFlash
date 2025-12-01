@@ -115,7 +115,7 @@ function onJumpClicked() {
 }
 
 // ====================
-// 目次作成関数 (階層化対応)
+// 目次作成関数 (階層化対応 - 修正版)
 // ====================
 function createIndex() {
     const indexListElement = document.getElementById('index-list');
@@ -126,20 +126,20 @@ function createIndex() {
     
     formulas.forEach(card => {
         // IDから大分類キー（例: "0"）とタイトルを抽出
-        const idParts = card.id.split('-'); // ["0", "15"]
-        const majorKey = idParts[0];      // "0"
+        const idParts = card.id.split('-'); 
+        const majorKey = idParts[0];      
 
         // タイトルから大分類名（例: "用語解説"）を抽出
         const titleParts = card.title.split('：');
-        const majorTitle = titleParts[0].trim(); // "用語解説"
+        const majorTitle = titleParts[0].trim(); 
 
         // 階層のキーを結合して一意な大分類名にする
-        const categoryKey = `${majorKey}-${majorTitle}`; // 例: "0-用語解説"
+        const categoryKey = `${majorKey}-${majorTitle}`; 
 
         if (!categories[categoryKey]) {
             // 新しい大分類をオブジェクトに作成
             categories[categoryKey] = {
-                title: `${majorKey}. ${majorTitle}`, // 例: "0. 用語解説"
+                title: `${majorKey}. ${majorTitle}`, 
                 items: []
             };
         }
@@ -150,8 +150,26 @@ function createIndex() {
 
     // 2. 階層構造を使ってHTMLリストを生成
     
-    // 大分類のキー（例: "0-用語解説"）でソートして表示順を制御
-    const sortedKeys = Object.keys(categories).sort();
+    // 大分類のキー（例: "0-用語解説", "1-統計解析"）を取得
+    const categoryKeys = Object.keys(categories);
+
+    // ★修正箇所: カテゴリーキーを数値としてソート★
+    const sortedKeys = categoryKeys.sort((a, b) => {
+        // キーから大分類の数字部分（例: "10-..." から 10）を抽出
+        const majorNumA = parseInt(a.split('-')[0], 10);
+        const majorNumB = parseInt(b.split('-')[0], 10);
+        
+        // 数値として比較し、昇順 (1, 2, 3, ...) にソート
+        if (majorNumA !== majorNumB) {
+            return majorNumA - majorNumB;
+        }
+
+        // 大分類の数字が同じ場合は、文字列として比較
+        if (a < b) return -1;
+        if (a > b) return 1;
+        return 0;
+    });
+
 
     sortedKeys.forEach(key => {
         const category = categories[key];
