@@ -113,6 +113,17 @@ function attachEventListeners() {
     document.getElementById('next-button').addEventListener('click', onNextClicked);
     document.getElementById('back-button').addEventListener('click', onBackClicked);
     document.getElementById('jump-button').addEventListener('click', onJumpClicked);
+
+    const idInput = document.getElementById('id-input');
+
+    // Enterキーが押されたときにジャンプ処理を実行
+    idInput.addEventListener('keydown', function(event) {
+        // Enterキー (key === 'Enter' または keyCode === 13) を検出
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Enterキーによるフォーム送信などを防止
+            onJumpClicked();        // 既存のジャンプ処理を実行
+        }
+    });
 }
 
 // 初期化
