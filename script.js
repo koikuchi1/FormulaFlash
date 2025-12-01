@@ -124,6 +124,29 @@ function attachEventListeners() {
             onJumpClicked();        // 既存のジャンプ処理を実行
         }
     });
+
+    // ★★★ ここからキーボード操作の追加 ★★★
+    document.addEventListener('keydown', function(event) {
+        // 現在フォーカスされている要素を取得
+        const activeElement = document.activeElement;
+
+        // テキスト入力欄やボタンにフォーカスがある場合は、キーボード操作を無効にする
+        // (ID入力欄に文字を入力している最中にカードが切り替わるのを防ぐため)
+        if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'BUTTON') {
+            return;
+        }
+
+        // Nキー (Next) で「次へ」
+        if (event.key.toLowerCase() === 'n') {
+            event.preventDefault(); // ブラウザのデフォルト動作を防止
+            onNextClicked();
+        } 
+        // Bキー (Back) で「戻る」
+        else if (event.key.toLowerCase() === 'b') {
+            event.preventDefault(); // ブラウザのデフォルト動作を防止
+            onBackClicked();
+        }
+    });
 }
 
 // 初期化
