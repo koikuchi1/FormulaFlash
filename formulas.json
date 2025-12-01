@@ -271,13 +271,13 @@
     },
     {
         "id": "3.5-01",
-        "title": "3.5-01:積和・平方和の展開式：",
+        "title": "積和・平方和の展開式：",
         "formula": "\\begin{array}{rl} 偏差積和S_{xy}&= \\displaystyle \\sum_{}^{}(x_i-\\bar{x})(y_i-\\bar{y}) \\\\              &= \\displaystyle \\sum_{}^{}x_iy_i-\\frac{(\\sum x_i)(\\sum y_i)}{n} \\\\ 平方和S_{xx} &= \\displaystyle \\sum_{}^{}(x_i-\\bar{x})^2 \\\\              &= \\displaystyle \\sum_{}^{}x_i^2-\\frac{(\\sum x_i)^2}{n} \\\\ \\end{array}",
         "comment": "相関係数を求める際などに使われるので覚えておく\n"
     },
     {
-        "id": "3.5-02",
-        "title": "3.5-02:一元配置と二元配置の自由度と平方和の関係式まとめ",
+        "id": "3.6-01",
+        "title": "一元配置と二元配置の自由度と平方和の関係式まとめ：",
         "formula": "\\begin{array}{c|ccc} 自由度 &一元配置 &二元配置(繰返し交互なし) &二元配置(繰返し交互あり) \\\\ \\hline \\phi_T &an-1 &ab-1 &abn-1 \\\\ \\phi_{AB} &なし &ab-1 &ab-1 \\\\ \\phi_A &a-1&a-1(因子Bはb-1) &a-1(因子Bはb-1) \\\\ \\phi_{A \\times B} &なし &なし  &(a-1)(b-1) \\\\ \\phi_E(バランス設計の場合) &a(n-1) &0=ab(n-1),(n=1のため) &ab(n-1) \\\\ \\phi_E(不均衡の場合) &\\phi_T-\\phi_A &0=\\phi_T-\\phi_{AB}=\\phi_T-(\\phi_A+\\phi_B) &\\phi_T-\\phi_{AB}=\\phi_T-(\\phi_A+\\phi_B+\\phi_{A \\times B}) \\\\ \\end{array} \\\\ \\text{} \\\\ \\begin{array}{c|ccc} 平方和 &一元配置 &二元配置(繰返し交互なし) &二元配置(繰返し交互あり) \\\\ \\hline 関係式 &S_T=S_A+S_e &S_T=S_A+S_B+S_E &S_T=S_{AB}+S_e=S_A+S_B+S_{A \\times B}+S_e \\\\ CT & \\displaystyle \\frac{T^2}{an}  &\\displaystyle \\frac{T^2}{ab}  &\\displaystyle \\frac{T^2}{abn}  \\\\ S_T & \\sum(x_{ij}-\\bar{T})^2= \\sum x_{ij}^2-CT  & \\leftarrow  & \\leftarrow = \\sum(x_{ijk}- \\overline{A_iB_j})^2+ \\sum(\\overline{A_iB_j}-\\bar{T})^2=\\sum x_{ijk}^2-CT \\\\ S_{AB} &なし &S_A+S_B=\\frac{1}{b}\\sum( TA_{i})^2+\\frac{1}{a}\\sum( TB_{j})^2-2CT &S_A+S_B+S_{A \\times B}=\\frac{1}{n}\\sum( TA_iB_j)^2-CT \\\\ S_A &n\\sum(\\bar{A_i}-\\bar{T})^2=\\frac{1}{n}\\sum (TA_{i})^2-CT  &b\\sum(\\bar{A_i}-\\bar{T})^2=\\frac{1}{b}\\sum (TA_{i})^2-CT(Bも同様)  &bn\\sum(\\bar{A_i}-\\bar{T})^2=\\frac{1}{bn}\\sum (TA_{i})^2-CT(Bも同様) \\\\ S_{A \\times B} &なし &なし &n\\sum(\\overline{A_iB_j}-(\\bar{A_i}+\\bar{B_j}-\\bar{T}))^2=\\frac{1}{n}\\sum(TAB_{ij})^2-S_A-S_B-CT \\\\ S_e &\\sum(x_{ij}-\\bar{A_i})^2 &\\sum(x_{ij}-\\bar{A_i}-\\bar{B_j}+\\bar{T})^2 &\\sum(x_{ijk}-\\overline{A_iB_j})^2 \\\\ S_e関係式から &=S_T-S_A &=S_T-S_{AB}=S_T-(S_A+S_B)(=0:繰り返しなしのため) &=S_T-S_{AB}=S_T-(S_A+S_B+S_{A \\times B}) \\\\ \\end{array}",
         "comment": "二元配置(交互なし)は繰り返しなし(n=1)、二元配置(交互あり)は繰り返しあり(n≧2)\n"
     },
@@ -301,37 +301,37 @@
     },
     {
         "id": "4.5-01",
-        "title": "4.5-01:検定：用語1",
+        "title": "検定：用語1",
         "formula": "\\begin{array}{l} ・帰無仮説H_0･･･成り立つと仮説を立てる \\hspace{1em}  例：\\rightarrow \\mu=\\mu_0 \\\\ ・対立仮説H_1･･･H_0に対立する仮説(H_0と相反するもの) \\hspace{1em}  例：\\rightarrow \\mu \\neq \\mu_0や\\mu>\\mu_0など \\\\ \\hspace{2em}  \\rightarrow H_0が不成立=「棄却する」または「有意である」と言う \\\\ \\hspace{2em}  \\rightarrow H_0が成立=「採択する」または「有意差なし」と言う \\\\ ※品質管理における検定ではある母集団の棄却域(有意水準)\\alphaを決めて、\\\\ \\hspace{1em} その範囲に入る場合に棄却するように判定する場合に用いる \\\\ \\end{array}",
         "comment": ""
     },
     {
         "id": "4.5-02",
-        "title": "4.5-02:検定：2種の誤り",
+        "title": "検定：2種の誤り",
         "formula": "・第1種の誤り･･･H_0が正しいのに棄却してしまう(\\alphaエラー) \\\\ \\hspace{2em} 例：H_0･･･薬に効果がある \\rightarrow たまたま効果がない結果が出てしまった(生産者リスク) \\\\ \\hspace{2em}【間違いに陥りやすい状況】 \\\\ \\hspace{2em}・有意水準が高い。0.10など \\\\ \\hspace{2em}・サンプル数が少ない(偶然のブレが大きい) \\\\ \\hspace{2em}・検査基準が厳しい \\\\ \\hspace{2em}・測定誤差が大きい(合格レベルを不合格にしてしまう方) \\\\ \\hspace{2em}・母集団のばらつきが大きいが工程は安定 \\rightarrow 工程の影響と誤判定 \\\\ ・第2種の誤り･･･H_0が間違っているのに採択してしまう(\\betaエラー) \\\\ \\hspace{2em} 例：H_0･･･薬に効果がある \\rightarrow たまたま効果がある結果が出てしまった(消費者リスク) \\\\ \\hspace{2em}・サンプル数が少ない(検出力が小さい)･･･1-\\beta \\\\ \\hspace{2em}・効果の差(平均の差)などが少ない \\\\ \\hspace{2em}・有意水準が小さい \\\\ \\begin{array}{c|cc} &H_0 &H_1 \\\\ \\hline H_0を採択 &正しい(1-\\alpha) &第2種の誤り(\\beta) \\\\ H_0を棄却 &第1種の誤り(\\alpha) &正しい(1-\\beta：検出力) \\\\ \\end{array}",
         "comment": ""
     },
     {
         "id": "4.5-03",
-        "title": "4.5-03:検定：用語2",
+        "title": "検定：用語2",
         "formula": "\\begin{array}{l} ・等分散性･･･各母集団の分散(ばらつき)が(有意水準の範囲で)等しいこと(t検定の前提条件) \\\\  \\hspace{2em}※データが偏りなく取得できることとは違うので注意 \\\\ ・検定統計量･･･t検定、 \\chi^2検定、F検定などのt値、\\chi^2値、F値のこと \\\\ \\end{array}",
         "comment": ""
     },
     {
         "id": "4.5-04",
-        "title": "4.5-04:検定：検定の種類と用途及び各検定統計量の式",
+        "title": "検定：検定の種類と用途及び各検定統計量の式",
         "formula": "\\begin{array}{l} ・t検定(スチューデントのｔ検定)･･･集団ごとの平均の違いを調べたいとき、または誤差を調べたいとき \\\\  \\hspace{2em}t= \\displaystyle \\frac{ \\bar{x}_{1}-\\bar{x}_{2}  }{ \\sqrt{s_p^2 \\left(  \\displaystyle \\frac{1}{n_1}+ \\frac{1}{n_2} \\right) } }  \\\\  \\hspace{2em}※ただし等分散性が必要  \\\\  \\hspace{3em}等分散性がないと、第一種の過誤が増える。検出力が落ちる  \\\\ ・\\chi ^2検定･･･カテゴリデータの適合度を調べたいとき \\\\  \\hspace{2em}\\chi ^2= \\displaystyle \\sum_{}^{} \\displaystyle \\frac{ (\\text{観測値}- \\text{期待値})^2  }{期待値}   \\\\ ・F検定･･･分散が等しいかを調べたいとき \\\\  \\hspace{2em}F= \\displaystyle \\frac{s_1^2}{s_2^2}  \\end{array}",
         "comment": ""
     },
     {
         "id": "4.5-05",
-        "title": "4.5-05:検定：用語3",
+        "title": "検定：用語3",
         "formula": "\\begin{array}{l} ・対応がある･･･同じ対象物の条件を変えて比較したデータ(例:前後比較、ロット比較) \\\\ ・対応がない･･･独立した別の対象の比較(例:男性群対女性群、工場Aと工場B) \\\\ \\end{array}",
         "comment": ""
     },
     {
         "id": "4.5-06",
-        "title": "4.5-06:検定：検定の種類まとめ",
+        "title": "検定：検定の種類まとめ",
         "formula": "\\begin{array}{l|lll} 検定名 & 用途 & 前提条件 & 棄却基準など \\\\ \\hline t検定 & 母平均の差を検定 & 正規性・等分散性を仮定 & t値 = \\frac{\\bar{X}_1 - \\bar{X}_2}{\\sqrt{s_p^2 \\left( \\frac{1}{n_1} + \\frac{1}{n_2} \\right) }} \\\\ F検定 & 母分散の差を検定 & 正規性 & F値 = \\frac{s_1^2}{s_2^2} \\\\ \\chi^2検定 & 母分散の検定、適合度検定、独立性の検定 & サンプルサイズ大 & 母分散検定では \\chi^2 = \\frac{(n-1)s^2}{\\sigma_0^2} \\\\ \\chi^2適合度検定 & 観測度数が理論分布に適合しているか & サンプルサイズ大 & \\chi^2 = \\sum \\frac{(O-E)^2}{E} \\\\ \\chi^2独立性検定 & クロス集計表で独立性を検定 & サンプルサイズ大 & 同上、自由度 (r-1)(c-1) \\\\ ハートレー検定 & 分散の一様性検定（サンプルサイズが同じ場合） & 正規性、サンプルサイズが等しい & F_{\\text{max}} = \\frac{\\max(s_i^2)}{\\min(s_i^2)}>F(k,\\phi,\\alpha) \\hspace{1em} ,k:群数､\\phi:各群の自由度) \\\\ バートレット検定 & 分散の一様性検定（サンプルサイズが異なる場合） & 正規性 & \\chi^2 統計量を計算し、自由度 k-1 の \\chi^2 分布比較 \\\\ ノンパラメトリック検定（例: 順位検定） & 正規性が仮定できない場合の中央値検定 & 分布の仮定が不要 & 検定方法による \\\\ \\end{array}",
         "comment": ""
     },
@@ -373,7 +373,7 @@
     },
     {
         "id": "5-07",
-        "title": "個々のデータ範囲(存在区間)の推定",
+        "title": "個々のデータ範囲(存在区間)の推定：",
         "formula": "母平均\\muと新しい観測値（個々の1点）との差を推定する区間 に使う\\\\ 予測区間と呼ばれる\\\\ \\bar{x}\\pm t(\\phi_e,\\alpha)\\sqrt{\\left(1 + \\dfrac{1}{n}\\right)V_e}\\sim t(自由度\\phi:n - 1)\\\\",
         "comment": "個々のデータ範囲(存在区間)の推定。<br>\nt分布のt値を用いて、個々のデータの推定区間を求める。Veは誤差分散でs²を用いる\n"
     },
@@ -595,7 +595,7 @@
     },
     {
         "id": "10-05.1",
-        "title": "10-05.1回帰分析：単回帰分析の分散分析表",
+        "title": "回帰分析：単回帰分析の分散分析表",
         "formula": "分散分析表の単回帰分析の例： \\\\ \\begin{array}{l|llllll} 要因    &平方和S    &自由度\\phi    &分散(平均平方)V    &分散比F    &検定(F_{\\phi_A,\\phi_e,\\alpha})    &寄与率\\rho \\\\ \\hline R       &S_R= \\displaystyle \\frac{S_{xy}^2}{S_{xx}} &\\phi_R=1 &V_R= \\displaystyle \\frac{S_R}{\\phi_R} &F_0= \\displaystyle \\frac{V_R}{V_e} \\\\ e       &S_e=S_T-S_R &\\phi_e=n-2 &V_e= \\displaystyle \\frac{S_e}{\\phi_e} \\\\ \\hline \\\\ T       &S_T=S_{yy} &\\phi_T=n-1  \\end{array}",
         "comment": ""
     },
@@ -630,14 +630,14 @@
         "comment": ""
     },
     {
-        "id": "10-11",
-        "title": "重回帰分析に用いる行列及びベクトルの計算補足1",
+        "id": "10.5-01",
+        "title": "重回帰分析に用いる行列及びベクトルの計算補足：1",
         "formula": "行列及びベクトルの計算補足\\\\ \\begin{array}{ll} \\large\\textbf{(1)単位行列}\\normalsize I&= \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix}(2\\times2の場合) \\\\ &= \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}(3\\times3の場合) \\\\ \\end{array} \\\\ ※行と列の数が同じ\\\\ \\text{}\\\\ \\large\\textbf{(2)行列の転置}\\normalsize (記号は「'」又は「^\\top」 )\\\\ A=\\begin{bmatrix}  \\Large{\\mathbf{a}} & \\Large{\\mathbf{b}} & \\Large{\\mathbf{c}} \\\\ p & q & r \\\\   \\mathbb{X} & \\mathbb{Y} & \\mathbb{Z} \\end{bmatrix}\\\\ A'=A^\\top =\\begin{bmatrix} \\Large{\\mathbf{a}} & p & \\mathbb{X} \\\\ \\Large{\\mathbf{b}} & q & \\mathbb{Y} \\\\ \\Large{\\mathbf{c}} & r & \\mathbb{Z} \\end{bmatrix}\\\\ \\text{}\\\\ \\large\\textbf{(3)行列の積算}\\normalsize (前の行列の行と、後ろの行列の列の数が同じでないと成立しない)\\\\ A= \\begin{bmatrix} \\Large{\\mathbf{a}} & \\Large{\\mathbf{b}} & \\Large{\\mathbf{c}} \\\\ d & e & f \\\\ \\Large{\\mathrm{g}} & \\Large{\\mathrm{h}} & \\Large{\\mathrm{i}}   \\end{bmatrix}, B=\\begin{bmatrix}  \\large{\\mathbb{P}}  & Q & \\underline{R}  \\\\ \\large{\\mathbb{S}} & T & \\underline{U} \\\\ \\large{\\mathbb{V}} & W & \\underline{X} \\end{bmatrix} \\\\ \\begin{array}{ll} AB&=\\begin{bmatrix} \\Large{\\mathbf{a}} & \\Large{\\mathbf{b}} & \\Large{\\mathbf{c}} \\\\ d & e & f \\\\ \\Large{\\mathrm{g}} & \\Large{\\mathrm{h}} & \\Large{\\mathrm{i}}   \\end{bmatrix}\\begin{bmatrix}  \\large{\\mathbb{P}}  & Q & \\underline{R}  \\\\ \\large{\\mathbb{S}} & T & \\underline{U} \\\\ \\large{\\mathbb{V}} & W & \\underline{X} \\end{bmatrix} (前の行列の行、後ろの行列の列を掛ける) \\\\ &=\\begin{bmatrix}  \\Large{\\mathbf{a}}\\large{\\mathbb{P}}+\\Large{\\mathbf{b}}\\large{\\mathbb{S}}+\\Large{\\mathbf{c}}\\large{\\mathbb{V}} & \\Large{\\mathbf{a}}Q+\\Large{\\mathbf{b}}T+\\Large{\\mathbf{c}}W & \\Large{\\mathbf{a}}\\underline{R}+\\Large{\\mathbf{b}}\\underline{U}+\\Large{\\mathbf{c}}\\underline{X} \\\\ d\\large{\\mathbb{P}}+e\\large{\\mathbb{S}}+f\\large{\\mathbb{V}} & dQ+eT+fW & d\\underline{R}+e\\underline{U}+f\\underline{X} \\\\  \\Large{\\mathrm{g}}\\large{\\mathbb{P}}+\\Large{\\mathrm{h}}\\large{\\mathbb{S}}+\\Large{\\mathrm{i}}\\large{\\mathbb{V}} & \\Large{\\mathrm{g}}Q+\\Large{\\mathrm{h}}T+\\Large{\\mathrm{i}}W & \\Large{\\mathrm{g}}\\underline{R}+\\Large{\\mathrm{h}}\\underline{U}+\\Large{\\mathrm{i}}\\underline{X} \\end{bmatrix} \\end{array} \\\\ \\text{}\\\\ \\large\\textbf{(4)行列式}\\normalsize\\\\ \\begin{array}{l|ll} 次元&行列&行列式\\Delta\\\\ \\hline 2\\times{2} &  \\begin{bmatrix} \\Large{\\mathbf{a}} & \\large{\\mathbb{B}} \\\\ \\large{\\mathbb{C}} & \\Large{\\mathbf{d}} \\end{bmatrix}  & \\Large{\\mathbf{ad}}-\\large{\\mathbb{BC}} \\\\ 3\\times{3} &  \\begin{bmatrix} \\Large{\\mathbf{a}} & \\large{\\mathbb{B}} & \\underline{c} \\\\ \\underline{p} & \\Large{\\mathbf{q}} & \\large{\\mathbb{R}} \\\\ \\large{\\mathbb{X}} & \\underline{y} & \\Large{\\mathbf{z}} \\end{bmatrix}   & \\Large{\\mathbf{aqz}}+\\large{\\mathbb{BRX}}+\\underline{cpy}-\\Large{\\mathbf{a}}\\large{\\mathbb{R}}\\underline{y}-\\large{\\mathbb{B}}\\underline{p}\\Large{\\mathbf{z}}-\\underline{c}\\Large{\\mathbf{q}}\\large{\\mathbb{X}} \\\\ &&=\\Large{\\mathbf{a}}(\\Large{\\mathbf{qz}}-\\large{\\mathbb{R}}\\underline{y})-\\large{\\mathbb{B}}(\\underline{p}\\Large{\\mathbf{z}}-\\large{\\mathbb{RX}})+\\underline{c}(\\underline{py}-\\Large{\\mathbf{q}}\\large{\\mathbb{X}})\\\\ &&=\\Large{\\mathbf{a}}\\begin{bmatrix} \\Large{\\mathbf{q}} & \\large{\\mathbb{R}} \\\\ \\underline{y} & \\Large{\\mathbf{z}} \\end{bmatrix} -\\large{\\mathbb{B}} \\begin{bmatrix} \\underline{p} & \\large{\\mathbb{R}} \\\\ \\large{\\mathbb{X}} & \\Large{\\mathbf{z}} \\end{bmatrix} +\\underline{c} \\begin{bmatrix}  \\underline{p} & \\Large{\\mathbf{q}} \\\\ \\large{\\mathbb{X}} & \\underline{y} \\end{bmatrix}  \\end{array} \\\\ ※式は１行目を係数として符号は+-が交互になった１つ下の次元の行列になる\\\\",
         "comment": ""
     },
     {
-        "id": "10-12",
-        "title": "重回帰分析に用いる行列及びベクトルの計算補足2(逆行列)",
+        "id": "10.5-02",
+        "title": "重回帰分析に用いる行列及びベクトルの計算補足：2(逆行列)",
         "formula": "行列及びベクトルの計算補足\\\\ \\large\\textbf{(5)逆行列}\\normalsize\\\\ AA^{-1}=I(単位行列)のとき\\\\ \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}  \\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}  A^{-1}はAの逆行列\\\\ \\text{}\\\\ 2\\times2の逆行列は覚える\\\\ A=\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix} \\\\ A^{-1}=\\dfrac{1}{ad-bc} \\begin{bmatrix} d & -b \\\\ -c & a \\end{bmatrix},(ad-bc \\neq 0の場合のみ) \\\\ \\text{}\\\\ 3\\times3算出方法(掃き出し法[ガウス=ジョルダン法])\\\\ A=\\begin{bmatrix} a & b & c \\\\ p & q & r \\\\ x & y & z \\end{bmatrix} \\\\ \\textbf{手順1)拡大行列(右側に単位行列を付ける)を作る}\\\\ [A|I]= \\left[  \\begin{array}{ccc|ccc} a & b & c & 1 & 0 & 0 \\\\  p & q & r & 0 & 1 & 0 \\\\  x & y & z & 0 & 0 & 1 \\\\ \\end{array}  \\right] \\\\ \\textbf{手順2)第1列目を正規化する}\\\\ \\textbf{手順2-1)1行目を1にするようにaで割る。}\\\\ \\left[  \\begin{array}{ccc|ccc} 1 & b/a & c/a & 1/a & 0 & 0 \\\\  p & q & r & 0 & 1 & 0 \\\\  x & y & z & 0 & 0 & 1 \\\\ \\end{array}  \\right] \\\\ R_1=\\begin{bmatrix} 1 & b/a & c/a & 1/a & 0 & 0 \\end{bmatrix}\\\\ \\textbf{手順2-2)2行目のpをゼロにするように2行目を}R_2-pR_1\\textbf{を行う}\\\\ R_2-pR_1= \\begin{bmatrix} p & q & r & 0 & 1 & 0 \\end{bmatrix}-p\\times \\begin{bmatrix} 1 & b/a & c/a & 1/a & 0 & 0 \\end{bmatrix} \\\\ \\left[  \\begin{array}{ccc|ccc} 1 & b/a & c/a & 1/a & 0 & 0 \\\\  0 & q-pb/a & r-pc/a & -p/a & 1 & 0 \\\\  x & y & z & 0 & 0 & 1 \\\\ \\end{array}  \\right] \\\\ \\textbf{手順2-3)3行目のxをゼロにするように3行目を}R_3-xR_1\\textbf{を行う(}R_2\\textbf{を計算する前の}R_1\\textbf{を使う(つまり}R_2\\textbf{と同時に計算するイメージ))}\\\\ R_3-xR_1= \\begin{bmatrix} x & y & z & 0 & 0 & 1 \\end{bmatrix}-x\\times \\begin{bmatrix} 1 & b/a & c/a & 1/a & 0 & 0 \\end{bmatrix} \\\\ \\left[  \\begin{array}{ccc|ccc} 1 & b/a & c/a & 1/a & 0 & 0 \\\\  0 & q-pb/a & r-pc/a & -p/a & 1 & 0 \\\\  0 & y-xb/a & z-xc/a & -x/a & 0 & 1 \\\\ \\end{array}  \\right] \\\\     \\textbf{手順3)第2列目を正規化する}\\\\     \\textbf{手順3-1)2行目を1にするように}\\alpha\\textbf{で割る｡}\\\\ \\alpha=q-pb/a, \\hspace{1em} \\beta=r-pc/a, \\hspace{1em} \\gamma=y-xb/a, \\hspace{1em} \\delta=z-xc/aと置く,(但し\\alpha \\neq 0)\\\\ \\left[  \\begin{array}{ccc|ccc} 1 & b/a & c/a & 1/a & 0 & 0 \\\\  0 & \\alpha & \\beta & -p/a & 1 & 0 \\\\  0 & \\gamma & \\delta & -x/a & 0 & 1 \\\\ \\end{array}  \\right] \\\\     \\begin{array}{ll} R_2&=\\begin{bmatrix} 0 & \\alpha & \\beta & -p/a & 1 & 0 \\end{bmatrix}/\\alpha\\\\ &=\\begin{bmatrix} 0 & 1 & \\beta/\\alpha & -p/(a\\alpha) & 1/\\alpha & 0 \\end{bmatrix}\\\\ \\end{array} \\\\ \\left[  \\begin{array}{ccc|ccc} 1 & b/a & c/a & 1/a & 0 & 0 \\\\  0 & 1 & \\beta/\\alpha & -p/(a\\alpha) & 1/\\alpha & 0 \\\\  0 & \\gamma & \\delta & -x/a & 0 & 1 \\\\ \\end{array}  \\right] \\\\   \\textbf{手順3-2)1行目のb/aをゼロにするように1行目を}R_1-b/a\\cdot{R_2}\\textbf{を行う}\\\\ \\begin{array}{rl} R_1-b/a\\cdot{R_2}&= \\begin{bmatrix} 1 & b/a & c/a & 1/a & 0 & 0 \\end{bmatrix}-b/a\\times \\begin{bmatrix} 0 & 1 & \\beta/\\alpha & -p/(a\\alpha) & 1/\\alpha & 0 \\end{bmatrix} \\\\ 新たなR_1&=\\begin{bmatrix} 1 & 0 & c/a-b\\beta/(a\\alpha) & 1/a+bp/(a^2\\alpha) & -b/(a\\alpha) & 0 \\end{bmatrix}\\\\ \\end{array}\\\\ \\textbf{手順3-3)3行目の}\\gamma\\textbf{をゼロにするように3行目を}R_3-\\gamma{R_2}\\textbf{を行う(}R_1\\textbf{を計算する前の}R_2\\textbf{を使う(つまり}R_1\\textbf{と同時に計算するイメージ))}\\\\ \\begin{array}{rl} R_3-\\gamma{R_2}&= \\begin{bmatrix} 0 & \\gamma & \\delta & -x/a & 0 & 1 \\end{bmatrix}-\\gamma\\times \\begin{bmatrix}  0 & 1 & \\beta/\\alpha & -p/(a\\alpha) & 1/\\alpha & 0 \\end{bmatrix} \\\\ 新たなR_3&=\\begin{bmatrix} 0 & 0 & \\delta-\\gamma\\beta/\\alpha & -x/a+\\gamma{p}/(a\\alpha) & -\\gamma/\\alpha & 1 \\end{bmatrix}\\\\ \\end{array}\\\\ 新たなR_1とR_3を代入して\\\\ \\left[  \\begin{array}{ccc|ccc} 1 & 0 & c/a-b\\beta/(a\\alpha) & 1/a+bp/(a^2\\alpha) & -b/(a\\alpha) & 0 \\\\  0 & 1 & \\beta/\\alpha & -p/(a\\alpha) & 1/\\alpha & 0 \\\\  0 & 0 & \\delta-\\gamma\\beta/\\alpha & -x/a+\\gamma{p}/(a\\alpha) & -\\gamma/\\alpha & 1 \\\\ \\end{array}  \\right] \\\\   \\textbf{手順4)第3列目を正規化する}\\\\     \\textbf{手順4-1)3行目を1にするように}\\omega\\textbf{で割る｡}\\\\ \\omega=\\delta-\\gamma\\beta/\\alphaと置く,(但し\\omega \\neq 0)\\\\ \\begin{array}{rl} \\omega&=\\delta-\\gamma\\beta/\\alpha\\\\ &=\\dfrac{a(qz-ry)-b(pz-rx)+c(py-qx)}{aq-bp}\\\\ &=\\dfrac{\\Delta}{aq-bp}\\\\ \\end{array} \\\\ \\left[  \\begin{array}{ccc|ccc} 1 & 0 & c/a-b\\beta/(a\\alpha) & 1/a+bp/(a^2\\alpha) & -b/(a\\alpha) & 0 \\\\  0 & 1 & \\beta/\\alpha & -p/(a\\alpha) & 1/\\alpha & 0 \\\\  0 & 0 & \\omega & -x/a+\\gamma{p}/(a\\alpha) & -\\gamma/\\alpha & 1 \\\\ \\end{array}  \\right] \\\\   \\begin{array}{ll} R_3&=\\begin{bmatrix} 0 & 0 & \\omega & -x/a+\\gamma{p}/(a\\alpha) & -\\gamma/\\alpha & 1 \\end{bmatrix}/\\omega\\\\ &=\\begin{bmatrix} 0 & 0 & 1 & \\dfrac{-x/a+\\gamma{p}/(a\\alpha)}{\\omega} & \\dfrac{-\\gamma/\\alpha}{\\omega} & 1/\\omega \\end{bmatrix}\\\\ &=\\begin{bmatrix} 0 & 0 & 1 & \\dfrac{-x+\\gamma{p}/\\alpha}{a\\omega} & \\dfrac{-\\gamma}{\\alpha\\omega} & 1/\\omega \\end{bmatrix}\\\\ \\end{array} \\\\ \\left[  \\begin{array}{ccc|ccc} 1 & 0 & c/a-b\\beta/(a\\alpha) & 1/a+bp/(a^2\\alpha) & -b/(a\\alpha) & 0 \\\\  0 & 1 & \\beta/\\alpha & -p/(a\\alpha) & 1/\\alpha & 0 \\\\  0 & 0 & 1 & \\dfrac{-x+\\gamma{p}/\\alpha}{a\\omega} & \\dfrac{-\\gamma}{\\alpha\\omega} & 1/\\omega \\\\ \\end{array}  \\right] \\\\   \\textbf{手順4-2)1行目の}  \\theta=c/a-b\\beta/(a\\alpha) \\textbf{をゼロにするように1行目を}R_1-\\theta{R_3}\\textbf{を行う}\\\\ \\begin{array}{rl} R_1-\\theta{R_3}&= \\begin{bmatrix} 1 & 0 & \\theta & 1/a+bp/(a^2\\alpha) & -b/(a\\alpha) & 0 \\end{bmatrix}-\\theta\\begin{bmatrix} 0 & 0 & 1 & \\dfrac{-x+\\gamma{p}/\\alpha}{a\\omega} & \\dfrac{-\\gamma}{\\alpha\\omega} & 1/\\omega \\end{bmatrix} \\\\ 新たなR_1&=\\begin{bmatrix} 1 & 0 & 0 & 1/a+bp/(a^2\\alpha)-\\theta\\dfrac{-x+\\gamma{p}/\\alpha}{a\\omega} & -b/(a\\alpha)-\\theta\\dfrac{-\\gamma}{\\alpha\\omega} & -\\theta/\\omega \\end{bmatrix}\\\\ &=\\begin{bmatrix} 1 & 0 & 0 & \\dfrac{(a\\alpha+bp)\\omega+(x\\alpha-\\gamma{p})a\\theta}{a^2\\alpha\\omega} & \\dfrac{-b\\omega+a\\theta\\gamma}{a\\alpha\\omega} & -\\dfrac{\\theta}{\\omega} \\end{bmatrix}\\\\ \\end{array}\\\\ \\textbf{手順4-3)2行目の}  \\eta=\\beta/\\alpha \\textbf{をゼロにするように2行目を}R_2-\\eta{R_3}\\textbf{を行う}\\\\ \\begin{array}{rl} R_2-\\eta{R_3}&= \\begin{bmatrix} 0 & 1 & \\eta & -p/(a\\alpha) & 1/\\alpha & 0 \\end{bmatrix}-\\eta\\begin{bmatrix} 0 & 0 & 1 & \\dfrac{-x+\\gamma{p}/\\alpha}{a\\omega} & \\dfrac{-\\gamma}{\\alpha\\omega} & 1/\\omega \\end{bmatrix} \\\\ 新たなR_2&=\\begin{bmatrix} 0 & 1 & 0 & -p/(a\\alpha)-\\eta\\dfrac{-x+\\gamma{p}/\\alpha}{a\\omega} & 1/\\alpha-\\eta\\dfrac{-\\gamma}{\\alpha\\omega} & 0-\\eta/\\omega \\end{bmatrix}\\\\ &=\\begin{bmatrix} 0 & 1 & 0 & \\dfrac{-p\\omega+(x\\alpha-{p}\\gamma)\\eta}{a\\alpha\\omega} & \\dfrac{\\omega+\\gamma\\eta}{\\alpha\\omega} & -\\dfrac{\\eta}{\\omega} \\end{bmatrix}\\\\ \\end{array}\\\\ \\left[  \\begin{array}{ccc|ccc} 1 & 0 & 0 & \\dfrac{(a\\alpha+bp)\\omega+(x\\alpha-p\\gamma)a\\theta}{a^2\\alpha\\omega} & \\dfrac{-b\\omega+a\\theta\\gamma}{a\\alpha\\omega} & -\\dfrac{\\theta}{\\omega} \\\\  0 & 1 & 0 & \\dfrac{-p\\omega+(x\\alpha-{p}\\gamma)\\eta}{a\\alpha\\omega} & \\dfrac{\\omega+\\gamma\\eta}{\\alpha\\omega} & -\\dfrac{\\eta}{\\omega} \\\\  0 & 0 & 1 & \\dfrac{-(x\\alpha-p\\gamma)}{a\\alpha\\omega} & \\dfrac{-\\gamma}{\\alpha\\omega} & \\dfrac{1}{\\omega} \\\\ \\end{array}  \\right] \\\\   \\textbf{手順5)この右側の行列に代入した}\\alpha\\textbf{以降の文字を元に戻すと以下の逆行列となる}\\\\     A^{-1}=\\dfrac{1}{\\Delta} \\begin{bmatrix} qz-ry & -(bz-cy) & br-cq \\\\ -(pz-rx) & qz-cx & -(ar-cp) \\\\ py-qx & -(ay-bx) & aq-bp \\end{bmatrix}",
         "comment": ""
     },
@@ -709,79 +709,79 @@
     },
     {
         "id": "14-01",
-        "title": "ＱＣ７つ道具",
+        "title": "ＱＣ７つ道具：",
         "formula": "\\begin{array}{l|ll} 道具 &用途 &データ形式\\\\ \\hline チェックシート &データの収集\\\\ グラフ &折れ線グラフ(時系列変化など)､円グラフ(割ありなど)\\\\ パレート図 &要因分析や現状把握など &大きい順に棒グラフを並べ\\\\ &&折れ線グラフで100\\%を表す形式\\\\ ヒストグラム &ばらつきの分布、全体の中心の把握など &度数毎の棒グラフ\\\\ 散布図 &2つの相関関係をつかむなど &xyの交差する点を散布する構図\\\\ 管理図 &時系列の変化で正常か異常かの判断をするなど &時系列の折れ線グラフ\\\\ 特性要因図 &要因と結果の因果関係を追及するなど &→の末尾に結果を書き、\\\\ (フィッシュボーンダイアグラム)&&矢印に対してさらに要因の矢印が向かう構図\\\\ \\end{array}",
         "comment": "主に計量値、計数値に対して用いる図(特性要因図以外)。チェグパドヒ管特"
     },
     {
         "id": "14-02",
-        "title": "新ＱＣ７つ道具",
+        "title": "ＱＣ７つ道具：新ＱＣ７つ道具",
         "formula": "新QC７つ道具\\\\ \\begin{array}{l|lll} 道具 &用途 &データ形式\\\\ \\hline 親和図法 &言語データの分類など &類似した項目を群に分ける\\\\ (affinity diagram:KJ法)\\\\ \\hline 関連図法 &原因と結果が複雑に絡みあった問題を整理するなど &各項目を矢印でつないでいく\\\\ \\hline 系統図法 &目標などを達成するための手段などを &言語をトーナメント表のような形に何段階かにつないでいく形式\\\\ &何段階かに展開するなど&【種類】構成要素展開型・方策展開型 \\\\ \\hline マトリックス図法 &二元的な要素の関連の度数やレベル &行と列で区切ったセル状の表 \\\\ &(数値や◎△などの記号)などで把握するなど\\\\ \\hline アローダイヤグラム法  &日程計画の推進、作業順序の明確化など &系統図法と似ているが時系列を矢印で表す、\\\\ \\hline ＰＤＰＣ法(過程決定計画図) &プログラムの構築などでエラーやバグなど &枠の形で「対策、状態、分岐」などを明確化し、矢印でつなぐ\\\\ \\text{(Process Decision Program Chart)}&想定した分岐を構築するなど&【種類】強制連結型・逐次展開型 \\\\ \\hline マトリックス・データ解析法 &多変量解析法の主成分分析など &マトリックス図で得られたデータが数値化できるものであれば\\\\ &&それを統計解析したもの。\\\\ &&0を中心にxy方向プラスとマイナスに分け\\\\ &&それらに対義語となるような要因を割り当てた散布図など\\\\ \\end{array}",
         "comment": ""
     },
     {
         "id": "15-01",
-        "title": "品質保証、品質管理の英略語",
+        "title": "品質保証の意味：品質管理の英略語",
         "formula": "\\displaystyle QC:Quality Control(品質管理),\\\\ SQC:Statistical Quality Control(統計的品質管理),\\\\ TQC:Total Quality Control(総合的品質管理: ※全部門・全員参加型),\\\\ TQM:Total Quality Management(総合的品質管理: ※全部門・全員参加型),\\\\ QA:Quality Assurance(品質保証),\\\\ QMS:Quality Management System(品質マネジメントシステム),",
         "comment": "QA:品質マネジメント･･･組織を指揮し管理するために調整された活動(方針、目標、計画、品質保証、品質管理、品質改善など)の体系的な枠組み。<br>\n品質管理は品質要求事項を満たすことに焦点を合わせた品質マネジメントの一部。<br>\n品質保証は製品やサービスが一定の品質基準を満たすことを保証するための活動。\n"
     },
     {
         "id": "15-02",
-        "title": "広義の品質",
+        "title": "品質保証の意味：広義の品質",
         "formula": "従来(狭義)の品質(Quality)、コスト(Cost)、納期または時間(Delivery or Time)、\\\\ 生産性(Productivity)、安全性(Safety)、モラル(Morale)、環境(Environment)、\\\\ そのほか、機能(Function)、信頼性(Reliability)\\\\ QCD + PSME\\\\ 顧客満足度(Customer Satisfaction:CS)",
         "comment": "広義の品質は、製品やサービスが顧客の期待をどれだけ満たすかを示す指標であり、<br>\n単に製品の性能や機能だけでなく、コスト、時間、信頼性、安全性、環境への配慮なども含まれる。<br>\nこれらの要素が総合的に評価されることで、顧客満足度が決まる。\n"
     },
-    {
-        "id": "15-03",
-        "title": "製造物責任と品質コストの用語",
-        "formula": "製造物責任(Product Liability:PL)、\\\\ 【顧客側】\\\\ \\hspace{1em} ・ライフサイクルコスト(Life Cycle Cost)･･･購入価格 ＋ 使用上の維持費・保守費用 + 廃棄費用などのトータルコスト\\\\ 【生産者側】\\\\ \\hspace{1em} ・予防コスト[Pコスト](Prevention Cost)\\\\ \\hspace{2em}･･･不良品を出さないためのコスト(教育訓練、品質計画、品質改善など)\\\\ \\hspace{1em} ・評価コスト[Aコスト](Appraisal Cost)\\\\ \\hspace{2em}･･･不良品を見つけるためのコスト(検査、試験、監査など)\\\\ \\hspace{1em} ・内部失敗コスト[IFコスト](Internal Failure Cost)\\\\ \\hspace{2em}･･･不良品が発生した後に社内で処理するためのコスト(再加工、廃棄など)(当社内では「仕損費」など)\\\\ \\hspace{1em} ・外部失敗コスト[EFコスト](External Failure Cost)\\\\ \\hspace{2em}･･･不良品が顧客に届いた後のコスト(返品、クレーム対応、賠償など)(当社内では「クレーム費」など)",
-        "comment": "tips:日本でよく言われるクレーマーのクレームは英語では「苦情」(complaint)"
-    },
-    {
-        "id": "15.5-01",
-        "title": "15.5-01:方針と機能別管理",
+        {
+        "id": "15-04",
+        "title": "品質保証体制：方針と機能別管理",
         "formula": "機能別管理 \\\\ \\hspace{1em} ･･･組織横断的な方向付けや目標がある場合の管理方法 \\hspace{1em} (ヨコのつながり) \\\\ 部門別管理 \\\\ \\hspace{1em} ･･･タテのつながり \\\\",
         "comment": ""
     },
     {
         "id": "16-01",
-        "title": "品質の維持と継続的改善",
+        "title": "改善活動：品質の維持と継続的改善",
         "formula": "PDCAサイクル(Plan-Do-Check-Act)\\\\ \\hspace{2em}1. 計画(Plan): 目標設定と計画策定\\\\ \\hspace{2em}2. 実行(Do): 計画に基づいて実行\\\\ \\hspace{2em}3. 確認(Check): 結果を評価し、目標とのギャップを確認\\\\ \\hspace{2em}4. 改善(Act): 改善策を実施し、次のサイクルへ\\\\ 【維持管理におけるPDCA】SDCAサイクル(Standarize-Do-Check-Act)\\\\ \\hspace{2em}1. 標準化(Standardize): 最適な方法を標準化し、文書化\\\\ \\hspace{2em}2. 実行(Do): 標準化された方法に従って実行\\\\ \\hspace{2em}3. 確認(Check): 実行結果を評価し、標準とのギャップを確認\\\\ \\hspace{2em}4. 改善(Act): 必要に応じて標準を見直し、次のサイクルへ",
         "comment": "あるべき姿と現状のギャップを埋める活動=問題解決型、ありたい姿と現状のギャップを埋める活動=課題達成型、"
     },
     {
         "id": "16-02",
-        "title": "QCストーリー[問題解決型(あるべき姿とのギャップを埋める)]",
+        "title": "改善活動：QCストーリー[問題解決型(あるべき姿とのギャップを埋める)]",
         "formula": "【工程の解析】\\\\ \\hspace{2em}1. テーマの選定､問題の明確化: 問題の洗い出し。会社の方針の確認し目標の設定\\\\ \\hspace{2em}2. 現状の把握: データ収集と分析を行い、現状を理解し目標「値」を設定\\\\ \\hspace{2em}3. 要因の分析: 要因の洗い出しと仮説の設定、検証\\\\ \\hspace{2em}4. 対策の立案: 要因に基づいて、科学的根拠やリスク評価などから対策を立案\\\\ 【工程の改善】\\\\ \\hspace{2em}5. 対策の実施: 対策を実行し、データ収集などで効果を確認\\\\ \\hspace{2em}6. 効果の確認: 対策の効果を評価し、達成度の見極めから必要に応じて改善\\\\ \\hspace{2em}7. 標準化と管理の定着(歯止め): 維持のための標準化や教育の実施。\\\\ \\hspace{2em}8. フィードバック(反省と今後の対応): 活動の進め方の反省(振り返り)。残された問題への対処",
         "comment": "あるべき姿と現状のギャップを埋める活動=問題解決型"
     },
     {
         "id": "16-03",
-        "title": "QCストーリー[課題達成型(ありたい姿とのギャップを埋める)]",
+        "title": "改善活動：QCストーリー[課題達成型(ありたい姿とのギャップを埋める)]",
         "formula": "【工程の解析】\\\\ \\hspace{2em}1. テーマの選定: ありたい姿の確認し適用する「型」の決定\\\\ \\hspace{2em}2. 課題の明確化と目標の設定: 現状レベルと要望レベルの調査、目標の決定\\\\ \\hspace{2em}3. 方策の立案: 方策(アイデア)の検討、期待効果の評価、有効な方策の選定(複数候補)\\\\ \\hspace{2em}4. シナリオ(最適策)の追及: 方策の期待効果の予測と最適策の選定\\\\ 【工程の改善】\\\\ \\hspace{2em}5. 最適策の実施: 実行計画作成と実施\\\\ \\hspace{2em}6. 効果の確認: 狙った目標との比較\\\\ \\hspace{2em}7. 標準化と管理の定着(歯止め): 維持のための標準化や教育の実施。\\\\ \\hspace{2em}8. フィードバック(反省と今後の対応): 活動の進め方の反省(振り返り)。残された問題への対処",
         "comment": "ありたい姿と現状のギャップを埋める活動=課題達成型"
     },
     {
         "id": "17-01",
-        "title": "品質保証：プロセス重視と品質保証活動",
+        "title": "品質保証体制：製造物責任と品質コストの用語",
+        "formula": "製造物責任(Product Liability:PL)、\\\\ 【顧客側】\\\\ \\hspace{1em} ・ライフサイクルコスト(Life Cycle Cost)･･･購入価格 ＋ 使用上の維持費・保守費用 + 廃棄費用などのトータルコスト\\\\ 【生産者側】\\\\ \\hspace{1em} ・予防コスト[Pコスト](Prevention Cost)\\\\ \\hspace{2em}･･･不良品を出さないためのコスト(教育訓練、品質計画、品質改善など)\\\\ \\hspace{1em} ・評価コスト[Aコスト](Appraisal Cost)\\\\ \\hspace{2em}･･･不良品を見つけるためのコスト(検査、試験、監査など)\\\\ \\hspace{1em} ・内部失敗コスト[IFコスト](Internal Failure Cost)\\\\ \\hspace{2em}･･･不良品が発生した後に社内で処理するためのコスト(再加工、廃棄など)(当社内では「仕損費」など)\\\\ \\hspace{1em} ・外部失敗コスト[EFコスト](External Failure Cost)\\\\ \\hspace{2em}･･･不良品が顧客に届いた後のコスト(返品、クレーム対応、賠償など)(当社内では「クレーム費」など)",
+        "comment": "tips:日本でよく言われるクレーマーのクレームは英語では「苦情」(complaint)"
+    },
+    {
+        "id": "17-02",
+        "title": "品質保証体制：プロセス重視と品質保証活動",
         "formula": "プロセス重視：安定した良いプロセス(工程)から安定した良い製品を生み出すことができるという考え方\\\\ \\hspace{2em}(結果を管理するので はなく結果でプロセスを管理する：QC工程図など)\\\\ 品質保証活動の意義･･･製品やサービスが顧客の期待を満たすことを保証(信頼感を積極的に自信をもって提供)すること。\\\\ 品質保証体系･･･それらを体系的に管理するための枠組み。体系的活動",
         "comment": ""
     },
     {
-        "id": "17-02",
-        "title": "品質保証：品質保証体系図",
+        "id": "17-03",
+        "title": "品質保証体制：品質保証体系図",
         "formula": "系統図法を用いて、横軸に「部門」、縦軸に「企画～アフターサービスまでの活動のステップ」を配置し、各部門の活動を示す。\\\\ 例: 開発部門、製造部門、品質管理部門、販売部門など。\\\\ 各部門の活動は、活動のステップにおける具体的活動項目を配置する。それらを矢印でつなぎ、部門間の連携や情報の流れを示す。",
         "comment": "目的: 品質保証活動の全体像を把握し、各部門の役割と責任を明確にすること"
     },
     {
-        "id": "17-03",
-        "title": "品質保証：品質機能展開",
+        "id": "17-04",
+        "title": "品質保証体制：品質機能展開",
         "formula": "品質機能展開QFD(Quality Function Deployment)･･･親和図法→二元表で分類する\\\\ \\hspace{2em}1. 顧客の要求(Voice of Customer: VOC)を収集し、重要度を評価。\\\\ \\hspace{2em}2. 顧客要求を「何を実現するか」に変換し、技術的要件(Technical Requirements)を定義。\\\\ \\hspace{2em}3. 技術的要件を「どのように実現するか」に変換し、具体的な設計仕様を策定。\\\\ \\hspace{2em}4. 各技術的要件の重要度と実現可能性を評価し、優先順位を付ける。\\\\ 【要求別】\\\\ \\hspace{2em}品質展開(Quality Deployment)\\\\ \\hspace{2em}技術展開(Technical Deployment)\\\\ \\hspace{2em}コスト展開(Cost Deployment)\\\\ \\hspace{2em}信頼性展開(Reliability Deployment)\\\\ \\hspace{2em}業務機能展開(Job Function Deployment)\\\\",
         "comment": "目的: 「顧客の要求を、製品やサービスの具体的な設計仕様に反映する」ための方法論。<br>\nあいまいな顧客要求を見える化、整理し、関係性を明確にする\n"
     },
     {
-        "id": "17-04",
-        "title": "品質保証：デザインレビュー､FTA、FMEA",
+        "id": "17-05",
+        "title": "品質保証体制：デザインレビュー､FTA、FMEA",
         "formula": "デザインレビュー(Design Review, DR)設計審査\\\\ \\hspace{2em}･･･開発(広義にはアフターサービスまで含める)の各段階においてクロスファンクショナルチーム(部門横断チーム)により\\\\ \\hspace{2em}それぞれの専門的立場からレビューを行うもの。またはその会議体。\\\\ FTA(Fault Tree Analysis)故障の木解析\\\\ \\hspace{2em}･･･致命的故障などの問題をトップに置き、発生経路、発生原因、発生確率を、\\\\ \\hspace{2em}ツリー型に「 論理記号 」で繋いだ形式で解析する(トップダウン式)。\\\\ FMEA(Failure Mode and Effects Analysis)故障モード影響解析\\\\ \\hspace{2em}･･･各問題に対して、「 影響の重大度(厳しさ) 」「 発生頻度 」「 検知の難易度(検出レベル) 」を\\\\ \\hspace{2em}それぞれ数段階に分けて点数化し、掛け合わせたものを「 重要度 」として優先して解決すべき問題を抽出する。\\\\ \\hspace{2em}ボトムアップ型(原因→結果)、以下2種類がある\\\\ \\hspace{3em}・機能FMEA(当社では設計FMEA[D-FMEA])･･･ハードウェア、ソフトウェアの機能構成に着目した解析\\\\ \\hspace{3em}・工程FMEA･･･作業および管理のプロセス要素に着目した解析 \\\\ コンカレントエンジニアリング \\\\ \\hspace{2em}･･･設計と他工程(部門)を同時進行で行うことで開発期間の短縮や不具合の早期発見を目的とする \\\\ リエンジニアリング \\\\ \\hspace{2em}･･･既存の製品やプロセスを品質・コスト・納期などの面で根本的に改善するために設計や手順を見直すこと \\\\ 妥当性確認 \\\\ \\hspace{2em}･･･設計や工程が、最終的に求められる目的・要求仕様に適合しているかを確認すること \\\\ 複合監査 \\\\ \\hspace{2em}･･･製品開発やプロセスにおいて複数の視点（設計・製造・品質・安全など）を統合して行う監査 \\\\",
         "comment": "DR:当社では試作図面会議、試作現品会議などの会議体が相当。<br>\n上記は全てクロスファンクショナルチームで行うことが求められる。\n"
     },
@@ -847,31 +847,31 @@
     },
     {
         "id": "19-07",
-        "title": "19-07多変量解析法：ウォード法",
+        "title": "多変量解析法：ウォード法",
         "formula": "\\displaystyle クラスタを結合しても分散ができるだけ増えないように計算していく。\\\\ D_{(A \\cup B),C} = \\frac{n_A + n_C}{n_A + n_B + n_C}D_{A,C} + \\frac{n_B + n_C}{n_A + n_B + n_C}D_{B,C} + \\frac{n_C}{n_A + n_B + n_C}D_{A,B} \\\\ \\hspace{2em}(n_X：クラスタxに含まれる点数、D_{X,Y}：クラスタXとYの距離)\\\\ 上記公式の意味：A と B をくっつけた後、その新しいクラスタと C の距離をどうするか？\\\\ ※各クラスタ内の点同士の距離はユークリッド距離の二乗で求める,\\\\ \\;\\;\\;→\\;\\;\\;誤差平方和(分散 \\times データ数) = \\sum{(各点 - クラスタ平均)^2}･･･距離の二乗の合計",
         "comment": ""
     },
     {
         "id": "19-08",
-        "title": "19-08多変量解析法：数値化理論の分類",
+        "title": "多変量解析法：数値化理論の分類",
         "formula": "\\displaystyle 数値化理論･･･質的データ（カテゴリ）を数値化し、回帰や判別分析を可能にする \\\\ 主な分類 \\\\ \\hspace{2em}・数量化\\mathrm{I}類： 多変量回帰分析（目的変数が量的）\\\\ \\hspace{2em}・数量化\\mathrm{II}類： 判別分析（目的変数が質的、説明変数が量的）\\\\ \\hspace{2em}・数量化\\mathrm{III}類： クラスター分析のための質的データ処理",
         "comment": "数値化I類 例：カテゴリごとにスコア（例：満足＝2、普通＝1、不満＝0など）を付けて数値データに変換し、回帰分析を行う。など"
     },
     {
         "id": "19-09",
-        "title": "19-09多変量解析法：主成分分析の深堀1(行列とかベクトルとか)",
+        "title": "多変量解析法：主成分分析の深堀1(行列とかベクトルとか)",
         "formula": "2変数で簡単に\\\\ 標準化した変数u_1,u_2の相関行列:R= \\begin{pmatrix} 1 & r \\\\ r & 1 \\end{pmatrix}, \\hspace{1em} r=Corr(u_1,u_2) \\\\ Rの固有値:\\lambda_1=1+r, \\hspace{1em} \\lambda_2=1-r \\\\ \\hspace{1em} \\lambda_iは対応する主成分の固有値=分散 \\\\ 第一主成分の寄与率z_1= \\displaystyle \\frac{第一主成分の分散}{全分散の合計}=\\frac{\\lambda_1}{\\lambda_1 + \\lambda_2}=\\frac{\\lambda_1}{\\sum\\lambda_i} \\\\",
         "comment": ""
     },
     {
         "id": "19-10",
-        "title": "19-10多変量解析法：主成分分析の深堀2(固有値λの求め方)",
+        "title": "多変量解析法：主成分分析の深堀2(固有値λの求め方)",
         "formula": "2変数で簡単に\\\\ 固有値とは標準化された相関行列Rがある方向に伸びる・縮む倍率 \\\\ (簡単に言うと行列の大きさを一つの数値に変換したもの=分散の大きさ) \\\\ 固有値の求め方 \\\\ 標準化された相関行列R= \\begin{pmatrix} 1 & r \\\\ r & r \\end{pmatrix} \\\\ 単位行列I= \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}, からA= \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}の場合の行列式\\det(A)=ad-bc  \\\\ \\lambdaを単位行列Iで行列化したものが\\lambda Iなので、\\\\ 行列式\\det(R-\\lambda I)=0 \\\\ \\begin{vmatrix} 1-\\lambda & r \\\\ r & 1-\\lambda \\end{vmatrix} =(1-\\lambda)^2-r^2=0 \\\\ (1-\\lambda)^2=r^2 \\Rightarrow 1-\\lambda= \\pm{r} \\Rightarrow \\lambda=1\\pm{r} \\\\ 第一主成分は分散が最も大きい方向なので、\\lambda=1+rが第一主成分側になる \\\\ \\text{} \\\\ 固有値と分散の関係 \\\\ 第一主成分z_1=v_1u_1+v_2u_2の分散は\\\\ V(z_1)=v^\\top Rv\\\\ vが固有ベクトルで正規化されている場合\\\\ V(z_1)=\\lambda_1, \\hspace{1em} (分散=固有値となる) \\\\",
         "comment": ""
     },
     {
         "id": "19-11",
-        "title": "19-11多変量解析法：主成分分析の深堀3(公式まとめ)",
+        "title": "多変量解析法：主成分分析の深堀3(公式まとめ)",
         "formula": "\\begin{array}{c|cc} 項目 &式 &説明 \\\\ \\hline 標準化u &u_j=\\displaystyle\\frac{x_j-\\bar{x}_j}{\\sigma_{x_j}} &元の変数x_j を平均0分散1に変換 \\\\ 共分散行列S &S=Cov(x_i,x_j)= \\begin{bmatrix} V(x_1) & Cov(x_1,x_2) \\\\ Cov(x_1,x_2) & V(x_2) \\end{bmatrix}= \\begin{bmatrix} S_{x_1x_1} & S_{x_1x_2} \\\\ S_{x_1x_2} & S_{x_2x_2} \\end{bmatrix},(※2変数の場合)   &標準化する前の行列 \\\\ 相関行列R &R_{ij}=(Corr(u_i,u_j))=\\displaystyle\\frac{S_{ij}}{\\sqrt{S_{ii}S_{jj}}} &標準化変数の相関係数で作る行列(共分散行列を標準偏差で正規化したもの) \\\\ 固有値\\lambda &\\det(R-\\lambda I)=0 &固有値\\lambda_iが主成分の分散 \\\\ 固有値(標準化していない場合)\\lambda &\\det(S-\\lambda I)=0 &標準化していない場合はRではなくSを用いる \\\\ 主成分z_i &z_i=\\sum_jv_{ji}u_j &固有ベクトルv_i(重みベクトルw_iとも言う)に沿った線形結合 \\\\ 主成分の分散V &V(z_i)=\\lambda_i &固有値そのものが主成分の分散(標準化していなくても成立) \\\\ 寄与率(分散比) &寄与率(z_i)=\\displaystyle\\frac{\\lambda_i}{\\sum_j{\\lambda_j}} &各主成分が全分散に占める割合 \\\\ 主成分負荷量 &相関係数(主成分負荷量)Corr(z_i,u_j)=\\sqrt{\\lambda_i}v_{ji} &主成分と元の変数の相関係数,(v_{ji}は固有ベクトル要素) \\\\ 主成分負荷量(標準化していない場合) &相関係数(主成分負荷量)Corr(z_i,x_j)=\\displaystyle\\frac{\\sqrt{\\lambda_i}v_{ji}}{\\sigma_{x_j}} &標準化していないx_jでも成立 \\\\ 主成分の直交性 &共分散Cov(z_i,z_j)=0, \\hspace{1em} (i \\neq j) &主成分同士は相関0(直交) \\\\ \\end{array}  \\\\ \\begin{array}{c|cc} 項目 & 式 & 説明 \\\\ \\hline 標準化 & u_j=\\frac{x_j-\\bar{x}_j}{\\sigma_{x_j}} & x_j を平均0・分散1に変換 \\\\ 共分散行列 & S_{ij}=Cov(x_i,x_j) & 標準化していない場合に使用 \\\\ 相関行列 & R_{ij}=\\frac{S_{ij}}{\\sqrt{S_{ii}S_{jj}}} & 標準化済み変数の相関係数で作る行列 \\\\ 固有値(標準化時) & \\det(R-\\lambda I)=0 & 固有値 \\lambda_i が主成分の分散 \\\\ 固有値(非標準化時) & \\det(S-\\lambda I)=0 & 標準化しない場合の主成分分散 \\\\ 固有ベクトル & Rv_i=\\lambda_i v_i & v_i は重みベクトルで単位長 (v_i^\\top v_i = 1) \\\\ 主成分 & z_i=\\sum_j v_{ji} u_j & v_{ji} は固有ベクトルの要素。行列形式では \\mathbf{z}=V^\\top\\mathbf{u} \\\\ 主成分の分散 & V(z_i)=\\lambda_i & 固有値がそのまま分散を表す \\\\ 寄与率 & \\frac{\\lambda_i}{\\sum_j\\lambda_j} & 全体の分散に対する比率 \\\\ 主成分負荷量 & Corr(z_i,u_j)=\\sqrt{\\lambda_i}v_{ji} & 主成分と標準化変数の相関係数 \\\\ 主成分負荷量(非標準化) & Corr(z_i,x_j)=\\frac{\\sqrt{\\lambda_i}v_{ji}}{\\sigma_{x_j}} & 非標準化変数との相関係数 \\\\ 直交性 & Cov(z_i,z_j)=0\\ (i\\ne j) & 主成分同士は無相関（直交） \\\\ \\end{array}",
         "comment": ""
     },
@@ -883,121 +883,121 @@
     },
     {
         "id": "20-01",
-        "title": "20-01実験計画法：直交表の目的とサイズの表現",
+        "title": "実験計画法：直交表の目的とサイズの表現",
         "formula": "\\begin{array}{l} \\textbf{目的}：少ない実験回数で、複数の因子の主効果や交互作用を効率よく推定するための手法 \\\\[0.5em] \\textbf{直交表の記号}：L_n(k^m) \\\\[0.5em] n：実験回数（= 直交表の行数）\\\\ k：各因子の水準数（例：2水準、3水準）\\\\ m：割り当て可能な列数（≠因子数。因子や交互作用を割り付けるための枠）\\\\[0.5em] \\quad ・2水準のみの場合：おおよそ m \\fallingdotseq n - 1 \\quad （自由度の上限）\\\\ \\quad ・3水準のみの場合：因子1つにつき自由度2を使うため、\\displaystyle \\left\\lfloor \\frac{n - 1}{2} \\right\\rfloor \\fallingdotseq \\text{因子の最大数} \\\\[0.5em] \\textbf{※注意}：mは「列の数」であり、「因子の数」ではない。\\\\ \\quad 直交表に実際にいくつの因子を割り付けるかは、自由度の合計が n - 1 以下になるように設計する。\\\\[0.5em] \\textbf{例}：L16(2^{15}) → 実験回数16回、最大15列まで使用可能。\\\\ \\quad ただし因子数は任意（例：2因子でも良い）\\\\ \\textbf{QC検定では}：L8, L16, L27 などが頻出し、数字は行数（＝実験回数）を示す。 \\end{array}",
         "comment": ""
     },
     {
         "id": "20-02",
-        "title": "20-02実験計画法：直交表サイズの選択",
+        "title": "実験計画法：直交表サイズの選択",
         "formula": "\\begin{array}{cccc} 頻出の表サイズ一覧\\\\ 表名称 &実験回数n(行数) &m(列数) &水準数k   \\\\ \\hline L4     &4             &3           &2         \\\\ L8     &8             &7           &2         \\\\ L9     &9             &4(理論的には6だか不要)           &3         \\\\ L16    &16            &15          &2         \\\\ L18    &18            &混合        &2or3      \\\\ L27    &27            &13          &3         \\\\ \\end{array}",
         "comment": ""
     },
     {
         "id": "20-03",
-        "title": "20-03実験計画法：直交表2水準の割り付け方(例L8)",
+        "title": "実験計画法：直交表2水準の割り付け方(例L8)",
         "formula": "水準の割り付け方 \\\\ 全ての水準を均等な数に振り分ける \\\\ L8の場合、水準は２なので1と2で振り分ける \\\\ L8=2^3 \\rightarrow 基本列は3つで列A,B,Cとする \\\\ A列目は11112222と半分ずつに振り分ける \\\\ B列目は11221122とまたその半分ずつに振り分ける \\\\ C列目は12121212とまたその半分ずつに振り分ける \\\\ 4～6列目は、A,B,C列の\\mathrm{mod2}で振り分ける(11又は22) \\rightarrow 1、(12又は21) \\rightarrow 2 \\\\  7列目は((A+B \\hspace{0.5em}\\mathrm{mod\\hspace{0.2em}2})+C)\\hspace{0.5em}\\mathrm{mod\\hspace{0.2em}2}で振り分ける。つまり4列目A+B\\hspace{0.5em}\\mathrm{mod\\hspace{0.2em}2}とC列目で判定する \\\\ \\begin{array}{c|ccccccc} &\\hspace{4em}&\\hspace{4em}&\\hspace{4em}&\\hspace{4em}&\\hspace{4em}&\\hspace{4em} \\\\ 因子列&1&2&3&4&5&6&7 \\\\ 割付&A&B&C&(A+B \\hspace{0.5em}\\mathrm{mod\\hspace{0.2em}2})&(A+C \\hspace{0.5em}\\mathrm{mod\\hspace{0.2em}2})&(B+C \\hspace{0.5em}\\mathrm{mod\\hspace{0.2em}2})&((A+B \\hspace{0.5em}\\mathrm{mod\\hspace{0.2em}2})+C)\\hspace{0.5em}\\mathrm{mod\\hspace{0.2em}2}) \\\\ \\hline 1 & \\textbf{1} & \\textbf{1} & \\textbf{1} & \\textbf{1} & \\textbf{1} & \\textbf{1} & \\textbf{1}  \\\\ 2 & \\textbf{1} & \\textbf{1} & \\mathbb{2} & \\textbf{1} & \\mathbb{2} & \\mathbb{2} & \\mathbb{2}  \\\\ 3& \\textbf{1} & \\mathbb{2} & \\textbf{1} & \\mathbb{2} & \\textbf{1} & \\mathbb{2} & \\mathbb{2}  \\\\ 4& \\textbf{1} & \\mathbb{2} & \\mathbb{2} & \\mathbb{2} & \\mathbb{2} & \\textbf{1} & \\textbf{1}  \\\\ 5& \\mathbb{2} & \\textbf{1} & \\textbf{1} & \\mathbb{2} & \\mathbb{2} & \\textbf{1} & \\mathbb{2}  \\\\ 6& \\mathbb{2} & \\textbf{1} & \\mathbb{2} & \\mathbb{2} & \\textbf{1} & \\mathbb{2} & \\textbf{1}  \\\\ 7& \\mathbb{2} & \\mathbb{2} & \\textbf{1} & \\textbf{1} & \\mathbb{2} & \\mathbb{2} & \\textbf{1}  \\\\ 8& \\mathbb{2} & \\mathbb{2} & \\mathbb{2} & \\textbf{1} & \\textbf{1} & \\textbf{1} & \\mathbb{2}  \\\\ \\end{array}",
         "comment": ""
     },
     {
         "id": "20-04",
-        "title": "20-04実験計画法：直交表3水準の割り付け方(例L9)",
+        "title": "実験計画法：直交表3水準の割り付け方(例L9)",
         "formula": "全ての水準を均等な数に振り分ける \\\\ L9の場合、3進数で振り分ける(0～2) \\\\ \\log_{3}(9)[=3^2]  =2 \\rightarrow 列A,Bにする \\\\ A列目は000111222と3等分に振り分ける \\\\ B列目は012012012とまたその3等分に振り分ける \\\\ 3～6列目は、A,B列の \\mathrm{mod} \\, 3で振り分けていく \\\\ 3列目：(A+B)  \\hspace{0.5em}    \\mathrm{mod} \\hspace{0.5em} 3 \\\\ 4列目：(A+2B)  \\hspace{0.5em}    \\mathrm{mod} \\hspace{0.5em} 3 \\\\ 5列目：(2A+B)  \\hspace{0.5em}    \\mathrm{mod} \\hspace{0.5em} 3 \\\\ 6列目：(2A+2B)  \\hspace{0.5em}    \\mathrm{mod} \\hspace{0.5em} 3 \\\\ \\begin{array}{ccccccccc} &\\hspace{4em}&\\hspace{4em}&\\hspace{4em}&\\hspace{4em}&\\hspace{4em}&\\hspace{4em} \\\\ &1&2&3&4&5&6 \\\\ 回数&A&B&(A+B)\\mathrm{mod}3&(A+2B)\\mathrm{mod}3&(2A+B)\\mathrm{mod}3&(2A+2B)\\mathrm{mod}3 \\\\ \\hline 1&0&0&0&0&0&0 \\\\ 2&0&1&1&2&1&2 \\\\ 3&0&2&2&1&2&1 \\\\ 4&1&0&1&1&2&2 \\\\ 5&1&1&2&0&0&1 \\\\ 6&1&2&0&2&1&0 \\\\ 7&2&0&2&2&1&1 \\\\ 8&2&1&0&1&2&0 \\\\ 9&2&2&1&0&0&2 \\\\ \\end{array}",
         "comment": ""
     },
     {
         "id": "20-05",
-        "title": "20-05実験計画法：乱塊法（Randomized Block Design, RBD）",
+        "title": "実験計画法：乱塊法（Randomized Block Design, RBD）",
         "formula": "乱塊法の目的･･･ブロック(群や条件)によって結果が大きく左右されるときその影響を制御するために使用する \\\\ 式は交互作用があり繰り返しありの二元配置と非常によく似ている(繰り返しのnをブロックのRに置き換えているだけの式が多い) \\\\ 以下に式の一覧と、次項目では上記二元配置との違いをまとめる \\\\ \\text{} \\\\ \\begin{array}{c|cccc} 要素 &自由度\\phi &平方和S &平方和のCT式 &平均平方(分散)V=S/\\phi \\\\ \\hline 総平方和 &N-1 &S_T= \\displaystyle \\sum_{i,j,k}(Y_{ijk}-\\bar{T})^2 &S_T=\\sum Y_{ijk}^2-CT &なし \\\\ 因子A &a-1 &S_A=br\\sum(\\bar{A}_i-\\bar{T})^2 &S_A=\\frac{1}{br}\\sum(TA_i)^2-CT &V_A=S_A/\\phi_A \\\\ 交互作用A \\times B &(a-1)(b-1) &S_{A \\times B}=r \\displaystyle \\sum_{i,j}( \\overline{AB}_{ij}-\\bar{A}_i-\\bar{B}_j+\\bar{T})^2 &S_{A \\times B}=\\frac{1}{r}\\sum(TAB_{ij})^2-S_A-S_B-CT &V_{A \\times B}=S_{A \\times B}/\\phi_{A \\times B} \\\\ ブロックR &r-1 &S_R=ab\\sum(\\bar{R}_k-\\bar{T})^2 &S_R=\\frac{1}{ab}\\sum(TR_k)^2-CT &V_R=S_R/\\phi_R \\\\ 誤差E(バランス設計) &(ab-1)(r-1) &S_E=\\sum(Y_{ijk}- \\overline{AB}_{ij}-\\bar{R}_k+\\bar{T})^2 &S_E=\\sum(Y_{ijk}-\\overline{AB}_{ij}-\\bar{R}_k+\\bar{T})^2 &V_E=S_E/\\phi_E \\\\ &=\\phi_T-\\phi_A-\\phi_B-\\phi_{A \\times B}-\\phi_R & &=S_T-S_A-S_B-S_{A \\times B}-S_R & \\\\ \\end{array} \\\\ \\text{} \\\\ \\begin{array}{rl} 補正項&:CT= \\displaystyle \\frac{T^2}{abr} \\\\ Aの水準iにおける平均&:\\bar{A}_i=\\displaystyle \\frac{1}{br}\\sum_{j=1}^b\\sum_{k=1}^rY_{ijk} \\\\ Aの水準i,Bの水準jにおける平均&:\\overline{AB}_{ij}=\\displaystyle \\frac{1}{r}\\sum_{k=1}^rY_{ijk} \\\\ (ブロックごとの繰り返しも含む)\\\\ ブロックkの平均&:\\bar{R}_k=\\displaystyle \\frac{1}{ab}\\sum_{i=1}^a\\sum_{b=1}^bY_{ijk} \\\\ 全データの平均&:\\bar{T}=\\displaystyle \\frac{1}{abr}\\sum_{i=1}^a\\sum_{j=1}^b\\sum_{k=1}^rY_{ijk} \\\\ 確率変数&:Y_{ijk}=\\mu+\\alpha_i+\\beta_j+(\\alpha\\beta)_{ij}+\\rho_k+\\ \\epsilon_{ijk} \\\\ \\end{array} \\\\ \\text{} \\\\ a:Aの水準数 \\\\ b:Bの水準数 \\\\ r:ブロック数(乱塊法の繰り返し) \\\\ 例br=A_i水準のデータ数(乱塊法ではバランス設計のため) \\\\ N=abr:総観測数 \\\\ T:全データ合計 \\\\ TA_i:Aの水準iのデータ合計 \\\\ TB_j:Bの水準jのデータ合計 \\\\ TAB_{ij}:A \\times Bのデータ合計 \\\\ \\mu:全体平均 \\\\ \\alpha_i,\\beta_j:因子効果 \\\\ (\\alpha\\beta)_{ij}:交互作用 \\\\ \\rho_k:ブロック効果 \\\\ \\epsilon_{ijk}:誤差(確率変数) \\\\",
         "comment": ""
     },
     {
         "id": "20-06",
-        "title": "20-06実験計画法：乱塊法と二元配置(交互作用あり)の比較",
+        "title": "実験計画法：乱塊法と二元配置(交互作用あり)の比較",
         "formula": "\\begin{array}{c|cccc} 平方和 &二元配置(交互作用あり) &乱塊法 \\\\ \\hline 平方和の関係式 &S_T=S_A+S_B+S_{A \\times B}+S_E &S_T=S_A+S_B+S_{A \\times B}+ {\\large\\mathbf{S_R}}+S_E \\\\ CT &\\displaystyle \\frac{T^2}{abn} &\\displaystyle \\frac{T^2}{abr}  \\\\ S_T &\\sum{x}_{ijk}^2-CT &\\sum{x}_{ijk}^2-CT  \\\\ S_{AB} &\\displaystyle \\frac{1}{n}\\sum(TA_iB_j)^2-CT &\\displaystyle \\frac{1}{r}\\sum(TA_iB_j)^2-CT \\\\ S_A &\\displaystyle \\frac{1}{bn}\\sum(TA_i)^2-CT &\\displaystyle \\frac{1}{br}\\sum(TA_i)^2-CT \\\\ 交互作用S_{A \\times B} & \\displaystyle \\frac{1}{n}\\sum(TAB_{ij})^2-S_A-S_B-CT  &\\displaystyle \\frac{1}{r}\\sum(TAB_{ij})^2-S_A-S_B-CT \\\\ ブロックS_R &なし & \\displaystyle \\mathbf {\\frac{1}{ab}\\sum(TR_{k})^2-CT} \\\\ 誤差E(バランス設計) &関係式から算出 &関係式から算出 \\\\ \\end{array} \\\\ \\text{} \\\\ \\begin{array}{c|ccc} 自由度 &二元配置(繰返し交互あり) &乱塊法 \\\\ \\hline \\phi_T &abn-1 &abr-1 \\\\ \\phi_{AB} &ab-1 & \\leftarrow  \\\\ \\phi_A &a-1(因子Bはb-1) & \\leftarrow  \\\\ \\phi_{A \\times B} &(a-1)(b-1) & \\leftarrow \\\\ \\phi_{R} &なし &r-1 \\\\  \\phi_E(バランス設計の場合) &ab(n-1) &(ab{\\Large\\mathbf{-1}} )(r-1) \\\\ \\phi_E(自由度の和差で) &\\phi_T-\\phi_{AB}=\\phi_T-(\\phi_A+\\phi_B+\\phi_{A \\times B}) &\\phi_T-(\\phi_{AB}+\\phi_{R})=\\phi_{T}-(\\phi_{A}+\\phi_{B}+\\phi_{A \\times B}+{\\large\\mathbf{\\phi_{R}}}) \\\\ \\end{array} \\\\",
         "comment": ""
     },
     {
         "id": "20-07",
-        "title": "20-07実験計画法：直交配列表のその他まとめ",
+        "title": "実験計画法：直交配列表のその他まとめ",
         "formula": "直交配列表の割付方 \\\\ \\begin{array}{c|ccc} 方法 &対応水準 &交互作用算出方法 &特徴 \\\\ \\hline 成分記号法 &2水準以上 &列の成分記号を掛算 &水準の具体値不要で交互作用列が判断可能。 \\\\                                         &&&複数水準因子にも対応 \\\\ ビット法/XOR法 &2水準 &列パターンのXOR/mod2 &計算機向き、2水準専用  \\\\ mod多水準法 &3水準以上 &列パターンをmod3等で計算 &ビット法の多水準版  \\\\ 記号法 &小規模2水準 &記号や文字列の組み合わせ &視覚的に理解しやすい。小規模表向き  \\\\ 配置法 &2水準以上 &標準表の列割り付けを参照 &既存表を使い手間が少ないが応用力は低い  \\\\ \\end{array}",
         "comment": ""
     },
     {
         "id": "20-08",
-        "title": "20-08実験計画法：直交配列表の成分記号法の実例",
+        "title": "実験計画法：直交配列表の成分記号法の実例",
         "formula": "成分記号法の実例 \\\\ L16(2^15)表で、5因子A,B,C,D,Fと交互作業A\\times{B},B\\times{D}を割り付ける問題 \\\\ 因子Aのみ4水準あり、4列と5列に振り分けてある。その他の因子は2水準 \\\\ 16=2^4で基本列4列あるが、順番はばらけさせてあり、因子と成分記号も同じ記号で対応させてないようになっている \\\\ これはmod法で割り付けるのではなく、成分記号を見てどこに交互作用が現れるかを判断する \\\\ \\text{}\\\\ \\begin{array}{c|ccccccccccccccc} 列&1&2&3&4&5&6&7&8&9&10&11&12&13&14&15\\\\ \\hline 因子 &&&&A &A &C &D &B &&F\\\\ 成分記号 &a &b &ab &c &ac &bc &abc &d &ad &bd &abd &cd &acd &bcd & abcd\\\\ \\end{array} \\\\ ↓ \\\\ 因子Aを割り付けている列4と5の成分記号がaとacから\\\\ それらの交互作用に当たる列1も因子Aとなる \\\\ そこから、因子Bの成分記号dと因子Aの列1の成分記号a,列4の成分記号cの掛け合わせである \\\\ 列9成分記号ad、列12成分記号cd、列13成分記号acdがA\\times{B}の交互作用になる \\\\ 交互作用B\\times{D}は因子Dの成分記号abcとdの掛け合わせである列15成分記号abcdのみとなる \\\\",
         "comment": ""
     },
     {
         "id": "20-09",
-        "title": "20-09実験計画法：直交配列表の平方和",
+        "title": "実験計画法：直交配列表の平方和",
         "formula": "直交表の平方和 \\\\ 各水準が同数なので平均値がなくても以下のように計算できる \\\\ \\text{}\\\\ i列の場合\\\\ \\begin{array}{c|ccc} &2水準 &多水準(例:3水準) &二元配置の要因平方和(式の形の比較) \\\\ \\hline S_i&\\dfrac{(T_{i1}-T_{i2})^2}{N} &\\dfrac{T_{i1}^2+T_{i2}^2+T_{i3}^2}{n}-\\dfrac{(T_{i1}+T_{i2}+T_{i3})^2}{N} &\\dfrac{1}{b}\\sum{(T_{A_i})^2}-CT,(CT=\\dfrac{T^2}{N}) \\\\ \\end{array} \\\\ 各水準のデータ数:n=\\dfrac{N}{水準数},N:各列のデータ数(実験回数)",
         "comment": ""
     },
     {
         "id": "20-10",
-        "title": "20-10実験計画法：直交配列表の分散の期待値",
+        "title": "実験計画法：直交配列表の分散の期待値",
         "formula": "直交表における因子Aの「分散」の「期待値」\\\\ E[V(A)]=n{\\sigma_A}^2+{\\sigma_e}^2,(n=\\dfrac{N}{Aの水準数},N:実験数(例:L16の場合16))\\\\ nは同一水準で実験を繰り返した数となり、繰り返した数だけ分散が倍化していく(誤差は繰り返しに関係なく一つ)",
         "comment": ""
     },
     {
         "id": "20-11",
-        "title": "20-11実験計画法：直交配列表の母平均の点推定とその分散",
+        "title": "実験計画法：直交配列表の母平均の点推定とその分散",
         "formula": "最適水準における母平均の点推定 \\\\ \\hat{\\mu}=\\bar{T}+\\sum(最適水準の平均-\\bar{T})\\\\ \\textbf{例} :2水準で有意因子がA,C,D,A\\times{B}の4要因で \\\\ 最適水準の組み合わせが「A_1B_2C_1D_2」であったとすると\\\\ \\begin{array}{rl} \\hat{\\mu}&=\\bar{T}+(\\bar{T}_{A_\\mathbf{1}}-\\bar{T})+(\\bar{T}_{C_1}-\\bar{T})+(\\bar{T}_{D_2}-\\bar{T})+(\\bar{T}_{A_1\\times{B_2}}-\\bar{T})\\\\ &=(\\bar{T}_{A_\\mathbf{1}}+\\bar{T}_{C_1}+\\bar{T}_{D_2}+\\bar{T}_{A_1\\times{B_2}})-3\\bar{T} \\\\ &=(\\dfrac{1}{n_{A_1}}{T}_{A_\\mathbf{1}}+\\dfrac{1}{n_{C_1}}{T}_{C_1}+\\dfrac{1}{n_{D_2}}{T}_{D_2}+\\dfrac{1}{n_{A_1\\times{B_2}}}{T}_{A_1\\times{B_2}})-\\dfrac{3}{N}T,(※1) \\\\ &=(各要因の平均値の和)-(要因数-1)\\times(全体の平均値)\\\\ \\end{array} \\\\ 例:\\hspace{1em} \\bar{T_{A_1}}=(因子Aを割付けた列の水準1のデータの平均値､L16の場合水準1のデータ数8個分の平均値となる)\\\\ \\text{}\\\\ 母平均の点推定値の分散は以下の公式で表される \\\\ V(\\hat{\\mu})=\\dfrac{{\\sigma_e}^2}{n_e}=\\dfrac{S_e}{\\phi_e}\\times\\dfrac{1}{n_e} \\\\ {\\sigma_e}^2:誤差分散、n_e:有効反復数（点推定に使われる独立情報の数） \\\\ 有効反復数は以下の公式で求める \\\\ \\dfrac{1}{n_e}=(母平均の推定式の「係数」の和),(伊奈の式) \\\\ 上記例の組み合わせの場合、※1の式の係数を使う \\\\ \\dfrac{1}{n_e}=\\dfrac{1}{n_{A_1}}+\\dfrac{1}{n_{C_1}}+\\dfrac{1}{n_{D_2}}+\\dfrac{1}{n_{A_1B_2}}-\\dfrac{3}{N(全実験回数)} \\\\",
         "comment": ""
     },
     {
         "id": "21-01",
-        "title": "21-01製造物責任法(PL法)",
+        "title": "製造物責任法(PL法)",
         "formula": "目的･･･製造物の欠陥→人の生命や身体、財産にかかわる被害→製造者の損害賠償責任→国民生活の安定向上と国民帰依罪の健全な発展に寄与 \\\\ 対象･･･製造または加工された「動産」の欠陥。サービスなどの役務の瑕疵(かし)、電気などの無形物は対象外。 \\\\ 欠陥とは･･･通常有すべき安全性を欠いていること \\\\ 免責･･･引き渡したときの科学技術に関する知見では欠陥を認識できなかったことを証明できた場合 \\\\ 時効･･･被害者が損害と賠償義務者を知った時から３年。引き渡した時から10年。 \\\\",
         "comment": ""
     },
     {
         "id": "22-01",
-        "title": "22-01数学的な展開など：期待値と分散",
+        "title": "数学的な展開など：期待値と分散",
         "formula": "期待値 \\\\ \\hspace{1em} E[aX_1+bX_2]=aE[X_1]+bE[X_2] \\hspace{1em} ※定数は外に出せる。和はそのまま分けられる。\\\\ 分散･･･偏差の二乗の平均(平均は母分散なら期待値) \\\\ \\hspace{1em} V(Y)=E[(Y-E[Y])^2] \\\\ \\text{} \\\\ 相関関係がある確率変数X_1とX_2について\\\\ Y= aX_1+bX_2の関係なら分散V(Y)は以下のように展開できる \\\\ \\begin{array}{rl}  V(Y)&=V(aX_1+bX_2) \\\\ E[Y]&=E[aX_1+bX_2)] \\\\ &=aE[X_1]+bE[X_2]より \\\\ Y-E[Y]&=(aX_1+bX_2)-(aE[X_1]+bE[X_2])\\hspace{1em} X_1、X_2でまとめると \\\\ &=a(X_1-E[X_1])+b(X_2-E[X_2])\\hspace{1em} 両辺に二乗を取ると \\\\ (Y-E[Y])^2&=\\{a(X_1-E[X_1])+b(X_2-E[X_2])\\}^2 \\\\ &=a^2(X_1-E[X_1])^2+2ab(X_1-E[X_1])(X_2-E[X_2])+b^2(X_2-E[X_2])^2 \\\\ \\end{array} \\\\ 両辺に期待値を取ると \\\\ \\begin{array}{rl} E[(Y-E[Y])^2]&=E[a^2(X_1-E[X_1])^2]+E[2ab(X_1-E[X_1])(X_2-E[X_2])]+E[b^2(X_2-E[X_2])^2] \\\\ &=a^2E[(X_1-E[X_1])^2]+2abE[(X_1-E[X_1])(X_2-E[X_2])]+b^2E[(X_2-E[X_2])^2] \\\\ \\end{array} \\\\ これらを分散に変換して \\\\ \\hspace{1em} V(Y)=a^2V(X_1)+2abCov(X_1,X_2)+b^2V(X_2) \\\\ これらを標準偏差\\sigmaと相関係数\\rhoで表すと \\\\ \\hspace{1em} \\rho = \\displaystyle \\frac{Cov(X_1,X_2)}{\\sigma_{X_1}\\sigma_{X_2}}なので\\\\ \\hspace{1em} Cov(X_1,X_2) =\\rho \\sigma_{X_1}\\sigma_{X_2} \\hspace{1em} ,またV(Y)=\\sigma_{Y}^2を代入して\\\\ \\hspace{1em} \\sigma_Y^2 =a^2\\sigma_{X_1}^2+2ab\\rho \\sigma_{X_1}\\sigma_{X_2}+b^2\\sigma_{X_2}^2 \\\\",
         "comment": ""
     },
     {
         "id": "22-02",
-        "title": "22-02数学的な展開など：期待値の二乗",
+        "title": "数学的な展開など：期待値の二乗",
         "formula": "\\begin{array}{rl} 期待値の二乗\\\\ V(X)=\\sigma^2&=E[(X-\\mu)^2]この分散の定義より展開して\\\\ &=E[X^2-2\\mu X+\\mu^2]\\hspace{1em}期待値の線形性により、定数を外に出し和差を分離して \\\\ &=E[X^2]-2\\mu E[X]+\\mu^2 \\hspace{1em} ,E[X]=\\muなので代入すると \\\\ &=E[X^2]-2\\mu^2+\\mu^2 \\\\ &=E[X^2]-\\mu^2 \\hspace{1em}移項すると \\\\ E[X^2]&=\\sigma^2+\\mu^2 \\\\ \\end{array} \\\\ \\text{} \\\\ 分散を期待値だけで表すと\\\\ \\begin{array}{rl} V(X)&=E[X^2]-\\mu^2より\\\\ V(X)&=E[X^2]-(E[X])^2 \\end{array}",
         "comment": ""
     },
     {
         "id": "23-01",
-        "title": "23-01ノンパラメトリック検定：種類一覧",
+        "title": "ノンパラメトリック検定：種類一覧",
         "formula": "ノンパラメトリック法とは、母集団の分散型を仮定しない手法 \\\\ ノンパラメトリック法一覧 \\\\ \\begin{array}{c|ccc} 検定方法 & 用途 & 特徴 & 備考 \\\\ \\hline ウィルコクソンの符号付順位検定 & 対応のある2群の中央値の差を検定 & t検定（対応あり）の代替法 & \\\\ 符号検定 & 順位を使わず、差の「符号（＋か−か）」だけを利用 & 検出力は低いが計算は簡単 & データ数が小さいときや差が同じ値になることが多いときに有効 \\\\ ウィルコクソンの順位和検定 & 対応のない2群の中央値の差を検定 & t検定（対応なし）の代替法 &  マン・ホイットニーU検定とも言う \\\\ クラスカル・ウォリス検定 &  3群以上の比較に使用 & 一元配置分散分析（ANOVA）の代替法 & 群ごとの順位を使って差を検定 \\\\ フリードマン検定 & 対応のある3群以上の比較に使用 & 二元配置分散分析（繰り返し測定あり）の代替法 & \\\\ コルモゴロフ–スミルノフ検定 & 分布の形や2つの分布の違いを検定 & 連続データに適用 & K-S検定とも言う \\\\ \\chi^2適合度検定(※1) & 度数データが期待分布に適合しているかを検定 & 母集団分布を仮定しない適合度の評価 & ※1:厳密にはノンパラメトリック法ではないが近い扱いをされることがある \\\\ \\end{array}",
         "comment": ""
     },
     {
         "id": "23-02",
-        "title": "23-02ノンパラメトリック検定：ウィルコクソンの符号順位検定",
+        "title": "ノンパラメトリック検定：ウィルコクソンの符号順位検定",
         "formula": "ウィルコクソンの符号付順位検定 \\\\ 目的:データが正規化できない、または標本サイズが小さくt検定が使いにくいときに \\\\ \\hspace{2em} 対応のある(同じ対象の条件違い)2群の比較 \\\\ 手順 \\\\ ①2群の差を計算 \\\\ ②差の絶対値を小さい順に順位付け(同値があれば順位の平均値をとる、ゼロは除外する) \\\\ ③差の符号が＋と－それぞれの合計値を取る \\\\ ④上記の小さい方の合計値を検定統計量Tと置く \\\\ ⑤N数を取る(②でゼロを除外した数) \\\\ ⑤ウィルコクソンの数値表から、有意水準\\alphaとN数から棄却限界値を求める \\\\ \\hspace{1em} N \\geq 25の場合は、近似的に正規分布の式を使って正規化することが可能 \\\\ \\hspace{2em} Z= \\displaystyle \\frac{T-\\frac{n(n+1)}{4}}{\\sqrt{\\frac{n(n+1)(2n+1)}{24}}} ,このZを正規分布表と照合する \\\\ ⑥検定統計量と棄却限界値から有意かを判断する",
         "comment": ""
     },
     {
         "id": "24-01",
-        "title": "24-01官能評価：種類一覧",
+        "title": "官能評価：種類一覧",
         "formula": "\\begin{array}{c|ccc} 試験法 &分類 &概要 &目的・用途 \\\\ \\hline 1点試験法 &識別試験 &1つの試料が基準に対して差があるかを評価 &新製品が基準品と同じかを確認  \\\\ 2点試験法(ペアテスト) &↑ &2つの試料でどちらが異なるか・好ましいかを判定 &微小な差を検出、嗜好の比較  \\\\ 3点試験法(三角試験法) &↑ &3つの試料で内1つだけ異なるものを選択 &少数のパネルでも差を検出しやすい  \\\\ 1対2点試験法 &↑ &1つの基準試料と2つの試料を比較しどちらが基準に近いかを判定 &製品の類似性・調整度合いを確認  \\\\ ひきぬき法 &↑ &連続した試料を比較し明らかに異なる資料を選別 &ロットのばらつき・異常品の検出  \\\\ \\hline 配偶法(パイリング法･マッチング法) &分類・群分け法 &多数の試料を似ているもの同時でグループに分ける &製品群の類似性・系統性を把握  \\\\ 振り分け試験法(分類法) &↑ &多数の試料をあらかじめ決めたカテゴリに分類 &製品の等級・品質レベルを判定  \\\\ \\hline 一対比較法 &嗜好試験 &2つの試料を全ての組み合わせで比較し順位付け &嗜好順位や品質順位の決定  \\\\ 順位法 &↑ &複数の試料を順位付け &嗜好性や強度を比較  \\\\ \\hline 尺度法(評点法) &評定試験 &数値スケールを使い強さや好ましさを数値化 &例：5段階評価  \\\\ カテゴリー尺度法 &↑ &「非常によい」「やや良い」などにカテゴリ分け &  \\\\ SD法(意味差判別法) &↑ &「甘い-辛い」「硬い-柔らかい」など両極の形容詞で評価 &  \\\\ 時間強度法 &↑ &味や香りなどが時間で変化する様子を評価 &  \\\\ \\end{array}",
         "comment": ""
     },
     {
         "id": "24-02",
-        "title": "24-02官能評価：関連用語",
+        "title": "官能評価：関連用語",
         "formula": "\\begin{array}{c|c} 用語 &意味 \\\\ \\hline 一巡三角形 &優劣が循環して順位づけできない三すくみ状態  \\\\ パネル &官能検査を行う人々のグループ \\\\ 専門家パネル &訓練を受けたグループ、識別試験、評定試験など精密評価に用いられる \\\\ 消費者パネル &一般消費者グループ、市場調査、嗜好試験などに用いられる  \\\\ パネル誤差 &パネル間の感覚の違いによる誤差  \\\\ しきい値 &匂いや味などの感覚を感知できる最小の刺激量(濃度など)  \\\\ 嗜好試験 &好き嫌い・好ましさを調べる試験法全般  \\\\ 識別試験 &試料間の差を判定する試験法。三角試験法、2点試験法などが含まれる  \\\\ 評定試験 &強さや好ましさを数値で表す試験法。尺度法などが含まれる  \\\\ スケーリング &感覚の強さや好ましさなどの評価を数値化すること \\\\ ランダマイゼーション &提示順序や位置をランダムにしてバイアスを防ぐ \\\\ \\end{array}",
         "comment": ""
     },
     {
         "id": "25-01",
-        "title": "25-01：有限母集団のサンプリングに関する公式",
+        "title": "有限母集団のサンプリングに関する公式：",
         "formula": "\\begin{array}{c|ccc} \\textbf{公式・項目} & \\textbf{式} & \\textbf{条件・補足} & \\textbf{直感・覚え方} \\\\ \\hline 標本平均の分散（有限母集団） & V(\\bar{X}) = \\dfrac{\\sigma^2}{n} \\cdot \\dfrac{N-n}{N-1} & n個の非復元抽出 & 標本が母集団に近づくほど分散は小さくなる \\\\ 有限母集団補正係数 & f = \\dfrac{N-n}{N-1} & V(\\bar{X}) = \\dfrac{\\sigma^2}{n} \\cdot f & 1に近い場合は無限母集団と同じ \\\\ 標本内共分散（非対角成分） & \\mathrm{Cov}(X_{i_j},X_{i_k}) = -\\dfrac{\\sigma^2}{N-1} & j \\neq k, 非復元抽出 & 1個選ぶと残りの値が少し減る → 負の相関 \\\\ 標本内分散（対角成分） & V(X_{i_j}) = \\sigma^2 & j=k & 母分散そのまま \\\\ 標本平均の分散（展開形） & V(\\bar{X}) = \\dfrac{1}{n^2} \\left[ n\\sigma^2 + n(n-1)\\left(-\\dfrac{\\sigma^2}{N-1}\\right) \\right] & n個の非復元抽出 & 対角成分＋非対角成分の和で求める \\\\ 無限母集団の近似 & V(\\bar{X}) \\approx \\dfrac{\\sigma^2}{n} & n \\ll N & f \\approx 1 \\\\ \\end{array} \\\\ \\begin{array}{l} ポイント \\\\ 無限母集団では共分散が 0 → 𝑉(\\bar{X})=\\dfrac{\\sigma^2}{n} \\\\ 有限母集団では共分散が負 → 分散が少し小さくなる \\\\ \\text{} \\\\ 有限母集団補正\\dfrac{N-n}{N-1}である理由\\\\ 母集団の大きさNが有限の場合、サンプルのX_iは完全に独立ではなくなる \\\\ 1つの個体をサンプリングすると、残りの母集団の分布が少し変わる → 標本の値はわずかに相関あり \\\\ そのため、標本平均の分散は\\dfrac{\\sigma^2}{n}より少し小さくなる\\\\ \\text{} \\\\ 無作為に非復元抽出の意味 \\\\ 無作為：母集団の各個体が等しい確率で選ばれる \\\\ 非復元抽出：一度選ばれた個体は もう選ばれない \\\\ \\end{array}",
         "comment": ""
     },
     {
         "id": "26-01",
-        "title": "26-01：生産管理に関する分析法",
+        "title": "生産管理に関する分析法：",
         "formula": "生産管理における分析法\\\\ \\begin{array}{l|llll} 分析法 & 概要 & 主な使いどころ & 試験での狙われ方 \\\\ \\hline ABC分析 & 使用金額や重要度で品目を A・B・C に分類 & 多品目を扱う場合の & 代表的な在庫管理手法として頻出 \\\\ &&在庫・購買管理の品目を重要度別に管理\\\\ \\hline P–Q分析 & 品目数（P）と数量（Q）で区分 & 生産方式の選択、在庫方針 & ABCとよく似た手法として定番出題 \\\\ \\text{(Product-Quantity)}&（少品種多量、多品種少量など）&品種数と数量から生産方式を選択&元は工場レイアウトの基礎情報を得る手法として紹介\\\\ \\hline パレート分析 & 要因や不良を大きい順に並べて重点管理 & 不良原因・クレーム要因の特定 & 「80:20の法則」とセットで出題 \\\\ \\hline ECRS分析 &  排除･統合･順序変更･簡素化の視点で改善 & 作業研究・業務改善 & 略語を問う問題が出やすい \\\\ &\\text{Eliminate・Combine・Rearrange・Simplify}&この作業をなくしたり他と纏められないか\\\\ \\hline アローダイアグラム法  & 作業順序と所要時間を矢印で表し、& 工程計画、納期管理 & クリティカルパスの定義などが狙われる \\\\ (PERT/CPM)&全体所要時間と重要工程を把握 \\\\ \\hline 工程分析 & 工程の流れや作業を細かく分けて調査 & 工場レイアウト検討、作業改善 & 流れ図や工程図の名称確認 \\\\ \\hline 作業サンプリング法 & 一定間隔で観察し作業割合を推定 & 稼働率、作業時間分析 & 定義や特徴を選ばせる問題あり \\\\ \\hline 動作研究 (サーブリック分析など) & 作業を細動作に分解して改善 & 作業効率化、時間短縮 & 名前の由来や内容が問われることも \\\\ \\hline ローレンス曲線 & 品目別累積比率を曲線で表示 & 品目の集中度分析、ABC分析の補助 & グラフ解釈問題で出題の可能性 \\\\ \\end{array}",
         "comment": ""
     }
