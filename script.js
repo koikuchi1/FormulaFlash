@@ -39,7 +39,7 @@ function updateDisplay() {
     labelElement.innerHTML = `<b>${card.id}: ${card.title}</b>`;
 
     // タイトルは常に表示
-    labelElement.innerHTML = `<b>${card.title}</b>`;
+    //labelElement.innerHTML = `<b>${card.title}</b>`;
 
 // 非表示時はクリア（変更なし）
     if (!isFormulaVisible) {
@@ -156,6 +156,7 @@ function attachEventListeners() {
 // 初期化
 
 loadFormulas();
+
 
 
 
